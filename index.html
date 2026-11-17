@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আনাস ফ্যাশন হাউজ | প্রিমিয়াম ফ্যাশন, টেইলরিং ও মার্কেটপ্লেস</title>
+    <title>আনাস ফ্যাশন হাউজ | Anas Fabrics & Ladies Tailors</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         * {
             margin: 0;
@@ -20,32 +21,49 @@
             overflow-x: hidden;
         }
 
-        /* নেভিগেশন বার */
+        /* নেভিগেশন বার (লোগোর এমেরাল্ড ও নেভি থিম) */
         header {
-            background-color: #1a1a2e;
+            background: linear-gradient(90deg, #062b21 0%, #0d2847 100%);
             color: #fff;
-            padding: 14px 4%;
+            padding: 10px 4%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+            border-bottom: 2px solid #d4af37;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
-            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 21px;
             font-weight: bold;
-            color: #e94560;
+            color: #f3d06b;
             cursor: pointer;
         }
 
+        .logo img {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            padding: 3px;
+            object-fit: contain;
+            border: 2px solid #d4af37;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+            flex-shrink: 0;
+        }
+
         .logo span {
-            color: #fff;
-            font-size: 13px;
+            color: #e2e8f0;
+            font-size: 12.5px;
             display: block;
             font-weight: normal;
+            letter-spacing: 0.4px;
         }
 
         nav {
@@ -69,20 +87,22 @@
 
         nav button.nav-btn:hover,
         nav button.nav-btn.active-nav {
-            background-color: #e94560;
-            color: #fff;
+            background-color: #d4af37;
+            color: #062b21;
+            font-weight: bold;
         }
 
         .cart-nav-btn {
-            background-color: #0f3460 !important;
-            border: 1px solid #e94560 !important;
+            background-color: #0d2847 !important;
+            border: 1px solid #d4af37 !important;
+            color: #f3d06b !important;
             font-weight: bold !important;
         }
 
         .menu-toggle {
             display: none;
             font-size: 26px;
-            color: #fff;
+            color: #f3d06b;
             background: none;
             border: none;
             cursor: pointer;
@@ -104,58 +124,99 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* হিরো ব্যানার */
+        /* লোগো অনুযায়ী কাস্টমাইজড রয়্যাল হিরো ব্যানার */
         .hero {
-            background: linear-gradient(rgba(15, 15, 30, 0.72), rgba(15, 15, 30, 0.72)),
-                url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1350&q=80') center/cover;
-            min-height: 55vh;
+            background: linear-gradient(135deg, rgba(6, 55, 41, 0.90) 0%, rgba(13, 40, 71, 0.88) 55%, rgba(88, 24, 31, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1400&q=80') center/cover;
+            min-height: 62vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: #fff;
-            padding: 40px 20px;
+            padding: 45px 20px;
+            border-bottom: 4px solid #d4af37;
+            position: relative;
+        }
+
+        .hero-badge-top {
+            background: rgba(212, 175, 55, 0.18);
+            border: 1px solid #d4af37;
+            color: #f9e08e;
+            padding: 5px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            letter-spacing: 0.8px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .hero-logo {
+            width: 135px;
+            height: 135px;
+            border-radius: 50%;
+            background: #ffffff;
+            padding: 8px;
+            object-fit: contain;
+            border: 4px solid #d4af37;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.55), 0 0 20px rgba(212, 175, 55, 0.4);
         }
 
         .hero h1 {
-            font-size: 38px;
+            font-size: 36px;
             margin-bottom: 12px;
+            color: #f9e08e;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
             font-size: 17px;
-            margin-bottom: 22px;
-            max-width: 720px;
+            margin-bottom: 24px;
+            max-width: 740px;
+            color: #f1f5f9;
         }
 
         .hero-btns {
             display: flex;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .btn {
-            background-color: #e94560;
+            background-color: #063729;
             color: #fff;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
             transition: 0.3s;
-            border: none;
+            border: 1px solid #d4af37;
             cursor: pointer;
             display: inline-block;
             font-size: 14px;
         }
 
         .btn:hover {
-            background-color: #c7364f;
+            background-color: #d4af37;
+            color: #062b21;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #d4af37, #b5891d);
+            color: #062b21;
+            border: none;
+        }
+
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #f3d06b, #d4af37);
+            color: #062b21;
         }
 
         .btn-secondary {
-            background-color: #1a1a2e;
+            background-color: #0d2847;
             border: 1px solid #fff;
         }
 
@@ -169,12 +230,12 @@
         .section-title {
             font-size: 28px;
             margin-bottom: 8px;
-            color: #1a1a2e;
+            color: #063729;
             text-align: center;
         }
 
         .section-subtitle {
-            color: #666;
+            color: #555;
             margin-bottom: 25px;
             font-size: 15px;
             text-align: center;
@@ -211,7 +272,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
             flex-shrink: 0;
             text-align: center;
-            border: 1px solid #eee;
+            border: 1px solid #e2d5b5;
         }
 
         .slide-card img {
@@ -226,12 +287,12 @@
 
         .slide-card-body h4 {
             font-size: 15px;
-            color: #1a1a2e;
+            color: #0d2847;
             margin-bottom: 4px;
         }
 
         .slide-card-body p {
-            color: #e94560;
+            color: #8b1e2b;
             font-weight: bold;
             margin-bottom: 8px;
         }
@@ -250,8 +311,13 @@
             background: #fff;
             padding: 22px;
             border-radius: 10px;
-            border-top: 4px solid #e94560;
+            border-top: 4px solid #d4af37;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .feature-box h3 {
+            color: #063729;
+            margin-bottom: 6px;
         }
 
         /* কালেকশন পেজ ও বাম কর্নারের সার্চ বার */
@@ -269,6 +335,7 @@
             background: #fff;
             padding: 15px 20px;
             border-radius: 10px;
+            border-left: 5px solid #063729;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
@@ -283,13 +350,13 @@
             width: 100%;
             padding: 10px 16px;
             font-size: 14px;
-            border: 2px solid #1a1a2e;
+            border: 2px solid #063729;
             border-radius: 25px;
             outline: none;
         }
 
         .search-input:focus {
-            border-color: #e94560;
+            border-color: #d4af37;
         }
 
         .filter-buttons {
@@ -300,7 +367,7 @@
 
         .filter-btn {
             background-color: #f1f3f5;
-            color: #1a1a2e;
+            color: #0d2847;
             border: 1px solid #ccc;
             padding: 7px 14px;
             border-radius: 20px;
@@ -312,9 +379,9 @@
 
         .filter-btn:hover,
         .filter-btn.active {
-            background-color: #e94560;
-            border-color: #e94560;
-            color: #fff;
+            background-color: #063729;
+            border-color: #d4af37;
+            color: #f9e08e;
         }
 
         .product-grid {
@@ -333,13 +400,14 @@
             flex-direction: column;
             justify-content: space-between;
             text-align: center;
+            border: 1px solid #eee;
         }
 
         .badge {
             position: absolute;
             top: 10px;
             left: 10px;
-            background-color: #1a1a2e;
+            background-color: #0d2847;
             color: #fff;
             padding: 3px 9px;
             font-size: 11px;
@@ -347,10 +415,9 @@
             font-weight: bold;
         }
 
-        .badge.women { background-color: #e94560; }
-        .badge.unisex { background-color: #0f3460; }
-        .badge.kids { background-color: #2e8b57; }
-        .badge.seller { background-color: #d97706; }
+        .badge.women { background-color: #8b1e2b; }
+        .badge.unisex { background-color: #063729; }
+        .badge.kids { background-color: #b5891d; }
 
         .product-card img {
             width: 100%;
@@ -365,7 +432,7 @@
         .product-info h3 {
             font-size: 16px;
             margin-bottom: 5px;
-            color: #1a1a2e;
+            color: #0d2847;
         }
 
         .size-info {
@@ -375,7 +442,7 @@
         }
 
         .price {
-            color: #e94560;
+            color: #8b1e2b;
             font-size: 17px;
             font-weight: bold;
             margin-bottom: 10px;
@@ -388,7 +455,7 @@
         }
 
         .btn-cart {
-            background-color: #0f3460;
+            background-color: #0d2847;
             color: #fff;
             padding: 8px 12px;
             border: none;
@@ -399,7 +466,7 @@
         }
 
         .btn-cart:hover {
-            background-color: #1a1a2e;
+            background-color: #1e3a8a;
         }
 
         /* কাস্টম টেইলরিং ও সেলার ফর্ম স্টাইল */
@@ -410,7 +477,7 @@
             padding: 30px;
             border-radius: 14px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            border-top: 5px solid #e94560;
+            border-top: 5px solid #063729;
         }
 
         .form-grid-2 {
@@ -435,7 +502,7 @@
             font-weight: bold;
             margin-bottom: 5px;
             font-size: 14px;
-            color: #1a1a2e;
+            color: #0d2847;
         }
 
         .input-group input,
@@ -452,7 +519,36 @@
         .input-group input:focus,
         .input-group select:focus,
         .input-group textarea:focus {
-            border-color: #e94560;
+            border-color: #063729;
+        }
+
+        /* ফাইল আপলোড বক্স স্টাইল (সেলার পেজের জন্য) */
+        .file-upload-wrapper {
+            border: 2px dashed #063729;
+            background-color: #f4faf7;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .file-upload-wrapper:hover {
+            background-color: #e6f4ed;
+            border-color: #d4af37;
+        }
+
+        .preview-img-box {
+            margin-top: 12px;
+            display: none;
+        }
+
+        .preview-img-box img {
+            max-width: 160px;
+            max-height: 160px;
+            border-radius: 8px;
+            border: 2px solid #d4af37;
+            object-fit: cover;
         }
 
         /* অর্ডার ফর্ম ও পেমেন্ট সেকশন */
@@ -463,6 +559,7 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #d4af37;
         }
 
         .checkout-grid {
@@ -474,15 +571,15 @@
         .checkout-box-title {
             font-size: 18px;
             font-weight: bold;
-            color: #1a1a2e;
+            color: #063729;
             margin-bottom: 12px;
             padding-bottom: 6px;
-            border-bottom: 2px solid #e94560;
+            border-bottom: 2px solid #d4af37;
         }
 
         .selected-item-card {
-            background: #fdf2f4;
-            border: 1.5px solid #e94560;
+            background: #f4faf7;
+            border: 1.5px solid #063729;
             border-radius: 10px;
             padding: 12px;
             display: flex;
@@ -512,7 +609,7 @@
         }
 
         .qty-btn {
-            background: #1a1a2e;
+            background: #063729;
             color: #fff;
             border: none;
             width: 26px;
@@ -544,18 +641,19 @@
 
         .radio-row input {
             margin-right: 8px;
-            accent-color: #e94560;
+            accent-color: #063729;
             transform: scale(1.15);
         }
 
         .account-details-card {
-            background: #1a1a2e;
-            color: #fff;
+            background: #063729;
+            color: #f9e08e;
             padding: 12px;
             border-radius: 8px;
             font-size: 13px;
             margin-top: 10px;
             line-height: 1.7;
+            border: 1px solid #d4af37;
         }
 
         .summary-line {
@@ -570,7 +668,7 @@
             border-bottom: none;
             font-size: 18px;
             font-weight: bold;
-            color: #e94560;
+            color: #8b1e2b;
         }
 
         /* রিভিউ কার্ড */
@@ -587,6 +685,7 @@
             background: #fff;
             padding: 20px;
             border-radius: 10px;
+            border-left: 4px solid #d4af37;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
         }
 
@@ -613,7 +712,7 @@
             border-radius: 14px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border-top: 6px solid #25D366;
+            border-top: 6px solid #063729;
         }
 
         .notif-icon {
@@ -649,12 +748,13 @@
         }
 
         footer {
-            background-color: #11111f;
-            color: #aaa;
+            background: linear-gradient(90deg, #062b21 0%, #0d2847 100%);
+            color: #e2e8f0;
             padding: 20px 5%;
             font-size: 14px;
             text-align: center;
             margin-top: 40px;
+            border-top: 2px solid #d4af37;
         }
 
         @media (max-width: 768px) {
@@ -666,11 +766,12 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: #1a1a2e;
+                background-color: #062b21;
                 padding: 15px;
             }
             nav.show { display: flex; }
             nav button.nav-btn { width: 100%; text-align: left; }
+            .hero h1 { font-size: 27px; }
             .checkout-grid, .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
         }
     </style>
@@ -681,8 +782,11 @@
     <!-- নেভিগেশন বার -->
     <header>
         <div class="logo" onclick="switchPage('home-page', document.getElementById('nav-home'))">
-            আনাস ফ্যাশন হাউজ
-            <span>Anas Fabrics & Ladies Tailors</span>
+            <img src="logo.png" alt="Anas Fabrics & Ladies Tailors Logo">
+            <div>
+                আনাস ফ্যাশন হাউজ
+                <span>Anas Fabrics & Ladies Tailors</span>
+            </div>
         </div>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         <nav id="navbar">
@@ -697,15 +801,17 @@
         </nav>
     </header>
 
-    <!-- ==================== পেজ ১: হোম পেজ ==================== -->
+    <!-- ==================== পেজ ১: হোম পেজ (লোগো অনুযায়ী কাস্টমাইজড ব্যানার) ==================== -->
     <div id="home-page" class="page-view active-page">
         <section class="hero">
-            <h1>স্টাইল ও উষ্ণতায় সেরা ফ্যাশন এবং কাস্টম টেইলরিং</h1>
-            <p>ছেলে, মেয়ে ও বাচ্চাদের প্রিমিয়াম রেডিমেড পোশাকের পাশাপাশি আপনার নিজের পছন্দমতো মাপ ও ডিজাইনে <strong>Anas Fabrics and Ladies Tailors</strong>-এ জামা তৈরি করে নেওয়ার অনলাইন সুবিধা।</p>
+            <div class="hero-badge-top">✨ প্রিমিয়াম ফ্যাব্রিক্স • এক্সক্লুসিভ লেডিস টেইলরিং • ফ্যাশন হাউজ ✨</div>
+            <img src="logo.png" alt="Anas Fabrics & Ladies Tailors Logo" class="hero-logo">
+            <h1>ANAS FABRICS & LADIES TAILORS</h1>
+            <p>ঐতিহ্য ও আধুনিকতার অপূর্ব সমন্বয়! ছেলে, মেয়ে ও বাচ্চাদের প্রিমিয়াম রেডিমেড পোশাকের পাশাপাশি দক্ষ কারিগর দ্বারা আপনার নিজের পছন্দমতো মাপ ও ডিজাইনে পোশাক তৈরি করে নেওয়ার বিশ্বস্ত প্রতিষ্ঠান।</p>
             <div class="hero-btns">
-                <button class="btn" onclick="switchPage('collection-page', document.getElementById('nav-collection'))">সব কালেকশন দেখুন</button>
-                <button class="btn" style="background:#0f3460;" onclick="switchPage('tailor-page', document.getElementById('nav-tailor'))">✂️ নিজের মাপে কাপড় বানান</button>
-                <button class="btn" style="background:#25D366;" onclick="switchPage('checkout-page', document.getElementById('nav-checkout'))">সরাসরি অর্ডার করুন</button>
+                <button class="btn btn-gold" onclick="switchPage('collection-page', document.getElementById('nav-collection'))">🛍️ সব কালেকশন দেখুন</button>
+                <button class="btn" onclick="switchPage('tailor-page', document.getElementById('nav-tailor'))">✂️ নিজের মাপে কাপড় বানান</button>
+                <button class="btn" style="background:#25D366; border:none;" onclick="switchPage('checkout-page', document.getElementById('nav-checkout'))">সরাসরি অর্ডার করুন</button>
             </div>
         </section>
 
@@ -779,7 +885,7 @@
             </div>
             <div class="feature-box">
                 <h3>🏪 সেলার পার্টনারশিপ</h3>
-                <p>আপনার নিজের দোকানের বা হাতের তৈরি পোশাক আমাদের ওয়েবসাইটে লিস্ট করে সারা দেশে বিক্রি করুন।</p>
+                <p>আপনার নিজের দোকানের বা হাতের তৈরি পোশাকের ছবি আপলোড করে আমাদের ওয়েবসাইটে বিক্রি করুন।</p>
             </div>
         </div>
     </div>
@@ -790,7 +896,6 @@
             <h2 class="section-title">আমাদের সম্পূর্ণ পোশাক কালেকশন</h2>
             <p class="section-subtitle">বাম কর্নার থেকে পোশাক খুঁজুন অথবা ক্যাটাগরি নির্বাচন করুন</p>
 
-            <!-- টপ বার: বাম কর্নারে সার্চ বার এবং ডানপাশে ক্যাটাগরি -->
             <div class="collection-top-bar">
                 <div class="search-corner-box">
                     <input type="text" id="searchInput" class="search-input" onkeyup="applyFilters()" placeholder="🔍 কাপড় খুঁজুন (গাউন, শার্ট, বোরকা, বেবি)...">
@@ -1016,7 +1121,7 @@
                     </div>
                 </div>
 
-                <h4 style="margin: 15px 0 10px 0; color:#e94560;">📏 আপনার শরীরের মাপ লিখুন (ইঞ্চিতে):</h4>
+                <h4 style="margin: 15px 0 10px 0; color:#8b1e2b;">📏 আপনার শরীরের মাপ লিখুন (ইঞ্চিতে):</h4>
                 <div class="form-grid-3">
                     <div class="input-group">
                         <label>জামার লম্বা (Length) *</label>
@@ -1065,16 +1170,16 @@
                     <input type="text" id="tCustAddress" placeholder="গ্রাম/মহল্লা, থানা ও জেলার নাম" required>
                 </div>
 
-                <button type="submit" class="btn" style="width:100%; padding:14px; font-size:16px;">✂️ কাস্টম টেইলরিং অর্ডার পাঠান</button>
+                <button type="submit" class="btn btn-gold" style="width:100%; padding:14px; font-size:16px;">✂️ কাস্টম টেইলরিং অর্ডার পাঠান</button>
             </form>
         </div>
     </div>
 
-    <!-- ==================== পেজ ৪: সেলার রেজিস্ট্রেশন ==================== -->
+    <!-- ==================== পেজ ৪: সেলার রেজিস্ট্রেশন (ফাইল আপলোড ও প্রিভিউসহ) ==================== -->
     <div id="seller-page" class="page-view">
-        <div class="form-page-container" style="border-top-color: #d97706;">
+        <div class="form-page-container" style="border-top-color: #d4af37;">
             <h2 class="section-title">🏪 সেলার হিসেবে পণ্য বিক্রি করুন (Vendor Request)</h2>
-            <p class="section-subtitle">আপনার পণ্য বিক্রির জন্য নিচের ফর্মটি পূরণ করে আবেদন করুন। অ্যাডমিন রিভিউ করে <strong>Approved</strong> দিলেই আপনার পণ্যটি আমাদের ওয়েবসাইটে লাইভ হয়ে যাবে।</p>
+            <p class="section-subtitle">আপনার পণ্যের ছবি আপলোড করে ও তথ্য দিয়ে আবেদন করুন। অ্যাডমিন রিভিউ করে <strong>Approved</strong> দিলেই আপনার পণ্যটি আমাদের ওয়েবসাইটে লাইভ হয়ে যাবে।</p>
 
             <form onsubmit="submitSellerProduct(event)">
                 <div class="form-grid-2">
@@ -1114,12 +1219,26 @@
                     </div>
                 </div>
 
+                <!-- পণ্যের ছবি ফাইল আপলোড করার অপশন -->
                 <div class="input-group">
-                    <label>পণ্যের ছবির লিংক বা বিবরণ *</label>
-                    <textarea id="sDesc" rows="3" placeholder="কাপড়ের কোয়ালিটি, রঙ এবং ছবির গুগল ড্রাইভ/ফেসবুক লিংক দিন..." required></textarea>
+                    <label>পণ্যের আসল ছবি আপলোড করুন (Upload Product Photo) *</label>
+                    <div class="file-upload-wrapper" onclick="document.getElementById('sProductImageFile').click()">
+                        <p style="font-weight:bold; color:#063729; font-size:15px;">📁 এখানে ক্লিক করে পণ্যের ছবি সিলেক্ট করুন</p>
+                        <p style="font-size:12px; color:#666;">JPG, PNG বা JPEG ফরম্যাটের ছবি আপলোড করুন</p>
+                        <input type="file" id="sProductImageFile" accept="image/*" style="display:none;" onchange="previewSellerImage(event)" required>
+                        <div class="preview-img-box" id="sellerPreviewBox">
+                            <img id="sellerImgPreview" src="" alt="Product Preview">
+                            <p id="sellerFileName" style="font-size:12px; color:#063729; margin-top:5px; font-weight:bold;"></p>
+                        </div>
+                    </div>
                 </div>
 
-                <button type="submit" class="btn" style="width:100%; padding:14px; font-size:16px; background:#d97706;">📩 অ্যাপ্রুভালের জন্য আবেদন জমা দিন</button>
+                <div class="input-group">
+                    <label>পণ্যের বিস্তারিত বিবরণ *</label>
+                    <textarea id="sDesc" rows="3" placeholder="কাপড়ের কোয়ালিটি, রঙ, ওড়না বা প্যান্টের মাপ ইত্যাদি লিখুন..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-gold" style="width:100%; padding:14px; font-size:16px;">📩 ছবিসহ অ্যাপ্রুভালের জন্য আবেদন জমা দিন</button>
             </form>
         </div>
     </div>
@@ -1131,17 +1250,17 @@
             <p class="section-subtitle">আমাদের নিয়মিত ক্রেতাদের অভিজ্ঞতা ও মতামত</p>
             <div class="reviews-grid">
                 <div class="review-card">
-                    <div style="color:#f39c12; font-size:18px;">★★★★★</div>
+                    <div style="color:#d4af37; font-size:18px;">★★★★★</div>
                     <p style="margin:8px 0; font-style:italic;">"আনাস ফ্যাশন হাউজ থেকে জর্জেট থ্রি-পিস এবং কাস্টম টেইলরিং সেকশন থেকে নিজের মাপে একটি জামা বানিয়েছিলাম। ফিটিং একদম পারফেক্ট হয়েছে!"</p>
                     <strong>— নুসরাত জাহান, বগুড়া</strong>
                 </div>
                 <div class="review-card">
-                    <div style="color:#f39c12; font-size:18px;">★★★★★</div>
+                    <div style="color:#d4af37; font-size:18px;">★★★★★</div>
                     <p style="margin:8px 0; font-style:italic;">"Pay Order-এ বিকাশের মাধ্যমে পেমেন্ট করেছিলাম, সাথে সাথে অর্ডার কনফার্মেশন নোটিফিকেশন পেয়েছি এবং ২ দিনের মধ্যে ডেলিভারি হাতে পেয়েছি।"</p>
                     <strong>— তানভীর আহমেদ, ঢাকা</strong>
                 </div>
                 <div class="review-card">
-                    <div style="color:#f39c12; font-size:18px;">★★★★★</div>
+                    <div style="color:#d4af37; font-size:18px;">★★★★★</div>
                     <p style="margin:8px 0; font-style:italic;">"দুবাই চেরি বোরকা সেট এবং বাচ্চার জন্য উইন্টার হুডি নিয়েছিলাম। কাপড়ের মান ও সেলাই অসাধারণ।"</p>
                     <strong>— সাদিয়া ইসলাম, রাজশাহী</strong>
                 </div>
@@ -1165,7 +1284,7 @@
                                 <img id="checkoutImg" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80" alt="Product">
                                 <div>
                                     <h4 id="checkoutProductName" style="font-size:15px;">স্টাইলিশ উইন্টার জ্যাকেট</h4>
-                                    <p id="checkoutUnitPriceText" style="color:#e94560; font-weight:bold;">৳ ২,২০০</p>
+                                    <p id="checkoutUnitPriceText" style="color:#8b1e2b; font-weight:bold;">৳ ২,২০০</p>
                                 </div>
                             </div>
                             <div class="qty-controls">
@@ -1215,14 +1334,13 @@
 
                         <div class="checkout-box-title">৪. অর্ডার ধরন ও পেমেন্ট মেথড</div>
                         <div class="payment-methods-box">
-                            <label class="radio-row" style="color:#1a1a2e;">
+                            <label class="radio-row" style="color:#063729;">
                                 <span><input type="radio" name="orderMode" value="Hand Pay Order (ক্যাশ অন ডেলিভারি)" checked onchange="toggleOrderMode()"> 🤝 Hand Pay Order (পণ্য হাতে পেয়ে টাকা দিন)</span>
                             </label>
-                            <label class="radio-row" style="color:#e94560;">
+                            <label class="radio-row" style="color:#8b1e2b;">
                                 <span><input type="radio" name="orderMode" value="Pay Order (অগ্রিম পেমেন্ট)" onchange="toggleOrderMode()"> 💳 Pay Order (অগ্রিম পেমেন্ট করুন)</span>
                             </label>
 
-                            <!-- Pay Order সিলেক্ট করলে কঠোর ভ্যালিডেশনসহ পেমেন্ট বক্স খুলবে -->
                             <div id="payOrderDetails" style="display:none; margin-top:12px; padding-top:10px; border-top:1px dashed #ccc;">
                                 <label style="font-size:13px; font-weight:bold; display:block; margin-bottom:6px;">পেমেন্ট মাধ্যম বেছে নিন:</label>
                                 <select id="paymentGateway" onchange="updateGatewayInfo()" style="width:100%; padding:8px; border-radius:6px; margin-bottom:8px;">
@@ -1268,7 +1386,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn" style="width:100%; padding:15px; font-size:17px; border-radius:30px;" id="confirmBtnText">অর্ডার কনফার্ম করুন ৳ ২,২৫০</button>
+                        <button type="submit" class="btn btn-gold" style="width:100%; padding:15px; font-size:17px; border-radius:30px;" id="confirmBtnText">অর্ডার কনফার্ম করুন ৳ ২,২৫০</button>
                     </div>
                 </div>
             </form>
@@ -1278,6 +1396,7 @@
     <!-- ==================== পেজ ৭: যোগাযোগ পেজ ==================== -->
     <div id="contact-page" class="page-view">
         <div class="form-page-container" style="text-align:center;">
+            <img src="logo.png" alt="Anas Fabrics Logo" style="width:95px; height:95px; border-radius:50%; border:2px solid #d4af37; margin-bottom:10px;">
             <h2 class="section-title">📞 আমাদের সাথে যোগাযোগ করুন</h2>
             <p class="section-subtitle">যেকোনো অর্ডার, কাস্টম টেইলরিং বা সেলার পার্টনারশিপের জন্য সরাসরি যোগাযোগ করুন</p>
             <div style="background:#f8f9fa; padding:25px; border-radius:10px; line-height:2; font-size:16px;">
@@ -1287,7 +1406,7 @@
                 <p>📧 <strong>ইমেইল:</strong> tahmeedjhossain744@gmail.com | itztahmeed70@gmail.com</p>
             </div>
             <br>
-            <a href="https://wa.me/8801341725738" target="_blank" class="btn" style="background:#25D366; font-size:16px;">💬 সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন</a>
+            <a href="https://wa.me/8801341725738" target="_blank" class="btn" style="background:#25D366; border:none; font-size:16px;">💬 সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন</a>
         </div>
     </div>
 
@@ -1295,12 +1414,12 @@
     <div id="orderNotifModal" class="notification-modal">
         <div class="notification-card">
             <div class="notif-icon">✅</div>
-            <h3 style="color:#1a1a2e; font-size:22px;">অর্ডার সফলভাবে গৃহীত হয়েছে!</h3>
+            <h3 style="color:#063729; font-size:22px;">অর্ডার সফলভাবে গৃহীত হয়েছে!</h3>
             <p style="font-size:14px; color:#555; margin-top:5px;">ধন্যবাদ! আপনার অর্ডারের নোটিফিকেশন ও ইনভয়েস নিচে তৈরি হয়েছে:</p>
 
             <div class="receipt-box" id="notifReceiptDetails"></div>
 
-            <button class="btn" style="width:100%; background:#25D366; padding:12px; font-size:15px; margin-bottom:8px;" id="sendWhatsAppFinalBtn">📲 হোয়াটসঅ্যাপে রিসিট পাঠিয়ে কনফার্ম করুন</button>
+            <button class="btn" style="width:100%; background:#25D366; border:none; padding:12px; font-size:15px; margin-bottom:8px;" id="sendWhatsAppFinalBtn">📲 হোয়াটসঅ্যাপে রিসিট পাঠিয়ে কনফার্ম করুন</button>
             <button class="btn btn-secondary" style="width:100%;" onclick="closeNotifModal()">বন্ধ করুন</button>
         </div>
     </div>
@@ -1319,14 +1438,13 @@
         let checkoutQuantity = 1;
         let cartItems = [];
         let pendingWhatsAppURL = "";
+        let uploadedSellerFileName = "";
 
-        // ১. অটোমেটিক স্লাইডার স্মুথ লুপ তৈরি
         window.onload = function() {
             const track = document.getElementById("autoSliderTrack");
             track.innerHTML += track.innerHTML;
         };
 
-        // ২. আলাদা পেজ ভিউ পরিবর্তন
         function switchPage(pageId, btnElement) {
             document.querySelectorAll(".page-view").forEach(page => page.classList.remove("active-page"));
             document.getElementById(pageId).classList.add("active-page");
@@ -1342,7 +1460,6 @@
             document.getElementById("navbar").classList.toggle("show");
         }
 
-        // ৩. সার্চ ও ক্যাটাগরি ফিল্টার
         function setCategory(category, btnElement) {
             selectedCategory = category;
             document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
@@ -1361,7 +1478,6 @@
             });
         }
 
-        // ৪. শপিং কার্ট ফাংশন
         function addToCart(name, price) {
             cartItems.push({ name, price });
             document.getElementById("cartCount").innerText = cartItems.length;
@@ -1382,7 +1498,6 @@
             goToCheckoutWithProduct(names.join(" + "), totalCart, "Standard / Mixed", "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=400&q=80");
         }
 
-        // ৫. প্রোডাক্ট থেকে সরাসরি অর্ডার ফর্ম পেজে যাওয়া
         function goToCheckoutWithProduct(name, price, sizes, imgUrl) {
             checkoutProduct = name;
             checkoutUnitPrice = price;
@@ -1426,7 +1541,6 @@
             document.getElementById("confirmBtnText").innerText = "অর্ডার কনফার্ম করুন ৳ " + total;
         }
 
-        // ৬. Hand Pay বনাম Pay Order ও পেমেন্ট গেটওয়ে তথ্য
         function toggleOrderMode() {
             const mode = document.querySelector('input[name="orderMode"]:checked').value;
             const payDetails = document.getElementById("payOrderDetails");
@@ -1460,7 +1574,6 @@
             }
         }
 
-        // ৭. অর্ডার সাবমিট ও কঠোর TrxID ভ্যালিডেশনসহ নোটিফিকেশন
         function processFinalOrder(event) {
             event.preventDefault();
             const orderId = "AFH-" + Math.floor(100000 + Math.random() * 900000);
@@ -1478,7 +1591,6 @@
                 const senderPhone = document.getElementById("senderPhoneInput").value.trim();
                 const trx = document.getElementById("trxIdInput").value.trim().toUpperCase();
 
-                // ১১ ডিজিটের সঠিক বাংলাদেশি মোবাইল নম্বর যাচাই
                 const phoneRegex = /^01[3-9]\d{8}$/;
                 if (!phoneRegex.test(senderPhone)) {
                     alert("❌ অনুগ্রহ করে যে নম্বর থেকে টাকা পাঠিয়েছেন সেই সঠিক ১১ ডিজিটের নম্বরটি লিখুন (যেমন: 017XXXXXXXX)।");
@@ -1486,7 +1598,6 @@
                     return;
                 }
 
-                // TrxID যাচাই (কমপক্ষে ৮-১৫ অক্ষরের ইংরেজি বর্ণ ও সংখ্যা হতে হবে)
                 const trxRegex = /^(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]{8,15}$/;
                 if (!gw.includes("Bank") && !trxRegex.test(trx)) {
                     alert("❌ ভুল Transaction ID! বিকাশ/নগদ/রকেটের মেসেজে আসা ৮ থেকে ১০ অক্ষরের সঠিক TrxID (ইংরেজি অক্ষর ও সংখ্যার সমন্বয়) দিন।");
@@ -1530,7 +1641,6 @@
             document.getElementById("orderNotifModal").style.display = "none";
         }
 
-        // ৮. কাস্টম টেইলরিং ফর্ম সাবমিট
         function submitTailorOrder(event) {
             event.preventDefault();
             const dress = document.getElementById("tailorDressType").value;
@@ -1557,7 +1667,21 @@
             window.open(`https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`, "_blank");
         }
 
-        // ৯. সেলার রেজিস্ট্রেশন ফর্ম সাবমিট
+        // সেলার আপলোড করা ছবির লাইভ প্রিভিউ
+        function previewSellerImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                uploadedSellerFileName = file.name;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById("sellerImgPreview").src = e.target.result;
+                    document.getElementById("sellerFileName").innerText = "✅ নির্বাচিত ফাইল: " + file.name;
+                    document.getElementById("sellerPreviewBox").style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
         function submitSellerProduct(event) {
             event.preventDefault();
             const shop = document.getElementById("sShopName").value;
@@ -1573,10 +1697,11 @@
                         `📦 *পণ্যের নাম:* ${pName}\n` +
                         `💰 *মূল্য:* ৳ ${price}\n` +
                         `📂 *ক্যাটাগরি:* ${cat} | *সাইজ:* ${sizes}\n` +
-                        `📝 *বিবরণ ও ছবির লিংক:* ${desc}\n\n` +
-                        `⚠️ অ্যাডমিন অ্যাপ্রুভাল পেলে পণ্যটি ওয়েবসাইটে যুক্ত হবে।`;
+                        `🖼️ *আপলোডকৃত ছবির ফাইল:* ${uploadedSellerFileName}\n` +
+                        `📝 *বিবরণ:* ${desc}\n\n` +
+                        `⚠️ অনুগ্রহ করে এই চ্যাটে আপনার পণ্যের আপলোড করা ছবিটি (Attach করে) পাঠিয়ে দিন। অ্যাডমিন অ্যাপ্রুভাল দিলে ওয়েবসাইটে লাইভ হবে।`;
 
-            alert("আপনার সেলার আবেদনটি অ্যাডমিনের কাছে পাঠানো হচ্ছে! অ্যাপ্রুভাল পেলে আপনার পণ্য ওয়েবসাইটে যুক্ত হবে।");
+            alert("✅ আপনার আবেদন ও ছবির তথ্য প্রস্তুত হয়েছে! পরবর্তী স্ক্রিনে হোয়াটসঅ্যাপ ওপেন হলে আপনার গ্যালারি থেকে পণ্যের ছবিটি অ্যাটাচ করে পাঠিয়ে দিন।");
             window.open(`https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`, "_blank");
         }
     </script>
