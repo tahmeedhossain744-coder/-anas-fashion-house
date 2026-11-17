@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আনাস ফ্যাশন হাউজ | শীতকালীন বিশেষ কালেকশন</title>
+    <style>
+        /* সাধারণ স্টাইল */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* নেভিগেশন বার */
+        header {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e94560;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e94560;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* হিরো ব্যানার সেকশন */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1350&q=80') center/cover;
+            min-height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            max-width: 650px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            background-color: #e94560;
+            color: #fff;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        .btn:hover {
+            background-color: #c7364f;
+        }
+
+        /* প্রোডাক্ট সেকশন ও ফিল্টার বাটন */
+        .products-section {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            background-color: #fff;
+            color: #1a1a2e;
+            border: 2px solid #1a1a2e;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: #e94560;
+            border-color: #e94560;
+            color: #fff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ক্যাটাগরি ব্যাজ */
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .badge.women {
+            background-color: #e94560;
+        }
+
+        .badge.unisex {
+            background-color: #0f3460;
+        }
+
+        .badge.kids {
+            background-color: #2e8b57;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 19px;
+            margin-bottom: 5px;
+        }
+
+        .size-info {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            color: #e94560;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .delivery-charge {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        /* যোগাযোগ ও ফুটার */
+        .contact-section {
+            background-color: #1a1a2e;
+            color: #fff;
+            padding: 50px 5%;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .contact-section p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        footer {
+            background-color: #11111f;
+            color: #888;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        /* পপ-আপ অর্ডার ফর্ম (Modal) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 26px;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #e94560;
+        }
+
+        .modal-content h3 {
+            color: #1a1a2e;
+            margin-bottom: 5px;
+            font-size: 22px;
+        }
+
+        .selected-product-box {
+            background-color: #f1f3f5;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 4px solid #e94560;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 70px;
+        }
+
+        .submit-order-btn {
+            width: 100%;
+            background-color: #25D366;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: 0.3s;
+        }
+
+        .submit-order-btn:hover {
+            background-color: #1ebe5d;
+        }
+
+        /* মোবাইল রেসপন্সিভ স্টাইল */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1a1a2e;
+                padding: 15px 0;
+                border-top: 1px solid #2e2e4d;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav a {
+                margin: 10px 0;
+                font-size: 18px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- নেভিগেশন বার -->
+    <header>
+        <div class="logo">আনাস ফ্যাশন হাউজ</div>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="মেনু">☰</button>
+        <nav id="navbar">
+            <a href="#home" onclick="closeMenu()">হোম</a>
+            <a href="#products" onclick="closeMenu()">শীতের কালেকশন</a>
+            <a href="#contact" onclick="closeMenu()">যোগাযোগ</a>
+        </nav>
+    </header>
+
+    <!-- মেইন ব্যানার -->
+    <section class="hero" id="home">
+        <h1>শীতের উষ্ণতায় স্টাইলিশ কালেকশন</h1>
+        <p>ছেলে ও মেয়েদের এবং ছোটো ও বড়দের প্রিমিয়াম কোয়ালিটির হুডি, সোয়েটার, জ্যাকেট, কাশ্মীরি শাল এবং ছোটো
+            বাচ্চাদের বিভিন্ন প্রকারের জামা-কাপড় এখন <strong>আনাস ফ্যাশন হাউজ</strong>-এ পাওয়া যাচ্ছে সাশ্রয়ী মূল্যে।
+            আমরা সারা বাংলাদেশে দ্রুত হোম ডেলিভারি করে থাকি।</p>
+        <div class="hero-btns">
+            <a href="#products" class="btn">কালেকশন দেখুন</a>
+            <a href="https://wa.me/8801341725738?text=আমি আপনার শীতকালীন কালেকশন সম্পর্কে আরও জানতে চাই" target="_blank"
+                class="btn">যোগাযোগ করুন</a>
+        </div>
+    </section>
+
+    <!-- প্রোডাক্ট কালেকশন -->
+    <section class="products-section" id="products">
+        <h2 class="section-title">শীতকালীন বিশেষ কালেকশন</h2>
+        <p class="section-subtitle">ছেলে, মেয়ে এবং ছোটো বাচ্চাদের ব্যবহারের উপযোগী আরামদায়ক শীতের পোশাক</p>
+
+        <!-- ক্যাটাগরি ফিল্টার বাটন -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterProducts('all', this)">সব কালেকশন</button>
+            <button class="filter-btn" onclick="filterProducts('men', this)">ছেলেদের</button>
+            <button class="filter-btn" onclick="filterProducts('women', this)">মেয়েদের</button>
+            <button class="filter-btn" onclick="filterProducts('unisex', this)">ছেলে ও মেয়ে</button>
+            <button class="filter-btn" onclick="filterProducts('kids', this)">বাচ্চাদের</button>
+        </div>
+
+        <div class="product-grid">
+            <!-- প্রোডাক্ট ১ (ছেলেদের) -->
+            <div class="product-card" data-category="men">
+                <span class="badge">ছেলেদের</span>
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80"
+                    alt="উইন্টার জ্যাকেট">
+                <div class="product-info">
+                    <h3>স্টাইলিশ উইন্টার জ্যাকেট</h3>
+                    <p class="size-info">সাইজ: M, L, XL</p>
+                    <p class="price">৳ ২,২০০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('স্টাইলিশ উইন্টার জ্যাকেট', '৳ ২,২০০ টাকা', 'M, L, XL')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ২ (মেয়েদের) -->
+            <div class="product-card" data-category="women">
+                <span class="badge women">মেয়েদের</span>
+                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=600&q=80"
+                    alt="উইন্টার কার্ডিগান">
+                <div class="product-info">
+                    <h3>প্রিমিয়াম নিটেড কার্ডিগান</h3>
+                    <p class="size-info">সাইজ: S, M, L, XL</p>
+                    <p class="price">৳ ১,৪৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('প্রিমিয়াম নিটেড কার্ডিগান', '৳ ১,৪৫০ টাকা', 'S, M, L, XL')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ৩ (ছেলে ও মেয়ে সবার জন্য) -->
+            <div class="product-card" data-category="unisex">
+                <span class="badge unisex">ছেলে ও মেয়ে</span>
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80"
+                    alt="কটন হুডি">
+                <div class="product-info">
+                    <h3>প্রিমিয়াম ফ্লিস হুডি</h3>
+                    <p class="size-info">সাইজ: S, M, L, XL</p>
+                    <p class="price">৳ ১,১৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('প্রিমিয়াম ফ্লিস হুডি', '৳ ১,১৫০ টাকা', 'S, M, L, XL')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ৪ (মেয়েদের) -->
+            <div class="product-card" data-category="women">
+                <span class="badge women">মেয়েদের</span>
+                <img src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=600&q=80"
+                    alt="কাশ্মীরি শাল">
+                <div class="product-info">
+                    <h3>আধুনিক কাশ্মীরি শাল</h3>
+                    <p class="size-info">সাইজ: Free Size</p>
+                    <p class="price">৳ ১,৩৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('আধুনিক কাশ্মীরি শাল', '৳ ১,৩৫০ টাকা', 'Free Size')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ৫ (ছেলেদের) -->
+            <div class="product-card" data-category="men">
+                <span class="badge">ছেলেদের</span>
+                <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80"
+                    alt="সোয়েটশার্ট">
+                <div class="product-info">
+                    <h3>ক্লাসিক উইন্টার সোয়েটশার্ট</h3>
+                    <p class="size-info">সাইজ: M, L, XL</p>
+                    <p class="price">৳ ৯৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('ক্লাসিক উইন্টার সোয়েটশার্ট', '৳ ৯৫০ টাকা', 'M, L, XL')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ৬ (মেয়েদের) -->
+            <div class="product-card" data-category="women">
+                <span class="badge women">মেয়েদের</span>
+                <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=600&q=80"
+                    alt="লং উইন্টার কোট">
+                <div class="product-info">
+                    <h3>স্টাইলিশ লং উইন্টার কোট</h3>
+                    <p class="size-info">সাইজ: S, M, L</p>
+                    <p class="price">৳ ২,৪৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('স্টাইলিশ লং উইন্টার কোট', '৳ ২,৪৫০ টাকা', 'S, M, L')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ৭ (ছেলে ও মেয়ে সবার জন্য) -->
+            <div class="product-card" data-category="unisex">
+                <span class="badge unisex">ছেলে ও মেয়ে</span>
+                <img src="https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&w=600&q=80"
+                    alt="উলেন মাফলার ও টুপি">
+                <div class="product-info">
+                    <h3>উলেন মাফলার ও বিনি ক্যাপ সেট</h3>
+                    <p class="size-info">সাইজ: Free Size</p>
+                    <p class="price">৳ ৫৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('উলেন মাফলার ও বিনি ক্যাপ সেট', '৳ ৫৫০ টাকা', 'Free Size')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ৮ (ছেলেদের) -->
+            <div class="product-card" data-category="men">
+                <span class="badge">ছেলেদের</span>
+                <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80"
+                    alt="ফুল স্লিভ কটন শার্ট">
+                <div class="product-info">
+                    <h3>ফুল স্লিভ প্রিমিয়াম শার্ট</h3>
+                    <p class="size-info">সাইজ: M, L, XL</p>
+                    <p class="price">৳ ২,২৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('ফুল স্লিভ প্রিমিয়াম শার্ট', '৳ ২,২৫০ টাকা', 'M, L, XL')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ৯ (মেয়েদের) -->
+            <div class="product-card" data-category="women">
+                <span class="badge women">মেয়েদের</span>
+                <img src="https://images.unsplash.com/photo-1600185369330-1f3c5e8b6f9c?auto=format&fit=crop&w=600&q=80"
+                    alt="উইন্টার ড্রেস">
+                <div class="product-info">
+                    <h3>উইন্টার প্রিমিয়াম ড্রেস</h3>
+                    <p class="size-info">সাইজ: S, M, L</p>
+                    <p class="price">৳ ২,৪৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('উইন্টার প্রিমিয়াম ড্রেস', '৳ ২,৪৫০ টাকা', 'S, M, L')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ১০ (বাচ্চাদের ১) -->
+            <div class="product-card" data-category="kids">
+                <span class="badge kids">বাচ্চাদের</span>
+                <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80"
+                    alt="বাচ্চাদের উইন্টার হুডি">
+                <div class="product-info">
+                    <h3>কিডস কার্টুন প্রিন্ট ফ্লিস হুডি</h3>
+                    <p class="size-info">বয়স: ২ - ৮ বছর</p>
+                    <p class="price">৳ ৭৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('কিডস কার্টুন প্রিন্ট ফ্লিস হুডি', '৳ ৭৫০ টাকা', '২ - ৮ বছর')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ১১ (বাচ্চাদের ২) -->
+            <div class="product-card" data-category="kids">
+                <span class="badge kids">বাচ্চাদের</span>
+                <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=600&q=80"
+                    alt="বাচ্চাদের পার্টি ফ্রক">
+                <div class="product-info">
+                    <h3>বেবি গার্ল ভেলভেট উইন্টার ফ্রক</h3>
+                    <p class="size-info">বয়স: ১ - ৬ বছর</p>
+                    <p class="price">৳ ১,০৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('বেবি গার্ল ভেলভেট উইন্টার ফ্রক', '৳ ১,০৫০ টাকা', '১ - ৬ বছর')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ১২ (বাচ্চাদের ৩) -->
+            <div class="product-card" data-category="kids">
+                <span class="badge kids">বাচ্চাদের</span>
+                <img src="https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=600&q=80"
+                    alt="বাচ্চাদের উইন্টার জ্যাকেট">
+                <div class="product-info">
+                    <h3>কিডস ওয়ার্ম প্যাডেড জ্যাকেট</h3>
+                    <p class="size-info">বয়স: ৩ - ১০ বছর</p>
+                    <p class="price">৳ ১,২৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('কিডস ওয়ার্ম প্যাডেড জ্যাকেট', '৳ ১,২৫০ টাকা', '৩ - ১০ বছর')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ১৩ (বাচ্চাদের ৪) -->
+            <div class="product-card" data-category="kids">
+                <span class="badge kids">বাচ্চাদের</span>
+                <img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?auto=format&fit=crop&w=600&q=80"
+                    alt="বাচ্চাদের সোয়েটার সেট">
+                <div class="product-info">
+                    <h3>বেবি নিটেড সোয়েটার ও প্যান্ট সেট</h3>
+                    <p class="size-info">বয়স: ৬ মাস - ৪ বছর</p>
+                    <p class="price">৳ ৮৫০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('বেবি নিটেড সোয়েটার ও প্যান্ট সেট', '৳ ৮৫০ টাকা', '৬ মাস - ৪ বছর')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+
+            <!-- প্রোডাক্ট ১৪ (বাচ্চাদের ৫) -->
+            <div class="product-card" data-category="kids">
+                <span class="badge kids">বাচ্চাদের</span>
+                <img src="https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?auto=format&fit=crop&w=600&q=80"
+                    alt="বাচ্চাদের টুপি ও মাফলার">
+                <div class="product-info">
+                    <h3>কিডস উলেন ক্যাপ ও মাফলার সেট</h3>
+                    <p class="size-info">বয়স: ১ - ৭ বছর</p>
+                    <p class="price">৳ ৪২০ টাকা</p>
+                    <p class="delivery-charge">ডেলিভারি চার্জ: ৳ ৫০ টাকা</p>
+                    <button class="btn"
+                        onclick="openOrderModal('কিডস উলেন ক্যাপ ও মাফলার সেট', '৳ ৪২০ টাকা', '১ - ৭ বছর')">অর্ডার
+                        করুন</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- পপ-আপ অর্ডার ফর্ম (Modal) -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeOrderModal()">&times;</span>
+            <h3>অর্ডার ফর্ম</h3>
+            <div class="selected-product-box">
+                <p><strong>পণ্য:</strong> <span id="modalProductName"></span></p>
+                <p><strong>মূল্য:</strong> <span id="modalProductPrice"></span> (+ ৳ ৫০ ডেলিভারি চার্জ)</p>
+            </div>
+            <form id="orderForm" onsubmit="submitOrderToWhatsApp(event)">
+                <div class="form-group">
+                    <label for="customerName">আপনার নাম *</label>
+                    <input type="text" id="customerName" placeholder="সম্পূর্ণ নাম লিখুন" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">মোবাইল নম্বর *</label>
+                    <input type="tel" id="customerPhone" placeholder="01XXXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label for="productSize">সাইজ / বয়স নির্বাচন করুন *</label>
+                    <select id="productSize" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">ডেলিভারি ঠিকানা *</label>
+                    <textarea id="customerAddress" placeholder="গ্রাম/মহল্লা, থানা ও জেলার নাম লিখুন"
+                        required></textarea>
+                </div>
+                <button type="submit" class="submit-order-btn">হোয়াটসঅ্যাপে অর্ডার কনফার্ম করুন</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- যোগাযোগ সেকশন -->
+    <section class="contact-section" id="contact">
+        <h2>অর্ডার বা তথ্যের জন্য যোগাযোগ করুন</h2>
+        <p>📍 Address: বগুড়া, বাংলাদেশ</p>
+        <p>📞 Mobile / WhatsApp: +8801341725738</p>
+        <p>📧 Email: tahmeedjhossain744@gmail.com</p>
+        <p>📧 Email: itztahmeed70@gmail.com</p>
+    </section>
+
+    <!-- ফুটার -->
+    <footer>
+        <p>&copy; ২০২৬ আনাস ফ্যাশন হাউজ (Anas Fabrics and Ladies Tailors) | সর্বস্বত্ব সংরক্ষিত</p>
+    </footer>
+
+    <!-- JavaScript ফাংশনসমূহ -->
+    <script>
+        // ১. মোবাইল নেভিগেশন মেনু টগল
+        function toggleMenu() {
+            document.getElementById("navbar").classList.toggle("show");
+        }
+
+        function closeMenu() {
+            document.getElementById("navbar").classList.remove("show");
+        }
+
+        // ২. ক্যাটাগরি ফিল্টার ফাংশন
+        function filterProducts(category, btnElement) {
+            const buttons = document.querySelectorAll(".filter-btn");
+            buttons.forEach(btn => btn.classList.remove("active"));
+            btnElement.classList.add("active");
+
+            const cards = document.querySelectorAll(".product-card");
+            cards.forEach(card => {
+                if (category === "all" || card.getAttribute("data-category") === category) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // ৩. পপ-আপ অর্ডার ফর্ম ওপেন ও ক্লোজ
+        let currentProduct = "";
+        let currentPrice = "";
+
+        function openOrderModal(productName, productPrice, availableSizes) {
+            currentProduct = productName;
+            currentPrice = productPrice;
+
+            document.getElementById("modalProductName").innerText = productName;
+            document.getElementById("modalProductPrice").innerText = productPrice;
+
+            // সাইজ অপশনগুলো ডাইনামিকভাবে সেট করা
+            const sizeSelect = document.getElementById("productSize");
+            sizeSelect.innerHTML = "";
+            const sizesArray = availableSizes.split(",").map(s => s.trim());
+            sizesArray.forEach(size => {
+                const option = document.createElement("option");
+                option.value = size;
+                option.text = size;
+                sizeSelect.appendChild(option);
+            });
+
+            document.getElementById("orderModal").style.display = "flex";
+        }
+
+        function closeOrderModal() {
+            document.getElementById("orderModal").style.display = "none";
+        }
+
+        // মোডালের বাইরে ক্লিক করলে বন্ধ হওয়া
+        window.onclick = function (event) {
+            const modal = document.getElementById("orderModal");
+            if (event.target === modal) {
+                closeOrderModal();
+            }
+        }
+
+        // ৪. ফর্ম সাবমিট করে হোয়াটসঅ্যাপে পাঠানো
+        function submitOrderToWhatsApp(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("customerName").value.trim();
+            const phone = document.getElementById("customerPhone").value.trim();
+            const size = document.getElementById("productSize").value;
+            const address = document.getElementById("customerAddress").value.trim();
+
+            const message = `আসসালামু আলাইকুম, আমি *আনাস ফ্যাশন হাউজ* থেকে একটি পণ্য অর্ডার করতে চাই:\n\n` +
+                `🛍️ *পণ্য:* ${currentProduct}\n` +
+                `💰 *মূল্য:* ${currentPrice} + ৳ ৫০ (ডেলিভারি চার্জ)\n` +
+                `📏 *সাইজ/বয়স:* ${size}\n\n` +
+                `👤 *ক্রেতার নাম:* ${name}\n` +
+                `📞 *মোবাইল:* ${phone}\n` +
+                `📍 *ঠিকানা:* ${address}`;
+
+            const whatsappNumber = "8801341725738";
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+            window.open(whatsappURL, "_blank");
+            closeOrderModal();
+            document.getElementById("orderForm").reset();
+        }
+    </script>
+
+</body>
+
+</html>
