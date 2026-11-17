@@ -88,7 +88,7 @@
             cursor: pointer;
         }
 
-        /* পেজ সেকশন সিস্টেম (আলাদা পেজের মতো কাজ করবে) */
+        /* পেজ সেকশন সিস্টেম */
         .page-view {
             display: none;
             animation: pageFade 0.35s ease;
@@ -159,7 +159,7 @@
             border: 1px solid #fff;
         }
 
-        /* অটোমেটিক প্রোডাক্ট স্লাইডার (Auto Slider) */
+        /* অটোমেটিক প্রোডাক্ট স্লাইডার */
         .slider-section {
             padding: 45px 4%;
             background: #fff;
@@ -272,7 +272,6 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
-        /* বাম পাশের কর্নারে সার্চ বার */
         .search-corner-box {
             flex: 1;
             min-width: 260px;
@@ -591,7 +590,7 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
         }
 
-        /* অর্ডার নোটিফিকেশন পপ-আপ (Order Confirmation Notification) */
+        /* অর্ডার নোটিফিকেশন পপ-আপ */
         .notification-modal {
             display: none;
             position: fixed;
@@ -716,7 +715,6 @@
             <p class="section-subtitle">পছন্দের পোশাকটিতে ক্লিক করে সরাসরি অর্ডার করুন</p>
             <div class="slider-container">
                 <div class="slider-track" id="autoSliderTrack">
-                    <!-- স্লাইডার আইটেমগুলো JS দিয়ে অটোমেটিক ডুপ্লিকেট হয়ে স্মুথলি ঘুরবে -->
                     <div class="slide-card">
                         <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80" alt="জ্যাকেট">
                         <div class="slide-card-body">
@@ -991,7 +989,7 @@
         </section>
     </div>
 
-    <!-- ==================== পেজ ৩: কাস্টম টেইলরিং (নিজের মাপে কাপড় বানান) ==================== -->
+    <!-- ==================== পেজ ৩: কাস্টম টেইলরিং ==================== -->
     <div id="tailor-page" class="page-view">
         <div class="form-page-container">
             <h2 class="section-title">✂️ অনলাইন লেডিস টেইলরিং (নিজের মাপে পোশাক বানান)</h2>
@@ -1072,7 +1070,7 @@
         </div>
     </div>
 
-    <!-- ==================== পেজ ৪: সেলার রেজিস্ট্রেশন (অ্যাপ্রুভাল সিস্টেম) ==================== -->
+    <!-- ==================== পেজ ৪: সেলার রেজিস্ট্রেশন ==================== -->
     <div id="seller-page" class="page-view">
         <div class="form-page-container" style="border-top-color: #d97706;">
             <h2 class="section-title">🏪 সেলার হিসেবে পণ্য বিক্রি করুন (Vendor Request)</h2>
@@ -1118,7 +1116,7 @@
 
                 <div class="input-group">
                     <label>পণ্যের ছবির লিংক বা বিবরণ *</label>
-                    <textarea id="sDesc" rows="3" placeholder="কাপড়ের কোয়ালিটি, রঙ এবং ছবির গুগল ড্রাইভ/ফেসবুক লিংক দিন (ছবি সরাসরি হোয়াটসঅ্যাপেও পাঠাতে পারবেন)..." required></textarea>
+                    <textarea id="sDesc" rows="3" placeholder="কাপড়ের কোয়ালিটি, রঙ এবং ছবির গুগল ড্রাইভ/ফেসবুক লিংক দিন..." required></textarea>
                 </div>
 
                 <button type="submit" class="btn" style="width:100%; padding:14px; font-size:16px; background:#d97706;">📩 অ্যাপ্রুভালের জন্য আবেদন জমা দিন</button>
@@ -1224,7 +1222,7 @@
                                 <span><input type="radio" name="orderMode" value="Pay Order (অগ্রিম পেমেন্ট)" onchange="toggleOrderMode()"> 💳 Pay Order (অগ্রিম পেমেন্ট করুন)</span>
                             </label>
 
-                            <!-- Pay Order সিলেক্ট করলে পেমেন্ট গেটওয়ে অপশন খুলবে -->
+                            <!-- Pay Order সিলেক্ট করলে কঠোর ভ্যালিডেশনসহ পেমেন্ট বক্স খুলবে -->
                             <div id="payOrderDetails" style="display:none; margin-top:12px; padding-top:10px; border-top:1px dashed #ccc;">
                                 <label style="font-size:13px; font-weight:bold; display:block; margin-bottom:6px;">পেমেন্ট মাধ্যম বেছে নিন:</label>
                                 <select id="paymentGateway" onchange="updateGatewayInfo()" style="width:100%; padding:8px; border-radius:6px; margin-bottom:8px;">
@@ -1239,10 +1237,19 @@
                                     📱 <strong>bKash Personal:</strong> 01341725738 (Send Money করুন)
                                 </div>
 
-                                <div class="input-group" style="margin-top:10px; margin-bottom:0;">
-                                    <label>Transaction ID (TrxID) বা প্রেরকের নম্বর *</label>
-                                    <input type="text" id="trxIdInput" placeholder="যেমন: 9H7K2L5M অথবা আপনার নম্বর">
+                                <div class="input-group" style="margin-top:10px;">
+                                    <label>যে নম্বর থেকে টাকা পাঠিয়েছেন (১১ ডিজিট) *</label>
+                                    <input type="tel" id="senderPhoneInput" maxlength="11" placeholder="যেমন: 017XXXXXXXX">
                                 </div>
+
+                                <div class="input-group" style="margin-top:8px; margin-bottom:6px;">
+                                    <label>সঠিক Transaction ID (TrxID) লিখুন *</label>
+                                    <input type="text" id="trxIdInput" maxlength="15" style="text-transform: uppercase;" placeholder="যেমন: 9H7K2L5M8P">
+                                </div>
+
+                                <p style="font-size:12px; color:#d90429; background:#ffe5ec; padding:8px; border-radius:6px; font-weight:600;">
+                                    ⚠️ সতর্কবার্তা: টাকা না পাঠিয়ে ভুল বা ভুয়া TrxID দিলে অর্ডারটি স্বয়ংক্রিয়ভাবে বাতিল বলে গণ্য হবে।
+                                </p>
                             </div>
                         </div>
 
@@ -1316,10 +1323,10 @@
         // ১. অটোমেটিক স্লাইডার স্মুথ লুপ তৈরি
         window.onload = function() {
             const track = document.getElementById("autoSliderTrack");
-            track.innerHTML += track.innerHTML; // ইনফিনিট স্মুথ স্লাইডের জন্য কন্টেন্ট ডুপ্লিকেট
+            track.innerHTML += track.innerHTML;
         };
 
-        // ২. আলাদা পেজ ভিউ পরিবর্তন (Navigation)
+        // ২. আলাদা পেজ ভিউ পরিবর্তন
         function switchPage(pageId, btnElement) {
             document.querySelectorAll(".page-view").forEach(page => page.classList.remove("active-page"));
             document.getElementById(pageId).classList.add("active-page");
@@ -1424,12 +1431,16 @@
             const mode = document.querySelector('input[name="orderMode"]:checked').value;
             const payDetails = document.getElementById("payOrderDetails");
             const trxInput = document.getElementById("trxIdInput");
+            const senderInput = document.getElementById("senderPhoneInput");
+
             if (mode.includes("Pay Order")) {
                 payDetails.style.display = "block";
                 trxInput.required = true;
+                senderInput.required = true;
             } else {
                 payDetails.style.display = "none";
                 trxInput.required = false;
+                senderInput.required = false;
             }
         }
 
@@ -1449,7 +1460,7 @@
             }
         }
 
-        // ৭. অর্ডার সাবমিট ও ইনস্ট্যান্ট নোটিফিকেশন দেখানো
+        // ৭. অর্ডার সাবমিট ও কঠোর TrxID ভ্যালিডেশনসহ নোটিফিকেশন
         function processFinalOrder(event) {
             event.preventDefault();
             const orderId = "AFH-" + Math.floor(100000 + Math.random() * 900000);
@@ -1461,15 +1472,33 @@
             const orderMode = document.querySelector('input[name="orderMode"]:checked').value;
 
             let paymentInfo = "Hand Pay (পণ্য হাতে পেয়ে ক্যাশ পেমেন্ট)";
+
             if (orderMode.includes("Pay Order")) {
                 const gw = document.getElementById("paymentGateway").value;
-                const trx = document.getElementById("trxIdInput").value.trim();
-                paymentInfo = `Pay Order (${gw}) | TrxID: ${trx}`;
+                const senderPhone = document.getElementById("senderPhoneInput").value.trim();
+                const trx = document.getElementById("trxIdInput").value.trim().toUpperCase();
+
+                // ১১ ডিজিটের সঠিক বাংলাদেশি মোবাইল নম্বর যাচাই
+                const phoneRegex = /^01[3-9]\d{8}$/;
+                if (!phoneRegex.test(senderPhone)) {
+                    alert("❌ অনুগ্রহ করে যে নম্বর থেকে টাকা পাঠিয়েছেন সেই সঠিক ১১ ডিজিটের নম্বরটি লিখুন (যেমন: 017XXXXXXXX)।");
+                    document.getElementById("senderPhoneInput").focus();
+                    return;
+                }
+
+                // TrxID যাচাই (কমপক্ষে ৮-১৫ অক্ষরের ইংরেজি বর্ণ ও সংখ্যা হতে হবে)
+                const trxRegex = /^(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]{8,15}$/;
+                if (!gw.includes("Bank") && !trxRegex.test(trx)) {
+                    alert("❌ ভুল Transaction ID! বিকাশ/নগদ/রকেটের মেসেজে আসা ৮ থেকে ১০ অক্ষরের সঠিক TrxID (ইংরেজি অক্ষর ও সংখ্যার সমন্বয়) দিন।");
+                    document.getElementById("trxIdInput").focus();
+                    return;
+                }
+
+                paymentInfo = `Pay Order (${gw}) | প্রেরক: ${senderPhone} | TrxID: ${trx}`;
             }
 
             const total = (checkoutUnitPrice * checkoutQuantity) + shippingCost;
 
-            // কাস্টমারের জন্য নোটিফিকেশন কার্ড আপডেট
             document.getElementById("notifReceiptDetails").innerHTML = `
                 <p><strong>অর্ডার আইডি:</strong> #${orderId}</p>
                 <p><strong>পণ্য:</strong> ${checkoutProduct} (${checkoutQuantity} পিস, সাইজ: ${size})</p>
@@ -1477,6 +1506,7 @@
                 <p><strong>পেমেন্ট ধরন:</strong> ${paymentInfo}</p>
                 <p><strong>ক্রেতা:</strong> ${name} (${phone})</p>
                 <p><strong>ঠিকানা:</strong> ${address}</p>
+                <p style="color:#d90429; font-size:12px; margin-top:6px;">* পেমেন্ট ভেরিফিকেশনের পর ডেলিভারি কনফার্ম করা হবে।</p>
             `;
 
             const msg = `✅ *নতুন অর্ডার নোটিফিকেশন (#${orderId})*\n\n` +
