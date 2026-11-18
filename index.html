@@ -2458,194 +2458,275 @@
     </section>
 
     <!-- ৩. অ্যাকাউন্ট খোলার মতো নিজস্ব পাসওয়ার্ড সেট ও লগইন পপ-আপ -->
+    <!-- ৩. মোবাইল নম্বর, পাসওয়ার্ড ও OTP রিসেটসহ অ্যাডমিন পপ-আপ -->
     <div id="secretAuthModal" class="secret-modal-overlay">
         <div class="secret-modal-card">
             <h3 id="authModalTitle" style="color:#063729; margin-bottom:6px;">🔐 অ্যাডমিন অ্যাকাউন্ট সেটআপ</h3>
-            <p id="authModalDesc" style="font-size:13px; color:#555; margin-bottom:15px;">প্রথমবার প্রবেশ করছেন—আপনার
-                নিজের গোপন পাসওয়ার্ড তৈরি করুন:</p>
+            <p id="authModalDesc" style="font-size:13px; color:#555; margin-bottom:15px;">আপনার মোবাইল নম্বর ও গোপন
+                পাসওয়ার্ড দিয়ে অ্যাকাউন্ট তৈরি করুন:</p>
 
-            <form onsubmit="handleAdminAuthSubmit(event)">
-                <input type="password" id="adminPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ড লিখুন *"
+            <form id="mainAuthForm" onsubmit="handleAdminAuthSubmit(event)">
+                <input type="tel" id="adminPhoneInput" class="custom-input" maxlength="11"
+                    placeholder="মোবাইল নম্বর (যেমন: 01341725738) *" required>
+                <input type="password" id="adminPassInput" class="custom-input" placeholder="পাসওয়ার্ড লিখুন *"
                     required>
                 <input type="password" id="adminConfirmPassInput" class="custom-input"
-                    placeholder="পাসওয়ার্ডটি আবার লিখুন (Confirm) *" style="display:block;">
+                    placeholder="পাসওয়ার্ডটি আবার লিখুন (Confirm) *">
 
-                <div style="display:flex; gap:8px;">
+                <div style="display:flex; gap:8px; margin-bottom:10px;">
                     <button type="submit" class="custom-btn" style="flex:1;" id="authSubmitBtn">সেভ করুন</button>
                     <button type="button" onclick="closeAuthModal()"
                         style="background:#6c757d; color:#fff; border:none; padding:10px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">বাতিল</button>
                 </div>
+
+                <div id="forgetLinkBox" style="display:none; text-align:right;">
+                    <a href="javascript:void(0)" onclick="showForgetPasswordBox()"
+                        style="color:#8b1e2b; font-size:13px; font-weight:bold; text-decoration:underline;">পাসওয়ার্ড
+                        ভুলে গেছেন? (Forget Password)</a>
+                </div>
+            </form>
+
+            <form id="forgetOtpForm" style="display:none;" onsubmit="verifyOtpAndResetPass(event)">
+                <input type="tel" id="resetPhoneInput" class="custom-input" maxlength="11"
+                    placeholder="রেজিস্টার করা মোবাইল নম্বর দিন *" required>
+                <button type="button" onclick="sendOtpToPhone()"
+                    style="width:100%; background:#25D366; color:#fff; border:none; padding:9px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:12px;">📲
+                    এই নম্বরে OTP কোড পাঠান</button>
+
+                <div id="otpVerifyFields" style="display:none;">
+                    <input type="text" id="enteredOtpInput" class="custom-input" maxlength="6"
+                        placeholder="৬ ডিজিটের OTP কোডটি লিখুন *" required>
+                    <input type="password" id="newResetPassInput" class="custom-input"
+                        placeholder="নতুন পাসওয়ার্ড লিখুন *" required>
+                    <input type="password" id="confirmNewResetPassInput" class="custom-input"
+                        placeholder="নতুন পাসওয়ার্ডটি আবার লিখুন *" required>
+                    <button type="submit" class="custom-btn" style="width:100%; margin-bottom:8px;">✅ নতুন পাসওয়ার্ড সেভ
+                        করুন</button>
+                </div>
+
+                <button type="button" onclick="openSecretAuthModal()"
+                    style="background:#6c757d; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;">←
+                    লগইনে ফিরে যান</button>
             </form>
         </div>
     </div>
+
     <script>
-let isAdminUnlocked = false;
-let secretClickCount = 0;
-let secretClickTimer;
+        let isAdminUnlocked = false;
+        let generatedResetOTP = null;
 
-// পাসওয়ার্ডকে এনক্রিপ্টেড হ্যাশে রূপান্তর করার ফাংশন
-async function hashPassword(text) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(text);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, "0")).join("");
-}
-
-// "🎬 প্রোডাক্ট ভিডিও রিভিউ ও শোকেস" লেখাটিতে পরপর ৩ বার ক্লিক করলে পপ-আপ আসবে
-function handleSecretClick() {
-    secretClickCount++;
-    clearTimeout(secretClickTimer);
-    secretClickTimer = setTimeout(() => { secretClickCount = 0; }, 1000);
-
-    if (secretClickCount === 3) {
-        secretClickCount = 0;
-        openSecretAuthModal();
-    }
-}
-
-// কিবোর্ডে Ctrl + Shift + A চাপলেও পপ-আপ আসবে
-document.addEventListener("keydown", function(e) {
-    if (e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) {
-        e.preventDefault();
-        openSecretAuthModal();
-    }
-});
-
-// পপ-আপ ওপেন করা (প্রথমবার হলে নতুন পাসওয়ার্ড তৈরি, পরের বার হলে লগইন)
-function openSecretAuthModal() {
-    if (isAdminUnlocked) {
-        alert("🔓 অ্যাডমিন মোড ইতিমধ্যেই চালু আছে!");
-        return;
-    }
-    const savedHash = localStorage.getItem("anasAdminSecretHash");
-    const modal = document.getElementById("secretAuthModal");
-    const title = document.getElementById("authModalTitle");
-    const desc = document.getElementById("authModalDesc");
-    const confirmInput = document.getElementById("adminConfirmPassInput");
-    const submitBtn = document.getElementById("authSubmitBtn");
-
-    document.getElementById("adminPassInput").value = "";
-    confirmInput.value = "";
-
-    if (!savedHash) {
-        // প্রথমবার: অ্যাকাউন্ট খোলার মতো পাসওয়ার্ড সেটআপ
-        title.innerText = "🔐 নতুন অ্যাডমিন পাসওয়ার্ড তৈরি করুন";
-        desc.innerText = "প্রথমবার ব্যবহারের জন্য আপনার নিজের গোপন পাসওয়ার্ড সেট করুন:";
-        confirmInput.style.display = "block";
-        confirmInput.required = true;
-        submitBtn.innerText = "পাসওয়ার্ড সেভ করুন";
-    } else {
-        // পরের বার: শুধু লগইন
-        title.innerText = "🔑 অ্যাডমিন লগইন";
-        desc.innerText = "আপনার সেট করা গোপন পাসওয়ার্ডটি দিন:";
-        confirmInput.style.display = "none";
-        confirmInput.required = false;
-        submitBtn.innerText = "আনলক করুন";
-    }
-    modal.style.display = "flex";
-}
-
-function closeAuthModal() {
-    document.getElementById("secretAuthModal").style.display = "none";
-}
-
-async function handleAdminAuthSubmit(event) {
-    event.preventDefault();
-    const savedHash = localStorage.getItem("anasAdminSecretHash");
-    const pass = document.getElementById("adminPassInput").value;
-    const confirmPass = document.getElementById("adminConfirmPassInput").value;
-
-    if (!savedHash) {
-        // প্রথমবার পাসওয়ার্ড সেট করা হচ্ছে
-        if (pass.length < 4) {
-            alert("⚠️ কমপক্ষে ৪ অক্ষরের পাসওয়ার্ড দিন!");
-            return;
+        async function hashPassword(text) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(text);
+            const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+            return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, "0")).join("");
         }
-        if (pass !== confirmPass) {
-            alert("❌ দুটি পাসওয়ার্ড মিলেনি! আবার সঠিকভাবে লিখুন।");
-            return;
+
+        function openSecretAuthModal() {
+            if (isAdminUnlocked) {
+                alert("🔓 অ্যাডমিন মোড ইতিমধ্যেই চালু আছে!");
+                return;
+            }
+            const savedPhone = localStorage.getItem("anasAdminPhone");
+            const savedHash = localStorage.getItem("anasAdminSecretHash");
+
+            const modal = document.getElementById("secretAuthModal");
+            const mainForm = document.getElementById("mainAuthForm");
+            const forgetForm = document.getElementById("forgetOtpForm");
+            const title = document.getElementById("authModalTitle");
+            const desc = document.getElementById("authModalDesc");
+            const confirmInput = document.getElementById("adminConfirmPassInput");
+            const submitBtn = document.getElementById("authSubmitBtn");
+            const forgetLinkBox = document.getElementById("forgetLinkBox");
+
+            mainForm.style.display = "block";
+            forgetForm.style.display = "none";
+            mainForm.reset();
+
+            if (!savedHash || !savedPhone) {
+                title.innerText = "🔐 নতুন অ্যাডমিন অ্যাকাউন্ট খুলুন";
+                desc.innerText = "প্রথমবার ব্যবহারের জন্য আপনার মোবাইল নম্বর ও পাসওয়ার্ড সেট করুন:";
+                confirmInput.style.display = "block";
+                confirmInput.required = true;
+                forgetLinkBox.style.display = "none";
+                submitBtn.innerText = "অ্যাকাউন্ট তৈরি করুন";
+            } else {
+                title.innerText = "🔑 অ্যাডমিন লগইন";
+                desc.innerText = "আপনার মোবাইল নম্বর ও পাসওয়ার্ড দিয়ে লগইন করুন:";
+                confirmInput.style.display = "none";
+                confirmInput.required = false;
+                forgetLinkBox.style.display = "block";
+                submitBtn.innerText = "লগইন করুন";
+            }
+            modal.style.display = "flex";
         }
-        const newHash = await hashPassword(pass);
-        localStorage.setItem("anasAdminSecretHash", newHash);
-        closeAuthModal();
-        activateAdminUI();
-        alert("✅ আপনার গোপন পাসওয়ার্ড সেট হয়েছে এবং অ্যাডমিন মোড চালু হয়েছে!");
-    } else {
-        // পরের বার পাসওয়ার্ড চেক করা হচ্ছে
-        const enteredHash = await hashPassword(pass);
-        if (enteredHash === savedHash) {
+
+        function closeAuthModal() {
+            document.getElementById("secretAuthModal").style.display = "none";
+        }
+
+        async function handleAdminAuthSubmit(event) {
+            event.preventDefault();
+            const savedPhone = localStorage.getItem("anasAdminPhone");
+            const savedHash = localStorage.getItem("anasAdminSecretHash");
+
+            const phone = document.getElementById("adminPhoneInput").value.trim();
+            const pass = document.getElementById("adminPassInput").value;
+            const confirmPass = document.getElementById("adminConfirmPassInput").value;
+
+            const phoneRegex = /^01[3-9]\d{8}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("❌ সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন (যেমন: 013XXXXXXXX)।");
+                return;
+            }
+
+            if (!savedHash || !savedPhone) {
+                if (pass.length < 4) {
+                    alert("⚠️ কমপক্ষে ৪ অক্ষরের পাসওয়ার্ড দিন!");
+                    return;
+                }
+                if (pass !== confirmPass) {
+                    alert("❌ দুটি পাসওয়ার্ড মিলেনি! আবার সঠিকভাবে লিখুন।");
+                    return;
+                }
+                const newHash = await hashPassword(pass);
+                localStorage.setItem("anasAdminPhone", phone);
+                localStorage.setItem("anasAdminSecretHash", newHash);
+                closeAuthModal();
+                activateAdminUI();
+                alert(`✅ অ্যাকাউন্ট তৈরি সফল হয়েছে!\nমোবাইল: ${phone}`);
+            } else {
+                const enteredHash = await hashPassword(pass);
+                if (phone === savedPhone && enteredHash === savedHash) {
+                    closeAuthModal();
+                    activateAdminUI();
+                    alert("✅ লগইন সফল হয়েছে! এখন ভিডিও যোগ ও ডিলিট করতে পারবেন।");
+                } else {
+                    alert("❌ মোবাইল নম্বর অথবা পাসওয়ার্ড ভুল হয়েছে!");
+                }
+            }
+        }
+
+        function showForgetPasswordBox() {
+            document.getElementById("mainAuthForm").style.display = "none";
+            document.getElementById("forgetOtpForm").style.display = "block";
+            document.getElementById("otpVerifyFields").style.display = "none";
+            document.getElementById("authModalTitle").innerText = "🔄 পাসওয়ার্ড রিসেট (OTP)";
+            document.getElementById("authModalDesc").innerText = "আপনার রেজিস্টার করা মোবাইল নম্বর দিন, ওই নম্বরে OTP পাঠানো হবে:";
+        }
+
+        function sendOtpToPhone() {
+            const savedPhone = localStorage.getItem("anasAdminPhone");
+            const enteredPhone = document.getElementById("resetPhoneInput").value.trim();
+
+            if (enteredPhone !== savedPhone) {
+                alert("❌ এই মোবাইল নম্বরটি রেজিস্টার করা নেই! সঠিক অ্যাডমিন নম্বর দিন।");
+                return;
+            }
+
+            generatedResetOTP = Math.floor(100000 + Math.random() * 900000).toString();
+            document.getElementById("otpVerifyFields").style.display = "block";
+
+            const waText = `🔐 *Anas Fashion House Admin OTP*\nআপনার পাসওয়ার্ড রিসেট কোড হলো: *${generatedResetOTP}*\nকোডটি কারো সাথে শেয়ার করবেন না।`;
+            const waUrl = `https://wa.me/88${enteredPhone}?text=${encodeURIComponent(waText)}`;
+
+            alert(`📲 আপনার ${enteredPhone} নম্বরে ৬ ডিজিটের OTP পাঠানো হয়েছে!\n(OTP কোড: ${generatedResetOTP})`);
+            window.open(waUrl, "_blank");
+        }
+
+        async function verifyOtpAndResetPass(event) {
+            event.preventDefault();
+            const userOtp = document.getElementById("enteredOtpInput").value.trim();
+            const newPass = document.getElementById("newResetPassInput").value;
+            const confirmNewPass = document.getElementById("confirmNewResetPassInput").value;
+
+            if (!generatedResetOTP || userOtp !== generatedResetOTP) {
+                alert("❌ ভুল OTP কোড! সঠিক ৬ ডিজিটের কোডটি দিন।");
+                return;
+            }
+            if (newPass.length < 4) {
+                alert("⚠️ কমপক্ষে ৪ অক্ষরের নতুন পাসওয়ার্ড দিন!");
+                return;
+            }
+            if (newPass !== confirmNewPass) {
+                alert("❌ নতুন পাসওয়ার্ড দুটি মিলেনি!");
+                return;
+            }
+
+            const updatedHash = await hashPassword(newPass);
+            localStorage.setItem("anasAdminSecretHash", updatedHash);
+            generatedResetOTP = null;
+
             closeAuthModal();
             activateAdminUI();
-            alert("✅ লগইন সফল হয়েছে! এখন ভিডিও যোগ ও ডিলিট করতে পারবেন।");
-        } else {
-            alert("❌ ভুল পাসওয়ার্ড!");
+            alert("✅ পাসওয়ার্ড সফলভাবে পরিবর্তন হয়েছে এবং আপনি লগইন হয়েছেন!");
         }
-    }
-}
 
-function activateAdminUI() {
-    isAdminUnlocked = true;
-    document.getElementById("adminControlsBar").style.display = "flex";
-    document.querySelectorAll(".admin-only-del").forEach(btn => btn.style.display = "inline-block");
-}
+        function activateAdminUI() {
+            isAdminUnlocked = true;
+            document.getElementById("adminLoginBtn").style.display = "none";
+            document.getElementById("adminControlsBar").style.display = "flex";
+            document.querySelectorAll(".admin-only-del").forEach(btn => btn.style.display = "inline-block");
+        }
 
-function lockAdminMode() {
-    isAdminUnlocked = false;
-    document.getElementById("adminControlsBar").style.display = "none";
-    document.getElementById("adminVideoBox").style.display = "none";
-    document.querySelectorAll(".admin-only-del").forEach(btn => btn.style.display = "none");
-    alert("🔒 অ্যাডমিন মোড লক করা হয়েছে।");
-}
+        function lockAdminMode() {
+            isAdminUnlocked = false;
+            document.getElementById("adminLoginBtn").style.display = "inline-block";
+            document.getElementById("adminControlsBar").style.display = "none";
+            document.getElementById("adminVideoBox").style.display = "none";
+            document.querySelectorAll(".admin-only-del").forEach(btn => btn.style.display = "none");
+            alert("🔒 অ্যাডমিন মোড লক করা হয়েছে।");
+        }
 
-function toggleVideoForm() {
-    let box = document.getElementById("adminVideoBox");
-    box.style.display = (box.style.display === "block") ? "none" : "block";
-}
+        function toggleVideoForm() {
+            let box = document.getElementById("adminVideoBox");
+            box.style.display = (box.style.display === "block") ? "none" : "block";
+        }
 
-function switchVideoSource() {
-    let type = document.getElementById("vidType").value;
-    document.getElementById("mp4InputDiv").style.display = (type === "mp4") ? "block" : "none";
-    document.getElementById("ytInputDiv").style.display = (type === "yt") ? "block" : "none";
-}
+        function switchVideoSource() {
+            let type = document.getElementById("vidType").value;
+            document.getElementById("mp4InputDiv").style.display = (type === "mp4") ? "block" : "none";
+            document.getElementById("ytInputDiv").style.display = (type === "yt") ? "block" : "none";
+        }
 
-function uploadProductVideo(event) {
-    event.preventDefault();
-    if (!isAdminUnlocked) return;
+        function uploadProductVideo(event) {
+            event.preventDefault();
+            if (!isAdminUnlocked) return;
 
-    let title = document.getElementById("vidTitle").value;
-    let price = document.getElementById("vidPrice").value;
-    let type = document.getElementById("vidType").value;
-    let mediaHTML = "";
+            let title = document.getElementById("vidTitle").value;
+            let price = document.getElementById("vidPrice").value;
+            let type = document.getElementById("vidType").value;
+            let mediaHTML = "";
 
-    if (type === "mp4") {
-        let file = document.getElementById("vidFile").files[0];
-        if (!file) { alert("অনুগ্রহ করে একটি ভিডিও ফাইল সিলেক্ট করুন!"); return; }
-        let videoURL = URL.createObjectURL(file);
-        mediaHTML = `<video controls><source src="${videoURL}" type="video/mp4"></video>`;
-    } else {
-        let link = document.getElementById("vidYtLink").value;
-        let match = link.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^#&?]{11})/);
-        if (!match) { alert("❌ সঠিক YouTube লিংক দিন!"); return; }
-        mediaHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}" allowfullscreen></iframe>`;
-        
-        let savedVids = JSON.parse(localStorage.getItem("anasVideos") || "[]");
-        savedVids.unshift({ title, price, ytId: match[1] });
-        localStorage.setItem("anasVideos", JSON.stringify(savedVids));
-    }
+            if (type === "mp4") {
+                let file = document.getElementById("vidFile").files[0];
+                if (!file) { alert("অনুগ্রহ করে একটি ভিডিও ফাইল সিলেক্ট করুন!"); return; }
+                let videoURL = URL.createObjectURL(file);
+                mediaHTML = `<video controls><source src="${videoURL}" type="video/mp4"></video>`;
+            } else {
+                let link = document.getElementById("vidYtLink").value;
+                let match = link.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^#&?]{11})/);
+                if (!match) { alert("❌ সঠিক YouTube লিংক দিন!"); return; }
+                mediaHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}" allowfullscreen></iframe>`;
 
-    renderVideoItem(title, price, mediaHTML);
-    event.target.reset();
-    document.getElementById("adminVideoBox").style.display = "none";
-    alert("✅ ভিডিও সফলভাবে পাবলিশ হয়েছে!");
-}
+                let savedVids = JSON.parse(localStorage.getItem("anasVideos") || "[]");
+                savedVids.unshift({ title, price, ytId: match[1] });
+                localStorage.setItem("anasVideos", JSON.stringify(savedVids));
+            }
 
-function renderVideoItem(title, price, mediaHTML, ytId = null) {
-    let grid = document.getElementById("videoShowcaseGrid");
-    let card = document.createElement("div");
-    card.className = "video-card";
-    let delDisplay = isAdminUnlocked ? "inline-block" : "none";
+            renderVideoItem(title, price, mediaHTML);
+            event.target.reset();
+            document.getElementById("adminVideoBox").style.display = "none";
+            alert("✅ ভিডিও সফলভাবে পাবলিশ হয়েছে!");
+        }
 
-    card.innerHTML = `
+        function renderVideoItem(title, price, mediaHTML, ytId = null) {
+            let grid = document.getElementById("videoShowcaseGrid");
+            let card = document.createElement("div");
+            card.className = "video-card";
+            let delDisplay = isAdminUnlocked ? "inline-block" : "none";
+
+            card.innerHTML = `
         ${mediaHTML}
         <div class="video-card-body">
             <h4 style="color:#063729;">${title}</h4>
@@ -2653,90 +2734,88 @@ function renderVideoItem(title, price, mediaHTML, ytId = null) {
             <button type="button" class="admin-only-del" onclick="deleteProductVideo(this, '${ytId || ""}')" style="display:${delDisplay}; background:#8b1e2b; color:#fff; border:none; padding:6px 12px; border-radius:5px; cursor:pointer; font-size:13px; font-weight:bold;">🗑️ ডিলিট করুন</button>
         </div>
     `;
-    grid.prepend(card);
-}
-
-function deleteProductVideo(btnElement, ytId) {
-    if (!isAdminUnlocked) return;
-    if (confirm("আপনি কি নিশ্চিত যে এই ভিডিওটি ডিলিট করতে চান?")) {
-        btnElement.closest(".video-card").remove();
-        if (ytId) {
-            let savedVids = JSON.parse(localStorage.getItem("anasVideos") || "[]");
-            savedVids = savedVids.filter(v => v.ytId !== ytId);
-            localStorage.setItem("anasVideos", JSON.stringify(savedVids));
+            grid.prepend(card);
         }
-        alert("🗑️ ভিডিওটি ডিলিট করা হয়েছে!");
-    }
-}
 
-// ২. স্টার রেটিং ও রিভিউ সিস্টেম
-let selectedStars = 5;
+        function deleteProductVideo(btnElement, ytId) {
+            if (!isAdminUnlocked) return;
+            if (confirm("আপনি কি নিশ্চিত যে এই ভিডিওটি ডিলিট করতে চান?")) {
+                btnElement.closest(".video-card").remove();
+                if (ytId) {
+                    let savedVids = JSON.parse(localStorage.getItem("anasVideos") || "[]");
+                    savedVids = savedVids.filter(v => v.ytId !== ytId);
+                    localStorage.setItem("anasVideos", JSON.stringify(savedVids));
+                }
+                alert("🗑️ ভিডিওটি ডিলিট করা হয়েছে!");
+            }
+        }
 
-function setRating(count) {
-    selectedStars = count;
-    document.querySelectorAll("#starRatingContainer .star-item").forEach((star, index) => {
-        star.classList.toggle("active", index < count);
-    });
-}
+        let selectedStars = 5;
 
-function postCustomerReview(event) {
-    event.preventDefault();
-    let name = document.getElementById("revName").value;
-    let product = document.getElementById("revProduct").value;
-    let message = document.getElementById("revMessage").value;
-    let id = Date.now();
+        function setRating(count) {
+            selectedStars = count;
+            document.querySelectorAll("#starRatingContainer .star-item").forEach((star, index) => {
+                star.classList.toggle("active", index < count);
+            });
+        }
 
-    let reviewData = { id, name, product, message, stars: selectedStars };
-    displayReviewCard(reviewData);
+        function postCustomerReview(event) {
+            event.preventDefault();
+            let name = document.getElementById("revName").value;
+            let product = document.getElementById("revProduct").value;
+            let message = document.getElementById("revMessage").value;
+            let id = Date.now();
 
-    let allReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
-    allReviews.unshift(reviewData);
-    localStorage.setItem("anasReviews", JSON.stringify(allReviews));
+            let reviewData = { id, name, product, message, stars: selectedStars };
+            displayReviewCard(reviewData);
 
-    event.target.reset();
-    setRating(5);
-    alert("⭐ ধন্যবাদ! আপনার রিভিউ পোস্ট হয়েছে।");
-}
+            let allReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
+            allReviews.unshift(reviewData);
+            localStorage.setItem("anasReviews", JSON.stringify(allReviews));
 
-function displayReviewCard(data) {
-    let list = document.getElementById("customerReviewsList");
-    let card = document.createElement("div");
-    card.className = "single-review-card";
-    let starsHTML = "★".repeat(data.stars) + "☆".repeat(5 - data.stars);
-    let delDisplay = isAdminUnlocked ? "inline-block" : "none";
+            event.target.reset();
+            setRating(5);
+            alert("⭐ ধন্যবাদ! আপনার রিভিউ পোস্ট হয়েছে।");
+        }
 
-    card.innerHTML = `
+        function displayReviewCard(data) {
+            let list = document.getElementById("customerReviewsList");
+            let card = document.createElement("div");
+            card.className = "single-review-card";
+            let starsHTML = "★".repeat(data.stars) + "☆".repeat(5 - data.stars);
+            let delDisplay = isAdminUnlocked ? "inline-block" : "none";
+
+            card.innerHTML = `
         <div style="color:#f59e0b; font-size:20px;">${starsHTML}</div>
         <p style="margin:8px 0; font-style:italic; color:#333;">"${data.message}"</p>
         <strong style="color:#063729;">— ${data.name}</strong><br>
         <span style="font-size:12px; color:#8b1e2b; font-weight:bold;">🛍️ পণ্য: ${data.product}</span><br>
         <button type="button" class="admin-only-del" onclick="deleteReview(this, ${data.id})" style="display:${delDisplay}; margin-top:8px; background:#8b1e2b; color:#fff; border:none; padding:4px 10px; border-radius:4px; cursor:pointer; font-size:12px;">🗑️ রিভিউ মুছুন</button>
     `;
-    list.prepend(card);
-}
+            list.prepend(card);
+        }
 
-function deleteReview(btnElement, reviewId) {
-    if (!isAdminUnlocked) return;
-    if (confirm("এই রিভিউটি ডিলিট করতে চান?")) {
-        btnElement.closest(".single-review-card").remove();
-        let allReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
-        allReviews = allReviews.filter(r => r.id !== reviewId);
-        localStorage.setItem("anasReviews", JSON.stringify(allReviews));
-    }
-}
+        function deleteReview(btnElement, reviewId) {
+            if (!isAdminUnlocked) return;
+            if (confirm("এই রিভিউটি ডিলিট করতে চান?")) {
+                btnElement.closest(".single-review-card").remove();
+                let allReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
+                allReviews = allReviews.filter(r => r.id !== reviewId);
+                localStorage.setItem("anasReviews", JSON.stringify(allReviews));
+            }
+        }
 
-window.addEventListener("DOMContentLoaded", function() {
-    let savedReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
-    savedReviews.forEach(item => displayReviewCard(item));
+        window.addEventListener("DOMContentLoaded", function () {
+            let savedReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
+            savedReviews.forEach(item => displayReviewCard(item));
 
-    let savedVids = JSON.parse(localStorage.getItem("anasVideos") || "[]");
-    savedVids.forEach(v => {
-        let mediaHTML = `<iframe src="https://www.youtube.com/embed/${v.ytId}" allowfullscreen></iframe>`;
-        renderVideoItem(v.title, v.price, mediaHTML, v.ytId);
-    });
-});
-</script>
+            let savedVids = JSON.parse(localStorage.getItem("anasVideos") || "[]");
+            savedVids.forEach(v => {
+                let mediaHTML = `<iframe src="https://www.youtube.com/embed/${v.ytId}" allowfullscreen></iframe>`;
+                renderVideoItem(v.title, v.price, mediaHTML, v.ytId);
+            });
+        });
+    </script>
 </body>
 
 </html>
-
