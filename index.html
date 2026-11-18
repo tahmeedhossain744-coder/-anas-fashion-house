@@ -1106,6 +1106,32 @@
             background-color: #d4af37;
             color: #063729;
         }
+
+        /* গোপন পাসওয়ার্ড সেটআপ ও লগইন পপ-আপ CSS */
+        .secret-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .secret-modal-card {
+            background: #fff;
+            max-width: 380px;
+            width: 100%;
+            padding: 25px;
+            border-radius: 12px;
+            border-top: 5px solid #d4af37;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -2355,14 +2381,21 @@
             window.open(`https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`, "_blank");
         }
     </script>
-    <!-- ১. প্রোডাক্ট ভিডিও সেকশন -->
+    <!-- ১. প্রোডাক্ট ভিডিও সেকশন (গোপন অ্যাডমিন ট্রিগারসহ) -->
     <section class="video-section">
         <div class="video-header">
             <div>
-                <h2 style="color:#063729;">🎬 প্রোডাক্ট ভিডিও রিভিউ ও শোকেস</h2>
+                <!-- এই টাইটেলে পরপর ৩ বার ক্লিক করলে পাসওয়ার্ড সেট/লগইন পপ-আপ আসবে -->
+                <h2 onclick="handleSecretClick()" style="color:#063729; cursor:default; user-select:none;">🎬 প্রোডাক্ট
+                    ভিডিও রিভিউ ও শোকেস</h2>
                 <p style="font-size:14px; color:#555;">পোশাকের আসল ডিজাইন ও কাজ সরাসরি ভিডিওতে দেখুন</p>
             </div>
-            <button type="button" class="custom-btn" onclick="openVideoUploader()">➕ ভিডিও যোগ করুন (Admin)</button>
+            <div id="adminControlsBar" style="display:none; gap:8px;">
+                <button type="button" class="custom-btn" onclick="toggleVideoForm()">➕ নতুন ভিডিও যোগ করুন</button>
+                <button type="button" onclick="lockAdminMode()"
+                    style="background:#8b1e2b; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">🔒
+                    লক করুন</button>
+            </div>
         </div>
 
         <div id="adminVideoBox" class="admin-video-box">
@@ -2423,97 +2456,286 @@
 
         <div class="reviews-list" id="customerReviewsList"></div>
     </section>
+
+    <!-- ৩. অ্যাকাউন্ট খোলার মতো নিজস্ব পাসওয়ার্ড সেট ও লগইন পপ-আপ -->
+    <div id="secretAuthModal" class="secret-modal-overlay">
+        <div class="secret-modal-card">
+            <h3 id="authModalTitle" style="color:#063729; margin-bottom:6px;">🔐 অ্যাডমিন অ্যাকাউন্ট সেটআপ</h3>
+            <p id="authModalDesc" style="font-size:13px; color:#555; margin-bottom:15px;">প্রথমবার প্রবেশ করছেন—আপনার
+                নিজের গোপন পাসওয়ার্ড তৈরি করুন:</p>
+
+            <form onsubmit="handleAdminAuthSubmit(event)">
+                <input type="password" id="adminPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ড লিখুন *"
+                    required>
+                <input type="password" id="adminConfirmPassInput" class="custom-input"
+                    placeholder="পাসওয়ার্ডটি আবার লিখুন (Confirm) *" style="display:block;">
+
+                <div style="display:flex; gap:8px;">
+                    <button type="submit" class="custom-btn" style="flex:1;" id="authSubmitBtn">সেভ করুন</button>
+                    <button type="button" onclick="closeAuthModal()"
+                        style="background:#6c757d; color:#fff; border:none; padding:10px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">বাতিল</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <script>
-        // ১. ভিডিও আপলোড সিস্টেম (পাসওয়ার্ড: anas2026)
-        function openVideoUploader() {
-            let pass = prompt("অ্যাডমিন পাসওয়ার্ড দিন (ডিফল্ট: anas2026):");
-            if (pass === "anas2026") {
-                let box = document.getElementById("adminVideoBox");
-                box.style.display = (box.style.display === "block") ? "none" : "block";
-            } else if (pass !== null) {
-                alert("❌ ভুল পাসওয়ার্ড!");
-            }
+let isAdminUnlocked = false;
+let secretClickCount = 0;
+let secretClickTimer;
+
+// পাসওয়ার্ডকে এনক্রিপ্টেড হ্যাশে রূপান্তর করার ফাংশন
+async function hashPassword(text) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+// "🎬 প্রোডাক্ট ভিডিও রিভিউ ও শোকেস" লেখাটিতে পরপর ৩ বার ক্লিক করলে পপ-আপ আসবে
+function handleSecretClick() {
+    secretClickCount++;
+    clearTimeout(secretClickTimer);
+    secretClickTimer = setTimeout(() => { secretClickCount = 0; }, 1000);
+
+    if (secretClickCount === 3) {
+        secretClickCount = 0;
+        openSecretAuthModal();
+    }
+}
+
+// কিবোর্ডে Ctrl + Shift + A চাপলেও পপ-আপ আসবে
+document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) {
+        e.preventDefault();
+        openSecretAuthModal();
+    }
+});
+
+// পপ-আপ ওপেন করা (প্রথমবার হলে নতুন পাসওয়ার্ড তৈরি, পরের বার হলে লগইন)
+function openSecretAuthModal() {
+    if (isAdminUnlocked) {
+        alert("🔓 অ্যাডমিন মোড ইতিমধ্যেই চালু আছে!");
+        return;
+    }
+    const savedHash = localStorage.getItem("anasAdminSecretHash");
+    const modal = document.getElementById("secretAuthModal");
+    const title = document.getElementById("authModalTitle");
+    const desc = document.getElementById("authModalDesc");
+    const confirmInput = document.getElementById("adminConfirmPassInput");
+    const submitBtn = document.getElementById("authSubmitBtn");
+
+    document.getElementById("adminPassInput").value = "";
+    confirmInput.value = "";
+
+    if (!savedHash) {
+        // প্রথমবার: অ্যাকাউন্ট খোলার মতো পাসওয়ার্ড সেটআপ
+        title.innerText = "🔐 নতুন অ্যাডমিন পাসওয়ার্ড তৈরি করুন";
+        desc.innerText = "প্রথমবার ব্যবহারের জন্য আপনার নিজের গোপন পাসওয়ার্ড সেট করুন:";
+        confirmInput.style.display = "block";
+        confirmInput.required = true;
+        submitBtn.innerText = "পাসওয়ার্ড সেভ করুন";
+    } else {
+        // পরের বার: শুধু লগইন
+        title.innerText = "🔑 অ্যাডমিন লগইন";
+        desc.innerText = "আপনার সেট করা গোপন পাসওয়ার্ডটি দিন:";
+        confirmInput.style.display = "none";
+        confirmInput.required = false;
+        submitBtn.innerText = "আনলক করুন";
+    }
+    modal.style.display = "flex";
+}
+
+function closeAuthModal() {
+    document.getElementById("secretAuthModal").style.display = "none";
+}
+
+async function handleAdminAuthSubmit(event) {
+    event.preventDefault();
+    const savedHash = localStorage.getItem("anasAdminSecretHash");
+    const pass = document.getElementById("adminPassInput").value;
+    const confirmPass = document.getElementById("adminConfirmPassInput").value;
+
+    if (!savedHash) {
+        // প্রথমবার পাসওয়ার্ড সেট করা হচ্ছে
+        if (pass.length < 4) {
+            alert("⚠️ কমপক্ষে ৪ অক্ষরের পাসওয়ার্ড দিন!");
+            return;
         }
-
-        function switchVideoSource() {
-            let type = document.getElementById("vidType").value;
-            document.getElementById("mp4InputDiv").style.display = (type === "mp4") ? "block" : "none";
-            document.getElementById("ytInputDiv").style.display = (type === "yt") ? "block" : "none";
+        if (pass !== confirmPass) {
+            alert("❌ দুটি পাসওয়ার্ড মিলেনি! আবার সঠিকভাবে লিখুন।");
+            return;
         }
-
-        function uploadProductVideo(event) {
-            event.preventDefault();
-            let title = document.getElementById("vidTitle").value;
-            let price = document.getElementById("vidPrice").value;
-            let type = document.getElementById("vidType").value;
-            let grid = document.getElementById("videoShowcaseGrid");
-            let mediaHTML = "";
-
-            if (type === "mp4") {
-                let file = document.getElementById("vidFile").files[0];
-                if (!file) { alert("অনুগ্রহ করে একটি ভিডিও ফাইল সিলেক্ট করুন!"); return; }
-                let videoURL = URL.createObjectURL(file);
-                mediaHTML = `<video controls><source src="${videoURL}" type="video/mp4"></video>`;
-            } else {
-                let link = document.getElementById("vidYtLink").value;
-                let match = link.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^#&?]{11})/);
-                if (!match) { alert("❌ সঠিক YouTube লিংক দিন!"); return; }
-                mediaHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}" allowfullscreen></iframe>`;
-            }
-
-            let card = document.createElement("div");
-            card.className = "video-card";
-            card.innerHTML = `${mediaHTML}<div class="video-card-body"><h4 style="color:#063729;">${title}</h4><p style="color:#8b1e2b; font-weight:bold; margin-top:4px;">৳ ${price} টাকা</p></div>`;
-            grid.prepend(card);
-
-            event.target.reset();
-            document.getElementById("adminVideoBox").style.display = "none";
-            alert("✅ ভিডিও সফলভাবে যুক্ত হয়েছে!");
+        const newHash = await hashPassword(pass);
+        localStorage.setItem("anasAdminSecretHash", newHash);
+        closeAuthModal();
+        activateAdminUI();
+        alert("✅ আপনার গোপন পাসওয়ার্ড সেট হয়েছে এবং অ্যাডমিন মোড চালু হয়েছে!");
+    } else {
+        // পরের বার পাসওয়ার্ড চেক করা হচ্ছে
+        const enteredHash = await hashPassword(pass);
+        if (enteredHash === savedHash) {
+            closeAuthModal();
+            activateAdminUI();
+            alert("✅ লগইন সফল হয়েছে! এখন ভিডিও যোগ ও ডিলিট করতে পারবেন।");
+        } else {
+            alert("❌ ভুল পাসওয়ার্ড!");
         }
+    }
+}
 
-        // ২. স্টার রেটিং ও রিভিউ সিস্টেম
-        let selectedStars = 5;
+function activateAdminUI() {
+    isAdminUnlocked = true;
+    document.getElementById("adminControlsBar").style.display = "flex";
+    document.querySelectorAll(".admin-only-del").forEach(btn => btn.style.display = "inline-block");
+}
 
-        function setRating(count) {
-            selectedStars = count;
-            let stars = document.querySelectorAll("#starRatingContainer .star-item");
-            stars.forEach((star, index) => {
-                star.classList.toggle("active", index < count);
-            });
+function lockAdminMode() {
+    isAdminUnlocked = false;
+    document.getElementById("adminControlsBar").style.display = "none";
+    document.getElementById("adminVideoBox").style.display = "none";
+    document.querySelectorAll(".admin-only-del").forEach(btn => btn.style.display = "none");
+    alert("🔒 অ্যাডমিন মোড লক করা হয়েছে।");
+}
+
+function toggleVideoForm() {
+    let box = document.getElementById("adminVideoBox");
+    box.style.display = (box.style.display === "block") ? "none" : "block";
+}
+
+function switchVideoSource() {
+    let type = document.getElementById("vidType").value;
+    document.getElementById("mp4InputDiv").style.display = (type === "mp4") ? "block" : "none";
+    document.getElementById("ytInputDiv").style.display = (type === "yt") ? "block" : "none";
+}
+
+function uploadProductVideo(event) {
+    event.preventDefault();
+    if (!isAdminUnlocked) return;
+
+    let title = document.getElementById("vidTitle").value;
+    let price = document.getElementById("vidPrice").value;
+    let type = document.getElementById("vidType").value;
+    let mediaHTML = "";
+
+    if (type === "mp4") {
+        let file = document.getElementById("vidFile").files[0];
+        if (!file) { alert("অনুগ্রহ করে একটি ভিডিও ফাইল সিলেক্ট করুন!"); return; }
+        let videoURL = URL.createObjectURL(file);
+        mediaHTML = `<video controls><source src="${videoURL}" type="video/mp4"></video>`;
+    } else {
+        let link = document.getElementById("vidYtLink").value;
+        let match = link.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^#&?]{11})/);
+        if (!match) { alert("❌ সঠিক YouTube লিংক দিন!"); return; }
+        mediaHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}" allowfullscreen></iframe>`;
+        
+        let savedVids = JSON.parse(localStorage.getItem("anasVideos") || "[]");
+        savedVids.unshift({ title, price, ytId: match[1] });
+        localStorage.setItem("anasVideos", JSON.stringify(savedVids));
+    }
+
+    renderVideoItem(title, price, mediaHTML);
+    event.target.reset();
+    document.getElementById("adminVideoBox").style.display = "none";
+    alert("✅ ভিডিও সফলভাবে পাবলিশ হয়েছে!");
+}
+
+function renderVideoItem(title, price, mediaHTML, ytId = null) {
+    let grid = document.getElementById("videoShowcaseGrid");
+    let card = document.createElement("div");
+    card.className = "video-card";
+    let delDisplay = isAdminUnlocked ? "inline-block" : "none";
+
+    card.innerHTML = `
+        ${mediaHTML}
+        <div class="video-card-body">
+            <h4 style="color:#063729;">${title}</h4>
+            <p style="color:#8b1e2b; font-weight:bold; margin:4px 0 8px 0;">৳ ${price} টাকা</p>
+            <button type="button" class="admin-only-del" onclick="deleteProductVideo(this, '${ytId || ""}')" style="display:${delDisplay}; background:#8b1e2b; color:#fff; border:none; padding:6px 12px; border-radius:5px; cursor:pointer; font-size:13px; font-weight:bold;">🗑️ ডিলিট করুন</button>
+        </div>
+    `;
+    grid.prepend(card);
+}
+
+function deleteProductVideo(btnElement, ytId) {
+    if (!isAdminUnlocked) return;
+    if (confirm("আপনি কি নিশ্চিত যে এই ভিডিওটি ডিলিট করতে চান?")) {
+        btnElement.closest(".video-card").remove();
+        if (ytId) {
+            let savedVids = JSON.parse(localStorage.getItem("anasVideos") || "[]");
+            savedVids = savedVids.filter(v => v.ytId !== ytId);
+            localStorage.setItem("anasVideos", JSON.stringify(savedVids));
         }
+        alert("🗑️ ভিডিওটি ডিলিট করা হয়েছে!");
+    }
+}
 
-        function postCustomerReview(event) {
-            event.preventDefault();
-            let name = document.getElementById("revName").value;
-            let product = document.getElementById("revProduct").value;
-            let message = document.getElementById("revMessage").value;
+// ২. স্টার রেটিং ও রিভিউ সিস্টেম
+let selectedStars = 5;
 
-            let reviewData = { name, product, message, stars: selectedStars };
-            displayReviewCard(reviewData);
+function setRating(count) {
+    selectedStars = count;
+    document.querySelectorAll("#starRatingContainer .star-item").forEach((star, index) => {
+        star.classList.toggle("active", index < count);
+    });
+}
 
-            let allReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
-            allReviews.unshift(reviewData);
-            localStorage.setItem("anasReviews", JSON.stringify(allReviews));
+function postCustomerReview(event) {
+    event.preventDefault();
+    let name = document.getElementById("revName").value;
+    let product = document.getElementById("revProduct").value;
+    let message = document.getElementById("revMessage").value;
+    let id = Date.now();
 
-            event.target.reset();
-            setRating(5);
-            alert("⭐ ধন্যবাদ! আপনার রিভিউ পোস্ট হয়েছে।");
-        }
+    let reviewData = { id, name, product, message, stars: selectedStars };
+    displayReviewCard(reviewData);
 
-        function displayReviewCard(data) {
-            let list = document.getElementById("customerReviewsList");
-            let card = document.createElement("div");
-            card.className = "single-review-card";
-            let starsHTML = "★".repeat(data.stars) + "☆".repeat(5 - data.stars);
-            card.innerHTML = `<div style="color:#f59e0b; font-size:20px;">${starsHTML}</div><p style="margin:8px 0; font-style:italic; color:#333;">"${data.message}"</p><strong style="color:#063729;">— ${data.name}</strong><br><span style="font-size:12px; color:#8b1e2b; font-weight:bold;">🛍️ পণ্য: ${data.product}</span>`;
-            list.prepend(card);
-        }
+    let allReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
+    allReviews.unshift(reviewData);
+    localStorage.setItem("anasReviews", JSON.stringify(allReviews));
 
-        window.addEventListener("DOMContentLoaded", function () {
-            let saved = JSON.parse(localStorage.getItem("anasReviews") || "[]");
-            saved.forEach(item => displayReviewCard(item));
-        });
-    </script>
+    event.target.reset();
+    setRating(5);
+    alert("⭐ ধন্যবাদ! আপনার রিভিউ পোস্ট হয়েছে।");
+}
+
+function displayReviewCard(data) {
+    let list = document.getElementById("customerReviewsList");
+    let card = document.createElement("div");
+    card.className = "single-review-card";
+    let starsHTML = "★".repeat(data.stars) + "☆".repeat(5 - data.stars);
+    let delDisplay = isAdminUnlocked ? "inline-block" : "none";
+
+    card.innerHTML = `
+        <div style="color:#f59e0b; font-size:20px;">${starsHTML}</div>
+        <p style="margin:8px 0; font-style:italic; color:#333;">"${data.message}"</p>
+        <strong style="color:#063729;">— ${data.name}</strong><br>
+        <span style="font-size:12px; color:#8b1e2b; font-weight:bold;">🛍️ পণ্য: ${data.product}</span><br>
+        <button type="button" class="admin-only-del" onclick="deleteReview(this, ${data.id})" style="display:${delDisplay}; margin-top:8px; background:#8b1e2b; color:#fff; border:none; padding:4px 10px; border-radius:4px; cursor:pointer; font-size:12px;">🗑️ রিভিউ মুছুন</button>
+    `;
+    list.prepend(card);
+}
+
+function deleteReview(btnElement, reviewId) {
+    if (!isAdminUnlocked) return;
+    if (confirm("এই রিভিউটি ডিলিট করতে চান?")) {
+        btnElement.closest(".single-review-card").remove();
+        let allReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
+        allReviews = allReviews.filter(r => r.id !== reviewId);
+        localStorage.setItem("anasReviews", JSON.stringify(allReviews));
+    }
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+    let savedReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
+    savedReviews.forEach(item => displayReviewCard(item));
+
+    let savedVids = JSON.parse(localStorage.getItem("anasVideos") || "[]");
+    savedVids.forEach(v => {
+        let mediaHTML = `<iframe src="https://www.youtube.com/embed/${v.ytId}" allowfullscreen></iframe>`;
+        renderVideoItem(v.title, v.price, mediaHTML, v.ytId);
+    });
+});
+</script>
 </body>
 
 </html>
