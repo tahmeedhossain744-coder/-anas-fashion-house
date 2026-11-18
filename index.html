@@ -1426,6 +1426,7 @@
 
     <!-- ফ্লোটিং হোয়াটসঅ্যাপ বাটন -->
     <a href="https://wa.me/8801341725738" target="_blank" class="floating-whatsapp">💬 WhatsApp</a>
+    <a href="http://fb.me/https://www.facebook.com/profile.php?id=61595260485358" target="_blank" class="floting-facebook">💬 facebook</a>
 
     <footer>
         <p>&copy; ২০২৬ আনাস ফ্যাশন হাউজ (Anas Fabrics and Ladies Tailors) | সর্বস্বত্ব সংরক্ষিত</p>
@@ -1562,13 +1563,13 @@
             const gw = document.getElementById("paymentGateway").value;
             const infoBox = document.getElementById("gatewayAccountInfo");
             if (gw.includes("bKash")) {
-                infoBox.innerHTML = "📱 <strong>bKash Personal:</strong> 01341725738 (Send Money করুন)";
+                infoBox.innerHTML = "📱 <strong>bKash Personal:</strong> 01341725738 (Send Money/cash out করুন)";
             } else if (gw.includes("Nagad")) {
-                infoBox.innerHTML = "📱 <strong>Nagad Personal:</strong> 01341725738 (Send Money করুন)";
+                infoBox.innerHTML = "📱 <strong>Nagad Personal:</strong> 01341725738 (Send Money/cash out করুন)";
             } else if (gw.includes("Rocket")) {
-                infoBox.innerHTML = "📱 <strong>Rocket Personal:</strong> 01341725738-9 (Send Money করুন)";
+                infoBox.innerHTML = "📱 <strong>Rocket Personal:</strong> 01341725738-9 (Send Money/cash out করুন)";
             } else if (gw.includes("Upay")) {
-                infoBox.innerHTML = "📱 <strong>Upay Personal:</strong> 01341725738 (Send Money করুন)";
+                infoBox.innerHTML = "📱 <strong>Upay Personal:</strong> 01341725738 (Send Money/cash out  করুন)";
             } else {
                 infoBox.innerHTML = "🏦 <strong>Bank Account:</strong> Anas Fashion House | A/C: 2050123456789 (Islami Bank Bangladesh PLC, Bogura Branch)";
             }
@@ -1584,7 +1585,7 @@
             const shippingCost = parseInt(document.querySelector('input[name="shippingArea"]:checked').value);
             const orderMode = document.querySelector('input[name="orderMode"]:checked').value;
 
-            let paymentInfo = "Hand Pay (পণ্য হাতে পেয়ে ক্যাশ পেমেন্ট)";
+            let paymentInfo = "cash on dalivary (পণ্য হাতে পেয়ে ক্যাশ পেমেন্ট)";
 
             if (orderMode.includes("Pay Order")) {
                 const gw = document.getElementById("paymentGateway").value;
