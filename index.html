@@ -435,7 +435,7 @@
             border-radius: 5px;
             font-weight: bold;
             z-index: 2;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         .badge.women {
@@ -976,6 +976,136 @@
                 align-items: flex-start;
             }
         }
+
+        /* ভিডিও ও রিভিউ সেকশনের CSS */
+        .video-section {
+            padding: 35px 4%;
+            background-color: #f0f7f4;
+            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+            margin: 25px 0;
+        }
+
+        .video-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 1150px;
+            margin: 0 auto 20px auto;
+        }
+
+        .admin-video-box {
+            display: none;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px dashed #063729;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .video-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1.5px solid #d4af37;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .video-card video,
+        .video-card iframe {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border: none;
+            background: #000;
+        }
+
+        .video-card-body {
+            padding: 12px;
+        }
+
+        .review-section {
+            padding: 35px 4%;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .review-form-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            border-top: 5px solid #d4af37;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .star-picker {
+            display: flex;
+            gap: 6px;
+            font-size: 30px;
+            cursor: pointer;
+            margin: 5px 0 12px 0;
+            user-select: none;
+        }
+
+        .star-item {
+            color: #ccc;
+            transition: 0.2s;
+        }
+
+        .star-item.active {
+            color: #f59e0b;
+        }
+
+        .reviews-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 18px;
+        }
+
+        .single-review-card {
+            background: #fff;
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 4px solid #063729;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .custom-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1.5px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .custom-btn {
+            background-color: #063729;
+            color: #f9e08e;
+            border: 1.5px solid #d4af37;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .custom-btn:hover {
+            background-color: #d4af37;
+            color: #063729;
+        }
     </style>
 </head>
 
@@ -1205,7 +1335,8 @@
                         <div class="card-actions">
                             <button class="btn"
                                 onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (নীল)', 1500, 'XXL', 'p1.png.png')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (নীল)', 1500)">+ কার্ট</button>
+                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (নীল)', 1500)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1221,7 +1352,8 @@
                         <div class="card-actions">
                             <button class="btn"
                                 onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (ল্যাভেন্ডার)', 1800, 'XXL', 'p2.png.png')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (ল্যাভেন্ডার)', 1800)">+ কার্ট</button>
+                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (ল্যাভেন্ডার)', 1800)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1237,7 +1369,8 @@
                         <div class="card-actions">
                             <button class="btn"
                                 onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (সবুজ)', 2000, 'XXL', 'p3.png.png')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (সবুজ)', 2000)">+ কার্ট</button>
+                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (সবুজ)', 2000)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1253,7 +1386,8 @@
                         <div class="card-actions">
                             <button class="btn"
                                 onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (গোলাপি)', 2000, 'XXL', 'p4.png.png')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (গোলাপি)', 2000)">+ কার্ট</button>
+                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (গোলাপি)', 2000)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1827,8 +1961,10 @@
             </div>
             <br>
             <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                <a href="https://wa.me/8801341725738" target="_blank" class="btn" style="background:#25D366; border:none; font-size:16px;">💬 সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন</a>
-                <a href="https://www.facebook.com/profile.php?id=61595260485358" target="_blank" class="btn" style="background:#1877F2; border:none; font-size:16px;">📘 ফেসবুকে যুক্ত হোন</a>
+                <a href="https://wa.me/8801341725738" target="_blank" class="btn"
+                    style="background:#25D366; border:none; font-size:16px;">💬 সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন</a>
+                <a href="https://www.facebook.com/profile.php?id=61595260485358" target="_blank" class="btn"
+                    style="background:#1877F2; border:none; font-size:16px;">📘 ফেসবুকে যুক্ত হোন</a>
             </div>
         </div>
     </div>
@@ -2219,7 +2355,166 @@
             window.open(`https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`, "_blank");
         }
     </script>
+    <!-- ১. প্রোডাক্ট ভিডিও সেকশন -->
+    <section class="video-section">
+        <div class="video-header">
+            <div>
+                <h2 style="color:#063729;">🎬 প্রোডাক্ট ভিডিও রিভিউ ও শোকেস</h2>
+                <p style="font-size:14px; color:#555;">পোশাকের আসল ডিজাইন ও কাজ সরাসরি ভিডিওতে দেখুন</p>
+            </div>
+            <button type="button" class="custom-btn" onclick="openVideoUploader()">➕ ভিডিও যোগ করুন (Admin)</button>
+        </div>
 
+        <div id="adminVideoBox" class="admin-video-box">
+            <h3 style="color:#063729; margin-bottom:12px;">নতুন প্রোডাক্ট ভিডিও যুক্ত করুন</h3>
+            <form onsubmit="uploadProductVideo(event)">
+                <input type="text" id="vidTitle" class="custom-input" placeholder="প্রোডাক্টের নাম লিখুন *" required>
+                <input type="number" id="vidPrice" class="custom-input" placeholder="প্রোডাক্টের দাম (টাকায়) *"
+                    required>
+
+                <select id="vidType" class="custom-input" onchange="switchVideoSource()">
+                    <option value="mp4">📁 মোবাইল/ল্যাপটপ থেকে MP4 ভিডিও আপলোড</option>
+                    <option value="yt">🔗 YouTube ভিডিও লিংক দিন</option>
+                </select>
+
+                <div id="mp4InputDiv">
+                    <input type="file" id="vidFile" class="custom-input" accept="video/*">
+                </div>
+
+                <div id="ytInputDiv" style="display:none;">
+                    <input type="url" id="vidYtLink" class="custom-input" placeholder="YouTube ভিডিও লিংক পেস্ট করুন">
+                </div>
+
+                <button type="submit" class="custom-btn" style="width:100%;">✅ ভিডিও পাবলিশ করুন</button>
+            </form>
+        </div>
+
+        <div class="video-grid" id="videoShowcaseGrid"></div>
+    </section>
+
+    <!-- ২. কাস্টমার স্টার রেটিং ও রিভিউ সেকশন -->
+    <section class="review-section">
+        <h2 style="text-align:center; color:#063729; margin-bottom:6px;">⭐ কাস্টমার রিভিউ ও রেটিং</h2>
+        <p style="text-align:center; color:#666; margin-bottom:22px;">আমাদের পণ্য সম্পর্কে আপনার মূল্যবান মতামত ও স্টার
+            রেটিং দিন</p>
+
+        <div class="review-form-card">
+            <h3 style="color:#063729; margin-bottom:8px;">✍️ আপনার রিভিউ লিখুন</h3>
+            <form onsubmit="postCustomerReview(event)">
+                <label style="font-weight:bold; font-size:14px;">রেটিং দিন (স্টারে ক্লিক করুন):</label>
+                <div class="star-picker" id="starRatingContainer">
+                    <span class="star-item active" onclick="setRating(1)">★</span>
+                    <span class="star-item active" onclick="setRating(2)">★</span>
+                    <span class="star-item active" onclick="setRating(3)">★</span>
+                    <span class="star-item active" onclick="setRating(4)">★</span>
+                    <span class="star-item active" onclick="setRating(5)">★</span>
+                </div>
+
+                <input type="text" id="revName" class="custom-input"
+                    placeholder="আপনার নাম ও ঠিকানা (যেমন: নুসরাত, বগুড়া) *" required>
+                <input type="text" id="revProduct" class="custom-input"
+                    placeholder="কোন প্রোডাক্টটি নিয়েছেন? (যেমন: Kajkora থ্রি-পিস) *" required>
+                <textarea id="revMessage" class="custom-input" rows="3" placeholder="আপনার মতামত / কমেন্ট লিখুন *"
+                    required></textarea>
+
+                <button type="submit" class="custom-btn" style="width:100%;">⭐ রিভিউ সাবমিট করুন</button>
+            </form>
+        </div>
+
+        <div class="reviews-list" id="customerReviewsList"></div>
+    </section>
+    <script>
+        // ১. ভিডিও আপলোড সিস্টেম (পাসওয়ার্ড: anas2026)
+        function openVideoUploader() {
+            let pass = prompt("অ্যাডমিন পাসওয়ার্ড দিন (ডিফল্ট: anas2026):");
+            if (pass === "anas2026") {
+                let box = document.getElementById("adminVideoBox");
+                box.style.display = (box.style.display === "block") ? "none" : "block";
+            } else if (pass !== null) {
+                alert("❌ ভুল পাসওয়ার্ড!");
+            }
+        }
+
+        function switchVideoSource() {
+            let type = document.getElementById("vidType").value;
+            document.getElementById("mp4InputDiv").style.display = (type === "mp4") ? "block" : "none";
+            document.getElementById("ytInputDiv").style.display = (type === "yt") ? "block" : "none";
+        }
+
+        function uploadProductVideo(event) {
+            event.preventDefault();
+            let title = document.getElementById("vidTitle").value;
+            let price = document.getElementById("vidPrice").value;
+            let type = document.getElementById("vidType").value;
+            let grid = document.getElementById("videoShowcaseGrid");
+            let mediaHTML = "";
+
+            if (type === "mp4") {
+                let file = document.getElementById("vidFile").files[0];
+                if (!file) { alert("অনুগ্রহ করে একটি ভিডিও ফাইল সিলেক্ট করুন!"); return; }
+                let videoURL = URL.createObjectURL(file);
+                mediaHTML = `<video controls><source src="${videoURL}" type="video/mp4"></video>`;
+            } else {
+                let link = document.getElementById("vidYtLink").value;
+                let match = link.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^#&?]{11})/);
+                if (!match) { alert("❌ সঠিক YouTube লিংক দিন!"); return; }
+                mediaHTML = `<iframe src="https://www.youtube.com/embed/${match[1]}" allowfullscreen></iframe>`;
+            }
+
+            let card = document.createElement("div");
+            card.className = "video-card";
+            card.innerHTML = `${mediaHTML}<div class="video-card-body"><h4 style="color:#063729;">${title}</h4><p style="color:#8b1e2b; font-weight:bold; margin-top:4px;">৳ ${price} টাকা</p></div>`;
+            grid.prepend(card);
+
+            event.target.reset();
+            document.getElementById("adminVideoBox").style.display = "none";
+            alert("✅ ভিডিও সফলভাবে যুক্ত হয়েছে!");
+        }
+
+        // ২. স্টার রেটিং ও রিভিউ সিস্টেম
+        let selectedStars = 5;
+
+        function setRating(count) {
+            selectedStars = count;
+            let stars = document.querySelectorAll("#starRatingContainer .star-item");
+            stars.forEach((star, index) => {
+                star.classList.toggle("active", index < count);
+            });
+        }
+
+        function postCustomerReview(event) {
+            event.preventDefault();
+            let name = document.getElementById("revName").value;
+            let product = document.getElementById("revProduct").value;
+            let message = document.getElementById("revMessage").value;
+
+            let reviewData = { name, product, message, stars: selectedStars };
+            displayReviewCard(reviewData);
+
+            let allReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
+            allReviews.unshift(reviewData);
+            localStorage.setItem("anasReviews", JSON.stringify(allReviews));
+
+            event.target.reset();
+            setRating(5);
+            alert("⭐ ধন্যবাদ! আপনার রিভিউ পোস্ট হয়েছে।");
+        }
+
+        function displayReviewCard(data) {
+            let list = document.getElementById("customerReviewsList");
+            let card = document.createElement("div");
+            card.className = "single-review-card";
+            let starsHTML = "★".repeat(data.stars) + "☆".repeat(5 - data.stars);
+            card.innerHTML = `<div style="color:#f59e0b; font-size:20px;">${starsHTML}</div><p style="margin:8px 0; font-style:italic; color:#333;">"${data.message}"</p><strong style="color:#063729;">— ${data.name}</strong><br><span style="font-size:12px; color:#8b1e2b; font-weight:bold;">🛍️ পণ্য: ${data.product}</span>`;
+            list.prepend(card);
+        }
+
+        window.addEventListener("DOMContentLoaded", function () {
+            let saved = JSON.parse(localStorage.getItem("anasReviews") || "[]");
+            saved.forEach(item => displayReviewCard(item));
+        });
+    </script>
 </body>
 
 </html>
+
