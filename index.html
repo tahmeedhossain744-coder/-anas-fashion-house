@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>আনাস ফ্যাশন হাউজ | Anas Fabrics & Ladies Tailors</title>
-    <link rel="icon" type="image/png" href="logo.png">
+    <!-- ইনলাইন ভেক্টর ফ্যাভিকন (আলাদা ফাইল ছাড়াই ব্রাউজার ট্যাবে দেখাবে) -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23ffffff' stroke='%23d4af37' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='41' fill='none' stroke='%23063729' stroke-width='2' stroke-dasharray='6 3'/%3E%3Ctext x='50' y='57' font-family='Georgia, serif' font-size='28' font-weight='bold' fill='%23063729' text-anchor='middle'%3EANAS%3C/text%3E%3Ctext x='50' y='71' font-family='sans-serif' font-size='7' font-weight='bold' fill='%230d2847' text-anchor='middle'%3ETAILORS%3C/text%3E%3C/svg%3E">
     <style>
         * {
             margin: 0;
@@ -46,13 +48,12 @@
             cursor: pointer;
         }
 
-        .logo img {
+        .logo svg {
             width: 54px;
             height: 54px;
             border-radius: 50%;
             background-color: #ffffff;
-            padding: 3px;
-            object-fit: contain;
+            padding: 2px;
             border: 2px solid #d4af37;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
             flex-shrink: 0;
@@ -131,7 +132,7 @@
             }
         }
 
-        /* লোগো অনুযায়ী কাস্টমাইজড রয়্যাল হিরো ব্যানার */
+        /* লোগো অনুযায়ী কাস্টমাইজড রয়্যাল হিরো ব্যানার */
         .hero {
             background: linear-gradient(135deg, rgba(6, 55, 41, 0.90) 0%, rgba(13, 40, 71, 0.88) 55%, rgba(88, 24, 31, 0.85) 100%),
                 url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1400&q=80') center/cover;
@@ -159,16 +160,15 @@
             font-weight: 600;
         }
 
-        .hero-logo {
-            width: 135px;
-            height: 135px;
+        .hero-logo-svg {
+            width: 145px;
+            height: 145px;
             border-radius: 50%;
             background: #ffffff;
-            padding: 8px;
-            object-fit: contain;
+            padding: 4px;
             border: 4px solid #d4af37;
             margin-bottom: 18px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.55), 0 0 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.55), 0 0 22px rgba(212, 175, 55, 0.45);
         }
 
         .hero h1 {
@@ -542,7 +542,7 @@
             border-color: #063729;
         }
 
-        /* ফাইল আপলোড বক্স স্টাইল (সেলার পেজের জন্য) */
+        /* ফাইল আপলোড বক্স স্টাইল */
         .file-upload-wrapper {
             border: 2px dashed #063729;
             background-color: #f4faf7;
@@ -751,7 +751,7 @@
             border: 1px dashed #999;
         }
 
-        /* ফ্লোটিং হোয়াটসঅ্যাপ ও ফেসবুক বাটন */
+        /* ফ্লোটিং হোয়াটসঅ্যাপ বাটন */
         .floating-whatsapp {
             position: fixed;
             bottom: 20px;
@@ -770,7 +770,7 @@
             gap: 6px;
         }
 
-        /* ==================== Naturo স্টাইল নতুন ফুটার CSS ==================== */
+        /* ==================== Naturo স্টাইল ফুটার CSS ==================== */
         .naturo-footer {
             background-color: #0b251c;
             color: #ffffff;
@@ -887,13 +887,13 @@
             margin-bottom: 12px;
         }
 
-        .footer-brand-logo img {
-            width: 42px;
-            height: 42px;
+        .footer-brand-logo svg {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             border: 2px solid #d4af37;
             background: #fff;
-            object-fit: contain;
+            flex-shrink: 0;
         }
 
         .footer-bottom-bar {
@@ -960,13 +960,36 @@
 
 <body>
 
-    <!-- নেভিগেশন বার -->
+    <!-- নেভিগেশন বার (ইনলাইন লোগোসহ — আলাদা ফাইল আপলোড ছাড়াই দেখাবে) -->
     <header>
         <div class="logo" onclick="switchPage('home-page', document.getElementById('nav-home'))">
-            <img src="logo.png" alt="Anas Fabrics & Ladies Tailors Logo">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="anasTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#063729" />
+                        <stop offset="50%" stop-color="#0d2847" />
+                        <stop offset="100%" stop-color="#8b1e2b" />
+                    </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#d4af37" stroke-width="5" />
+                <circle cx="100" cy="100" r="84" fill="none" stroke="#063729" stroke-width="2.5"
+                    stroke-dasharray="10 5" />
+                <circle cx="100" cy="100" r="76" fill="none" stroke="#d4af37" stroke-width="1.5" />
+                <!-- সেলাই মেশিন ও কাঁচির প্রতীক -->
+                <text x="65" y="58" font-size="24" text-anchor="middle">🪡</text>
+                <text x="135" y="58" font-size="24" text-anchor="middle">✂️</text>
+                <!-- মূল ব্র্যান্ড নাম -->
+                <text x="100" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="bold"
+                    fill="url(#anasTextGrad)" text-anchor="middle" letter-spacing="2">ANAS</text>
+                <text x="100" y="128" font-family="Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#0d2847"
+                    text-anchor="middle" letter-spacing="0.8">FABRICS &amp; LADIES TAILORS</text>
+                <!-- নিচের সুতা ও পোশাকের প্রতীক -->
+                <text x="72" y="160" font-size="20" text-anchor="middle">🧵</text>
+                <text x="128" y="160" font-size="22" text-anchor="middle">👗</text>
+            </svg>
             <div>
                 আনাস ফ্যাশন হাউজ
-                <span>Anas Fabrics & Ladies Tailors</span>
+                <span>Anas Fabrics &amp; Ladies Tailors</span>
             </div>
         </div>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -987,16 +1010,30 @@
     <div id="home-page" class="page-view active-page">
         <section class="hero">
             <div class="hero-badge-top">✨ প্রিমিয়াম ফ্যাব্রিক্স • এক্সক্লুসিভ লেডিস টেইলরিং • ফ্যাশন হাউজ ✨</div>
-            <img src="logo.png" alt="Anas Fabrics & Ladies Tailors Logo" class="hero-logo">
-            <h1>ANAS FABRICS & LADIES TAILORS</h1>
-            <p>ঐতিহ্য ও আধুনিকতার অপূর্ব সমন্বয়! ছেলে, মেয়ে ও বাচ্চাদের প্রিমিয়াম রেডিমেড পোশাকের পাশাপাশি দক্ষ কারিগর
-                দ্বারা আপনার নিজের পছন্দমতো মাপ ও ডিজাইনে পোশাক তৈরি করে নেওয়ার বিশ্বস্ত প্রতিষ্ঠান।</p>
+            <!-- হিরো ব্যানারের মাঝখানে ইনলাইন রয়্যাল লোগো -->
+            <svg class="hero-logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#d4af37" stroke-width="4" />
+                <circle cx="100" cy="100" r="85" fill="none" stroke="#063729" stroke-width="2.5"
+                    stroke-dasharray="10 5" />
+                <circle cx="100" cy="100" r="77" fill="none" stroke="#d4af37" stroke-width="1.5" />
+                <text x="65" y="56" font-size="25" text-anchor="middle">🪡</text>
+                <text x="135" y="56" font-size="25" text-anchor="middle">✂️</text>
+                <text x="100" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="bold"
+                    fill="#063729" text-anchor="middle" letter-spacing="2">ANAS</text>
+                <text x="100" y="128" font-family="Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#0d2847"
+                    text-anchor="middle" letter-spacing="0.8">FABRICS &amp; LADIES TAILORS</text>
+                <text x="72" y="160" font-size="21" text-anchor="middle">🧵</text>
+                <text x="128" y="160" font-size="23" text-anchor="middle">👗</text>
+            </svg>
+            <h1>ANAS FABRICS &amp; LADIES TAILORS</h1>
+            <p>ঐতিহ্য ও আধুনিকতার অপূর্ব সমন্বয়! ছেলে, মেয়ে ও বাচ্চাদের প্রিমিয়াম রেডিমেড পোশাকের পাশাপাশি দক্ষ
+                কারিগর দ্বারা আপনার নিজের পছন্দমতো মাপ ও ডিজাইনে পোশাক তৈরি করে নেওয়ার বিশ্বস্ত প্রতিষ্ঠান।</p>
             <div class="hero-btns">
                 <button class="btn btn-gold"
                     onclick="switchPage('collection-page', document.getElementById('nav-collection'))">🛍️ সব কালেকশন
                     দেখুন</button>
                 <button class="btn" onclick="switchPage('tailor-page', document.getElementById('nav-tailor'))">✂️ নিজের
-                    মাপে কাপড় বানান</button>
+                    মাপে কাপড় বানান</button>
                 <button class="btn" style="background:#25D366; border:none;"
                     onclick="switchPage('checkout-page', document.getElementById('nav-checkout'))">সরাসরি অর্ডার
                     করুন</button>
@@ -1005,7 +1042,7 @@
 
         <!-- অটোমেটিক প্রোডাক্ট স্লাইডার -->
         <section class="slider-section">
-            <h2 class="section-title">🔥 জনপ্রিয় ও ট্রেন্ডিং কালেকশন (অটো স্লাইড)</h2>
+            <h2 class="section-title">🔥 জনপ্রিয় ও ট্রেন্ডিং কালেকশন (অটো স্লাইড)</h2>
             <p class="section-subtitle">পছন্দের পোশাকটিতে ক্লিক করে সরাসরি অর্ডার করুন</p>
             <div class="slider-container">
                 <div class="slider-track" id="autoSliderTrack">
@@ -1082,17 +1119,16 @@
         <!-- বিশেষ সুবিধাসমূহ -->
         <div class="features-grid">
             <div class="feature-box">
-                <h3>🚚 Hand Pay & Pay Order</h3>
-                <p>পণ্য হাতে পেয়ে টাকা পরিশোধ (Hand Pay) অথবা বিকাশ, নগদ, রকেট ও ব্যাংকের মাধ্যমে অগ্রিম পেমেন্টের
-                    সুবিধা।</p>
+                <h3>🚚 Cash on Delivery &amp; Pay Order</h3>
+                <p>পণ্য হাতে পেয়ে টাকা পরিশোধ অথবা বিকাশ, নগদ, রকেট ও ব্যাংকের মাধ্যমে অগ্রিম পেমেন্টের সুবিধা।</p>
             </div>
             <div class="feature-box">
                 <h3>✂️ অনলাইন লেডিস টেইলর</h3>
-                <p>ঘরে বসেই আপনার জামার লম্বা, বডি, কোমর ও হাতার মাপ দিয়ে দক্ষ কারিগর দ্বারা পোশাক বানিয়ে নিন।</p>
+                <p>ঘরে বসেই আপনার জামার লম্বা, বডি, কোমর ও হাতার মাপ দিয়ে দক্ষ কারিগর দ্বারা পোশাক বানিয়ে নিন।</p>
             </div>
             <div class="feature-box">
-                <h3>🏪 সেলার পার்ட்নারশিপ</h3>
-                <p>আপনার নিজের দোকানের বা হাতের তৈরি পোশাকের ছবি আপলোড করে আমাদের ওয়েবসাইটে বিক্রি করুন।</p>
+                <h3>🏪 সেলার পার্টনারশিপ</h3>
+                <p>আপনার নিজের দোকানের বা হাতের তৈরি পোশাকের ছবি আপলোড করে আমাদের ওয়েবসাইটে বিক্রি করুন।</p>
             </div>
         </div>
     </div>
@@ -1106,7 +1142,7 @@
             <div class="collection-top-bar">
                 <div class="search-corner-box">
                     <input type="text" id="searchInput" class="search-input" onkeyup="applyFilters()"
-                        placeholder="🔍 কাপড় খুঁজুন (গাউন, শার্ট, বোরকা, বেবি)...">
+                        placeholder="🔍 কাপড় খুঁজুন (গাউন, শার্ট, বোরকা, বেবি)...">
                 </div>
 
                 <div class="filter-buttons">
@@ -1119,7 +1155,6 @@
             </div>
 
             <div class="product-grid" id="productGrid">
-                <!-- প্রোডাক্ট ১ -->
                 <div class="product-card" data-category="men">
                     <span class="badge">ছেলেদের</span>
                     <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80"
@@ -1137,7 +1172,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ২ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=600&q=80"
@@ -1155,7 +1189,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ৩ -->
                 <div class="product-card" data-category="unisex">
                     <span class="badge unisex">ছেলে ও মেয়ে</span>
                     <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80"
@@ -1172,7 +1205,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ৪ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80"
@@ -1190,7 +1222,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ৫ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=600&q=80"
@@ -1208,7 +1239,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ৬ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80"
@@ -1226,7 +1256,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ৭ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80"
@@ -1244,7 +1273,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ৮ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=600&q=80"
@@ -1262,7 +1290,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ৯ -->
                 <div class="product-card" data-category="men">
                     <span class="badge">ছেলেদের</span>
                     <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80"
@@ -1280,7 +1307,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ১০ -->
                 <div class="product-card" data-category="men">
                     <span class="badge">ছেলেদের</span>
                     <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"
@@ -1298,7 +1324,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ১১ -->
                 <div class="product-card" data-category="kids">
                     <span class="badge kids">বাচ্চাদের</span>
                     <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80"
@@ -1316,7 +1341,6 @@
                     </div>
                 </div>
 
-                <!-- প্রোডাক্ট ১২ -->
                 <div class="product-card" data-category="kids">
                     <span class="badge kids">বাচ্চাদের</span>
                     <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=600&q=80"
@@ -1341,8 +1365,9 @@
     <div id="tailor-page" class="page-view">
         <div class="form-page-container">
             <h2 class="section-title">✂️ অনলাইন লেডিস টেইলরিং (নিজের মাপে পোশাক বানান)</h2>
-            <p class="section-subtitle">ট্রেইলার্সের দোকানে যাওয়ার ঝামেলা ছাড়াই আপনার সঠিক মাপ ও ডিজাইন দিয়ে
-                <strong>Anas Fabrics and Ladies Tailors</strong> থেকে পোশাক তৈরি করে নিন।</p>
+            <p class="section-subtitle">ট্রেইলার্সের দোকানে যাওয়ার ঝামেলা ছাড়াই আপনার সঠিক মাপ ও ডিজাইন দিয়ে
+                <strong>Anas Fabrics and Ladies Tailors</strong> থেকে পোশাক তৈরি করে নিন।
+            </p>
 
             <form onsubmit="submitTailorOrder(event)">
                 <div class="form-grid-2">
@@ -1352,16 +1377,18 @@
                             <option value="সালোয়ার কামিজ (থ্রি-পিস সেলাই)">সালোয়ার কামিজ (থ্রি-পিস সেলাই) - মজুরি ৳
                                 ৪৫০</option>
                             <option value="ডিজাইনার ব্লাউজ">ডিজাইনার ব্লাউজ - মজুরি ৳ ৩০০</option>
-                            <option value="কাস্টম বোরকা / আবায়া">কাস্টম বোরকা / আবায়া - মজুরি ৳ ৫৫০</option>
+                            <option value="কাস্টম বোরকা / আবায়া">কাস্টম বোরকা / আবায়া - মজুরি ৳ ৫৫০</option>
                             <option value="পার্টি গাউন / লং ফ্রক">পার্টি গাউন / লং ফ্রক - মজুরি ৳ ৬৫০</option>
                             <option value="বাচ্চাদের ফ্রক / জামা">বাচ্চাদের ফ্রক / জামা - মজুরি ৳ ৩৫০</option>
                         </select>
                     </div>
                     <div class="input-group">
-                        <label>কাপড়ের ব্যবস্থা *</label>
+                        <label>কাপড়ের ব্যবস্থা *</label>
                         <select id="tailorFabricSource" required>
-                            <option value="আমাদের কাছ থেকে কাপড়সহ তৈরি করবেন">আমাদের কাছ থেকে কাপড়সহ তৈরি করবেন</option>
-                            <option value="কাস্টমার নিজের কাপড় পাঠাবেন">আমি নিজের কাপড় পাঠিয়ে দেব (শুধু সেলাই)</option>
+                            <option value="আমাদের কাছ থেকে কাপড়সহ তৈরি করবেন">আমাদের কাছ থেকে কাপড়সহ তৈরি করবেন
+                            </option>
+                            <option value="কাস্টমার নিজের কাপড় পাঠাবেন">আমি নিজের কাপড় পাঠিয়ে দেব (শুধু সেলাই)
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -1395,9 +1422,9 @@
                 </div>
 
                 <div class="input-group">
-                    <label>পায়জামা / সালোয়ারের মাপ ও বিশেষ ডিজাইন নির্দেশনা</label>
+                    <label>পায়জামা / সালোয়ারের মাপ ও বিশেষ ডিজাইন নির্দেশনা</label>
                     <textarea id="mNotes" rows="3"
-                        placeholder="যেমন: সালোয়ারের লম্বা ৩৮ ইঞ্চি, পকেট লাগবে, হাতায় লেস বসবে ইত্যাদি..."></textarea>
+                        placeholder="যেমন: সালোয়ারের লম্বা ৩৮ ইঞ্চি, পকেট লাগবে, হাতায় লেস বসবে ইত্যাদি..."></textarea>
                 </div>
 
                 <div class="form-grid-2">
@@ -1426,8 +1453,9 @@
     <div id="seller-page" class="page-view">
         <div class="form-page-container" style="border-top-color: #d4af37;">
             <h2 class="section-title">🏪 সেলার হিসেবে পণ্য বিক্রি করুন (Vendor Request)</h2>
-            <p class="section-subtitle">আপনার পণ্যের ছবি আপলোড করে ও তথ্য দিয়ে আবেদন করুন। অ্যাডমিন রিভিউ করে
-                <strong>Approved</strong> দিলেই আপনার পণ্যটি আমাদের ওয়েবসাইটে লাইভ হয়ে যাবে।</p>
+            <p class="section-subtitle">আপনার পণ্যের ছবি আপলোড করে ও তথ্য দিয়ে আবেদন করুন। অ্যাডমিন রিভিউ করে
+                <strong>Approved</strong> দিলেই আপনার পণ্যটি আমাদের ওয়েবসাইটে লাইভ হয়ে যাবে।
+            </p>
 
             <form onsubmit="submitSellerProduct(event)">
                 <div class="form-grid-2">
@@ -1436,7 +1464,7 @@
                         <input type="text" id="sShopName" placeholder="আপনার নাম বা দোকানের নাম" required>
                     </div>
                     <div class="input-group">
-                        <label>সেলার মোবাইল / হোয়াটসঅ্যাপ নম্বর *</label>
+                        <label>সেলার মোবাইল / হোয়াটসঅ্যাপ নম্বর *</label>
                         <input type="tel" id="sPhone" placeholder="01XXXXXXXXX" required>
                     </div>
                 </div>
@@ -1444,10 +1472,10 @@
                 <div class="form-grid-2">
                     <div class="input-group">
                         <label>পণ্যের নাম *</label>
-                        <input type="text" id="sProductName" placeholder="যেমন: হ্যান্ডপেইন্ট কটন শাড়ি" required>
+                        <input type="text" id="sProductName" placeholder="যেমন: হ্যান্ডপেইন্ট কটন শাড়ি" required>
                     </div>
                     <div class="input-group">
-                        <label>পণ্যের বিক্রয় মূল্য (টাকায়) *</label>
+                        <label>পণ্যের বিক্রয় মূল্য (টাকায়) *</label>
                         <input type="number" id="sPrice" placeholder="যেমন: 1450" required>
                     </div>
                 </div>
@@ -1487,7 +1515,8 @@
                 <div class="input-group">
                     <label>পণ্যের বিস্তারিত বিবরণ *</label>
                     <textarea id="sDesc" rows="3"
-                        placeholder="কাপড়ের কোয়ালিটি, রঙ, ওড়না বা প্যান্টের মাপ ইত্যাদি লিখুন..." required></textarea>
+                        placeholder="কাপড়ের কোয়ালিটি, রঙ, ওড়না বা প্যান্টের মাপ ইত্যাদি লিখুন..."
+                        required></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-gold" style="width:100%; padding:14px; font-size:16px;">📩 ছবিসহ
@@ -1500,24 +1529,24 @@
     <div id="reviews-page" class="page-view">
         <div style="padding-top:35px;">
             <h2 class="section-title">⭐ সম্মানিত কাস্টমারদের রিভিউ</h2>
-            <p class="section-subtitle">আমাদের নিয়মিত ক্রেতাদের অভিজ্ঞতা ও মতামত</p>
+            <p class="section-subtitle">আমাদের নিয়মিত ক্রেতাদের অভিজ্ঞতা ও মতামত</p>
             <div class="reviews-grid">
                 <div class="review-card">
                     <div style="color:#d4af37; font-size:18px;">★★★★★</div>
                     <p style="margin:8px 0; font-style:italic;">"আনাস ফ্যাশন হাউজ থেকে জর্জেট থ্রি-পিস এবং কাস্টম
-                        টেইলরিং সেকশন থেকে নিজের মাপে একটি জামা বানিয়েছিলাম। ফিটিং একদম পারফেক্ট হয়েছে!"</p>
+                        টেইলরিং সেকশন থেকে নিজের মাপে একটি জামা বানিয়েছিলাম। ফিটিং একদম পারফেক্ট হয়েছে!"</p>
                     <strong>— নুসরাত জাহান, বগুড়া</strong>
                 </div>
                 <div class="review-card">
                     <div style="color:#d4af37; font-size:18px;">★★★★★</div>
                     <p style="margin:8px 0; font-style:italic;">"Pay Order-এ বিকাশের মাধ্যমে পেমেন্ট করেছিলাম, সাথে সাথে
-                        অর্ডার কনফার্মেশন নোটিফিকেশন পেয়েছি এবং ২ দিনের মধ্যে ডেলিভারি হাতে পেয়েছি।"</p>
+                        অর্ডার কনফার্মেশন নোটিফিকেশন পেয়েছি এবং ২ দিনের মধ্যে ডেলিভারি হাতে পেয়েছি।"</p>
                     <strong>— তানভীর আহমেদ, ঢাকা</strong>
                 </div>
                 <div class="review-card">
                     <div style="color:#d4af37; font-size:18px;">★★★★★</div>
                     <p style="margin:8px 0; font-style:italic;">"দুবাই চেরি বোরকা সেট এবং বাচ্চার জন্য উইন্টার হুডি
-                        নিয়েছিলাম। কাপড়ের মান ও সেলাই অসাধারণ।"</p>
+                        নিয়েছিলাম। কাপড়ের মান ও সেলাই অসাধারণ।"</p>
                     <strong>— সাদিয়া ইসলাম, রাজশাহী</strong>
                 </div>
             </div>
@@ -1528,7 +1557,7 @@
     <div id="checkout-page" class="page-view">
         <div class="checkout-container">
             <h2 class="section-title">🛍️ অর্ডার কনফার্মেশন ও পেমেন্ট ফর্ম</h2>
-            <p class="section-subtitle">Hand Pay Order অথবা Pay Order (বিকাশ, নগদ, রকেট, ব্যাংক) নির্বাচন করে অর্ডার
+            <p class="section-subtitle">Cash on Delivery অথবা Pay Order (বিকাশ, নগদ, রকেট, ব্যাংক) নির্বাচন করে অর্ডার
                 সম্পন্ন করুন</p>
 
             <form onsubmit="processFinalOrder(event)">
@@ -1597,8 +1626,9 @@
                         <div class="checkout-box-title">৪. অর্ডার ধরন ও পেমেন্ট মেথড</div>
                         <div class="payment-methods-box">
                             <label class="radio-row" style="color:#063729;">
-                                <span><input type="radio" name="orderMode" value="Hand Pay Order (ক্যাশ অন ডেলিভারি)"
-                                        checked onchange="toggleOrderMode()"> 🤝 Hand Pay Order (পণ্য হাতে পেয়ে টাকা
+                                <span><input type="radio" name="orderMode"
+                                        value="Cash on Delivery (পণ্য হাতে পেয়ে টাকা দিন)" checked
+                                        onchange="toggleOrderMode()"> 🤝 Cash on Delivery (পণ্য হাতে পেয়ে টাকা
                                     দিন)</span>
                             </label>
                             <label class="radio-row" style="color:#8b1e2b;">
@@ -1616,17 +1646,17 @@
                                     <option value="bKash (বিকাশ)">bKash (বিকাশ পার্সোনাল)</option>
                                     <option value="Nagad (নগদ)">Nagad (নগদ পার্সোনাল)</option>
                                     <option value="Rocket (রকেট)">Rocket (রকেট পার্সোনাল)</option>
-                                    <option value="Upay (উপায়)">Upay (উপায়)</option>
+                                    <option value="Upay (উপায়)">Upay (উপায়)</option>
                                     <option value="Bank Transfer (ব্যাংক অ্যাকাউন্ট)">Bank Transfer (ইসলামী ব্যাংক /
                                         ডাচ-বাংলা ব্যাংক)</option>
                                 </select>
 
                                 <div id="gatewayAccountInfo" class="account-details-card">
-                                    📱 <strong>bKash Personal:</strong> 01341725738 (Send Money করুন)
+                                    📱 <strong>bKash Personal:</strong> 01341725738 (Send Money / Cash Out করুন)
                                 </div>
 
                                 <div class="input-group" style="margin-top:10px;">
-                                    <label>যে নম্বর থেকে টাকা পাঠিয়েছেন (১১ ডিজিট) *</label>
+                                    <label>যে নম্বর থেকে টাকা পাঠিয়েছেন (১১ ডিজিট) *</label>
                                     <input type="tel" id="senderPhoneInput" maxlength="11"
                                         placeholder="যেমন: 017XXXXXXXX">
                                 </div>
@@ -1639,7 +1669,7 @@
 
                                 <p
                                     style="font-size:12px; color:#d90429; background:#ffe5ec; padding:8px; border-radius:6px; font-weight:600;">
-                                    ⚠️ সতর্কবার্তা: টাকা না পাঠিয়ে ভুল বা ভুয়া TrxID দিলে অর্ডারটি স্বয়ংক্রিয়ভাবে
+                                    ⚠️ সতর্কবার্তা: টাকা না পাঠিয়ে ভুল বা ভুয়া TrxID দিলে অর্ডারটি স্বয়ংক্রিয়ভাবে
                                     বাতিল বলে গণ্য হবে।
                                 </p>
                             </div>
@@ -1672,8 +1702,20 @@
     <!-- ==================== পেজ ৭: যোগাযোগ পেজ ==================== -->
     <div id="contact-page" class="page-view">
         <div class="form-page-container" style="text-align:center;">
-            <img src="logo.png" alt="Anas Fabrics Logo"
-                style="width:95px; height:95px; border-radius:50%; border:2px solid #d4af37; margin-bottom:10px;">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                style="width:95px; height:95px; border-radius:50%; border:2px solid #d4af37; background:#fff; margin-bottom:10px;">
+                <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#d4af37" stroke-width="5" />
+                <circle cx="100" cy="100" r="84" fill="none" stroke="#063729" stroke-width="2.5"
+                    stroke-dasharray="10 5" />
+                <text x="65" y="58" font-size="24" text-anchor="middle">🪡</text>
+                <text x="135" y="58" font-size="24" text-anchor="middle">✂️</text>
+                <text x="100" y="108" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#063729"
+                    text-anchor="middle" letter-spacing="2">ANAS</text>
+                <text x="100" y="128" font-family="Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#0d2847"
+                    text-anchor="middle">FABRICS &amp; LADIES TAILORS</text>
+                <text x="72" y="160" font-size="20" text-anchor="middle">🧵</text>
+                <text x="128" y="160" font-size="22" text-anchor="middle">👗</text>
+            </svg>
             <h2 class="section-title">📞 আমাদের সাথে যোগাযোগ করুন</h2>
             <p class="section-subtitle">যেকোনো অর্ডার, কাস্টম টেইলরিং বা সেলার পার্টনারশিপের জন্য সরাসরি যোগাযোগ করুন
             </p>
@@ -1685,7 +1727,7 @@
             </div>
             <br>
             <a href="https://wa.me/8801341725738" target="_blank" class="btn"
-                style="background:#25D366; border:none; font-size:16px;">💬 সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন</a>
+                style="background:#25D366; border:none; font-size:16px;">💬 সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন</a>
         </div>
     </div>
 
@@ -1693,25 +1735,24 @@
     <div id="orderNotifModal" class="notification-modal">
         <div class="notification-card">
             <div class="notif-icon">✅</div>
-            <h3 style="color:#063729; font-size:22px;">অর্ডার সফলভাবে গৃহীত হয়েছে!</h3>
-            <p style="font-size:14px; color:#555; margin-top:5px;">ধন্যবাদ! আপনার অর্ডারের নোটিফিকেশন ও ইনভয়েস নিচে তৈরি
-                হয়েছে:</p>
+            <h3 style="color:#063729; font-size:22px;">অর্ডার সফলভাবে গৃহীত হয়েছে!</h3>
+            <p style="font-size:14px; color:#555; margin-top:5px;">ধন্যবাদ! আপনার অর্ডারের নোটিফিকেশন ও ইনভয়েস নিচে
+                তৈরি হয়েছে:</p>
 
             <div class="receipt-box" id="notifReceiptDetails"></div>
 
             <button class="btn"
                 style="width:100%; background:#25D366; border:none; padding:12px; font-size:15px; margin-bottom:8px;"
-                id="sendWhatsAppFinalBtn">📲 হোয়াটসঅ্যাপে রিসিট পাঠিয়ে কনফার্ম করুন</button>
+                id="sendWhatsAppFinalBtn">📲 হোয়াটসঅ্যাপে রিসিট পাঠিয়ে কনফার্ম করুন</button>
             <button class="btn btn-secondary" style="width:100%;" onclick="closeNotifModal()">বন্ধ করুন</button>
         </div>
     </div>
 
-    <!-- ফ্লোটিং হোয়াটসঅ্যাপ বাটন -->
+    <!-- ফ্লোটিং হোয়াটসঅ্যাপ বাটন -->
     <a href="https://wa.me/8801341725738" target="_blank" class="floating-whatsapp">💬 WhatsApp</a>
 
     <!-- ==================== Naturo স্টাইল নতুন ফুটার সেকশন ==================== -->
     <footer class="naturo-footer">
-        <!-- সাপোর্ট ব্যানার -->
         <div class="footer-support-banner">
             <div class="support-text">
                 <h3>কিছু জানার আছে?</h3>
@@ -1723,11 +1764,18 @@
             </div>
         </div>
 
-        <!-- ফুটার মেইন গ্রিড -->
         <div class="naturo-footer-grid">
             <div class="footer-col">
                 <div class="footer-brand-logo">
-                    <img src="logo.png" alt="Anas Logo">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#d4af37" stroke-width="6" />
+                        <circle cx="100" cy="100" r="82" fill="none" stroke="#063729" stroke-width="3"
+                            stroke-dasharray="10 5" />
+                        <text x="100" y="114" font-family="Georgia, serif" font-size="52" font-weight="bold"
+                            fill="#063729" text-anchor="middle">ANAS</text>
+                        <text x="100" y="140" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
+                            fill="#0d2847" text-anchor="middle">TAILORS</text>
+                    </svg>
                     <span>ANAS FASHION</span>
                 </div>
                 <p>আনাস ফ্যাশন হাউজ হলো প্রিমিয়াম লেডিস টেইলারিং ও আধুনিক পোশাকের বিশ্বস্ত প্রতিষ্ঠান। ঘরে বসেই নিজের
@@ -1790,10 +1838,9 @@
             </div>
         </div>
 
-        <!-- ফুটার বটম বার -->
         <div class="footer-bottom-bar">
-            <p>© 2026 Anas Fabrics & Ladies Tailors. All Rights Reserved.</p>
-            <p>💳 Accepted: Bkash, Nagad, Rocket, Upay, Bank Transfer & Hand Pay</p>
+            <p>© 2026 Anas Fabrics &amp; Ladies Tailors. All Rights Reserved.</p>
+            <p>💳 Accepted: Bkash, Nagad, Rocket, Upay, Bank Transfer &amp; Cash on Delivery</p>
         </div>
     </footer>
 
@@ -1847,7 +1894,7 @@
         function addToCart(name, price) {
             cartItems.push({ name, price });
             document.getElementById("cartCount").innerText = cartItems.length;
-            alert(`"${name}" আপনার কার্টে যুক্ত হয়েছে!`);
+            alert(`"${name}" আপনার কার্টে যুক্ত হয়েছে!`);
         }
 
         function openCartModal() {
@@ -1928,13 +1975,13 @@
             const gw = document.getElementById("paymentGateway").value;
             const infoBox = document.getElementById("gatewayAccountInfo");
             if (gw.includes("bKash")) {
-                infoBox.innerHTML = "📱 <strong>bKash Personal:</strong> 01341725738 (Send Money/cash out করুন)";
+                infoBox.innerHTML = "📱 <strong>bKash Personal:</strong> 01341725738 (Send Money / Cash Out করুন)";
             } else if (gw.includes("Nagad")) {
-                infoBox.innerHTML = "📱 <strong>Nagad Personal:</strong> 01341725738 (Send Money/cash out করুন)";
+                infoBox.innerHTML = "📱 <strong>Nagad Personal:</strong> 01341725738 (Send Money / Cash Out করুন)";
             } else if (gw.includes("Rocket")) {
-                infoBox.innerHTML = "📱 <strong>Rocket Personal:</strong> 01341725738-9 (Send Money/cash out করুন)";
+                infoBox.innerHTML = "📱 <strong>Rocket Personal:</strong> 01341725738-9 (Send Money / Cash Out করুন)";
             } else if (gw.includes("Upay")) {
-                infoBox.innerHTML = "📱 <strong>Upay Personal:</strong> 01341725738 (Send Money/cash out  করুন)";
+                infoBox.innerHTML = "📱 <strong>Upay Personal:</strong> 01341725738 (Send Money / Cash Out করুন)";
             } else {
                 infoBox.innerHTML = "🏦 <strong>Bank Account:</strong> Anas Fashion House | A/C: 2050123456789 (Islami Bank Bangladesh PLC, Bogura Branch)";
             }
@@ -1950,7 +1997,7 @@
             const shippingCost = parseInt(document.querySelector('input[name="shippingArea"]:checked').value);
             const orderMode = document.querySelector('input[name="orderMode"]:checked').value;
 
-            let paymentInfo = "cash on dalivary (পণ্য হাতে পেয়ে ক্যাশ পেমেন্ট)";
+            let paymentInfo = "Cash on Delivery (পণ্য হাতে পেয়ে ক্যাশ পেমেন্ট)";
 
             if (orderMode.includes("Pay Order")) {
                 const gw = document.getElementById("paymentGateway").value;
@@ -1959,14 +2006,14 @@
 
                 const phoneRegex = /^01[3-9]\d{8}$/;
                 if (!phoneRegex.test(senderPhone)) {
-                    alert("❌ অনুগ্রহ করে যে নম্বর থেকে টাকা পাঠিয়েছেন সেই সঠিক ১১ ডিজিটের নম্বরটি লিখুন (যেমন: 017XXXXXXXX)।");
+                    alert("❌ অনুগ্রহ করে যে নম্বর থেকে টাকা পাঠিয়েছেন সেই সঠিক ১১ ডিজিটের নম্বরটি লিখুন (যেমন: 017XXXXXXXX)।");
                     document.getElementById("senderPhoneInput").focus();
                     return;
                 }
 
                 const trxRegex = /^(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]{8,15}$/;
                 if (!gw.includes("Bank") && !trxRegex.test(trx)) {
-                    alert("❌ ভুল Transaction ID! বিকাশ/নগদ/রকেটের মেসেজে আসা ৮ থেকে ১০ অক্ষরের সঠিক TrxID (ইংরেজি অক্ষর ও সংখ্যার সমন্বয়) দিন।");
+                    alert("❌ ভুল Transaction ID! বিকাশ/নগদ/রকেটের মেসেজে আসা ৮ থেকে ১০ অক্ষরের সঠিক TrxID (ইংরেজি অক্ষর ও সংখ্যার সমন্বয়) দিন।");
                     document.getElementById("trxIdInput").focus();
                     return;
                 }
@@ -2024,7 +2071,7 @@
 
             const msg = `✂️ *কাস্টম লেডিস টেইলরিং অর্ডার*\n\n` +
                 `👗 *পোশাক:* ${dress}\n` +
-                `🧵 *কাপড়:* ${fabric}\n` +
+                `🧵 *কাপড়:* ${fabric}\n` +
                 `📏 *মাপ (ইঞ্চি):* লম্বা: ${len}, বডি: ${chest}, কোমর: ${waist}, হিপ: ${hip}, হাতা: ${sleeve}, গলা: ${neck}\n` +
                 `📝 *বিশেষ ডিজাইন:* ${notes}\n\n` +
                 `👤 *নাম:* ${name} (${phone})\n` +
@@ -2033,7 +2080,6 @@
             window.open(`https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`, "_blank");
         }
 
-        // সেলার আপলোড করা ছবির লাইভ প্রিভিউ
         function previewSellerImage(event) {
             const file = event.target.files[0];
             if (file) {
@@ -2052,7 +2098,7 @@
             event.preventDefault();
             const shop = document.getElementById("sShopName").value;
             const phone = document.getElementById("sPhone").value;
-            pName = document.getElementById("sProductName").value;
+            const pName = document.getElementById("sProductName").value;
             const price = document.getElementById("sPrice").value;
             const cat = document.getElementById("sCategory").value;
             const sizes = document.getElementById("sSizes").value;
@@ -2065,9 +2111,9 @@
                 `📂 *ক্যাটাগরি:* ${cat} | *সাইজ:* ${sizes}\n` +
                 `🖼️ *আপলোডকৃত ছবির ফাইল:* ${uploadedSellerFileName}\n` +
                 `📝 *বিবরণ:* ${desc}\n\n` +
-                `⚠️ অনুগ্রহ করে এই চ্যাটে আপনার পণ্যের আপলোড করা ছবিটি (Attach করে) পাঠিয়ে দিন। অ্যাডমিন অ্যাপ্রুভাল দিলে ওয়েবসাইটে লাইভ হবে।`;
+                `⚠️ অনুগ্রহ করে এই চ্যাটে আপনার পণ্যের আপলোড করা ছবিটি (Attach করে) পাঠিয়ে দিন। অ্যাডমিন অ্যাপ্রুভাল দিলে ওয়েবসাইটে লাইভ হবে।`;
 
-            alert("✅ আপনার আবেদন ও ছবির তথ্য প্রস্তুত হয়েছে! পরবর্তী স্ক্রিনে হোয়াটসঅ্যাপ ওপেন হলে আপনার গ্যালারি থেকে পণ্যের ছবিটি অ্যাটাচ করে পাঠিয়ে দিন।");
+            alert("✅ আপনার আবেদন ও ছবির তথ্য প্রস্তুত হয়েছে! পরবর্তী স্ক্রিনে হোয়াটসঅ্যাপ ওপেন হলে আপনার গ্যালারি থেকে পণ্যের ছবিটি অ্যাটাচ করে পাঠিয়ে দিন।");
             window.open(`https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`, "_blank");
         }
     </script>
