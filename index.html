@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>আনাস ফ্যাশন হাউজ | Anas Fabrics & Ladies Tailors</title>
-    <!-- ইনলাইন ভেক্টর ফ্যাভিকন (আলাদা ফাইল ছাড়াই ব্রাউজার ট্যাবে দেখাবে) -->
+    <!-- ইনলাইন ভেক্টর ফ্যাভিকন (আলাদা ফাইল ছাড়াই ব্রাউজার ট্যাবে দেখাবে) -->
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23ffffff' stroke='%23d4af37' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='41' fill='none' stroke='%23063729' stroke-width='2' stroke-dasharray='6 3'/%3E%3Ctext x='50' y='57' font-family='Georgia, serif' font-size='28' font-weight='bold' fill='%23063729' text-anchor='middle'%3EANAS%3C/text%3E%3Ctext x='50' y='71' font-family='sans-serif' font-size='7' font-weight='bold' fill='%230d2847' text-anchor='middle'%3ETAILORS%3C/text%3E%3C/svg%3E">
     <style>
@@ -259,7 +259,7 @@
             display: flex;
             gap: 20px;
             width: max-content;
-            animation: autoSlide 32s linear infinite;
+            animation: autoSlide 36s linear infinite;
         }
 
         .slider-track:hover {
@@ -289,8 +289,11 @@
 
         .slide-card img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
+            object-position: center top;
+            background-color: #f1f5f9;
+            display: block;
         }
 
         .slide-card-body {
@@ -398,21 +401,27 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+            gap: 24px;
         }
 
         .product-card {
             background: #fff;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             text-align: center;
-            border: 1px solid #eee;
+            border: 1px solid #e6dfd1;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(6, 55, 41, 0.15);
         }
 
         .badge {
@@ -421,10 +430,12 @@
             left: 10px;
             background-color: #0d2847;
             color: #fff;
-            padding: 3px 9px;
+            padding: 4px 10px;
             font-size: 11px;
-            border-radius: 4px;
+            border-radius: 5px;
             font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
         }
 
         .badge.women {
@@ -441,8 +452,17 @@
 
         .product-card img {
             width: 100%;
-            height: 240px;
+            height: 270px;
             object-fit: cover;
+            object-position: center;
+            background-color: #f8fafc;
+            border-bottom: 1px solid #f0ebe1;
+            transition: transform 0.35s ease;
+            display: block;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.03);
         }
 
         .product-info {
@@ -456,30 +476,31 @@
         }
 
         .size-info {
-            font-size: 12px;
-            color: #666;
+            font-size: 12.5px;
+            color: #555;
             margin-bottom: 6px;
+            font-weight: 500;
         }
 
         .price {
             color: #8b1e2b;
-            font-size: 17px;
+            font-size: 17.5px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .card-actions {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             justify-content: center;
         }
 
         .btn-cart {
             background-color: #0d2847;
             color: #fff;
-            padding: 8px 12px;
+            padding: 8px 14px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 13px;
             cursor: pointer;
             font-weight: bold;
@@ -616,8 +637,8 @@
         }
 
         .selected-item-details img {
-            width: 55px;
-            height: 55px;
+            width: 58px;
+            height: 58px;
             border-radius: 6px;
             object-fit: cover;
         }
@@ -960,7 +981,7 @@
 
 <body>
 
-    <!-- নেভিগেশন বার (ইনলাইন লোগোসহ — আলাদা ফাইল আপলোড ছাড়াই দেখাবে) -->
+    <!-- নেভিগেশন বার -->
     <header>
         <div class="logo" onclick="switchPage('home-page', document.getElementById('nav-home'))">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -975,15 +996,12 @@
                 <circle cx="100" cy="100" r="84" fill="none" stroke="#063729" stroke-width="2.5"
                     stroke-dasharray="10 5" />
                 <circle cx="100" cy="100" r="76" fill="none" stroke="#d4af37" stroke-width="1.5" />
-                <!-- সেলাই মেশিন ও কাঁচির প্রতীক -->
                 <text x="65" y="58" font-size="24" text-anchor="middle">🪡</text>
                 <text x="135" y="58" font-size="24" text-anchor="middle">✂️</text>
-                <!-- মূল ব্র্যান্ড নাম -->
                 <text x="100" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="bold"
                     fill="url(#anasTextGrad)" text-anchor="middle" letter-spacing="2">ANAS</text>
                 <text x="100" y="128" font-family="Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#0d2847"
                     text-anchor="middle" letter-spacing="0.8">FABRICS &amp; LADIES TAILORS</text>
-                <!-- নিচের সুতা ও পোশাকের প্রতীক -->
                 <text x="72" y="160" font-size="20" text-anchor="middle">🧵</text>
                 <text x="128" y="160" font-size="22" text-anchor="middle">👗</text>
             </svg>
@@ -1010,7 +1028,6 @@
     <div id="home-page" class="page-view active-page">
         <section class="hero">
             <div class="hero-badge-top">✨ প্রিমিয়াম ফ্যাব্রিক্স • এক্সক্লুসিভ লেডিস টেইলরিং • ফ্যাশন হাউজ ✨</div>
-            <!-- হিরো ব্যানারের মাঝখানে ইনলাইন রয়্যাল লোগো -->
             <svg class="hero-logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#d4af37" stroke-width="4" />
                 <circle cx="100" cy="100" r="85" fill="none" stroke="#063729" stroke-width="2.5"
@@ -1046,6 +1063,49 @@
             <p class="section-subtitle">পছন্দের পোশাকটিতে ক্লিক করে সরাসরি অর্ডার করুন</p>
             <div class="slider-container">
                 <div class="slider-track" id="autoSliderTrack">
+                    <!-- নতুন যুক্ত ৪টি প্রোডাক্ট স্লাইডারে -->
+                    <div class="slide-card">
+                        <img src="p1.png" alt="Kajkora নীল থ্রি-পিস">
+                        <div class="slide-card-body">
+                            <h4>Kajkora থ্রি-পিস (নীল)</h4>
+                            <p>৳ ১,৫০০</p>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (নীল)', 1500, 'XXL', 'p1.png')">অর্ডার
+                                করুন</button>
+                        </div>
+                    </div>
+                    <div class="slide-card">
+                        <img src="p2.png" alt="Kajkora ল্যাভেন্ডার থ্রি-পিস">
+                        <div class="slide-card-body">
+                            <h4>Kajkora থ্রি-পিস (ল্যাভেন্ডার)</h4>
+                            <p>৳ ১,৮০০</p>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (ল্যাভেন্ডার)', 1800, 'XXL', 'p2.png')">অর্ডার
+                                করুন</button>
+                        </div>
+                    </div>
+                    <div class="slide-card">
+                        <img src="p3.png" alt="Kajkora সবুজ থ্রি-পিস">
+                        <div class="slide-card-body">
+                            <h4>Kajkora থ্রি-পিস (সবুজ)</h4>
+                            <p>৳ ২,০০০</p>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (সবুজ)', 2000, 'XXL', 'p3.png')">অর্ডার
+                                করুন</button>
+                        </div>
+                    </div>
+                    <div class="slide-card">
+                        <img src="p4.png" alt="Kajkora গোলাপি থ্রি-পিস">
+                        <div class="slide-card-body">
+                            <h4>Kajkora থ্রি-পিস (গোলাপি)</h4>
+                            <p>৳ ২,০০০</p>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (গোলাপি)', 2000, 'XXL', 'p4.png')">অর্ডার
+                                করুন</button>
+                        </div>
+                    </div>
+
+                    <!-- আগের স্লাইডার প্রোডাক্টসমূহ -->
                     <div class="slide-card">
                         <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80"
                             alt="জ্যাকেট">
@@ -1090,28 +1150,6 @@
                                 করুন</button>
                         </div>
                     </div>
-                    <div class="slide-card">
-                        <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=400&q=80"
-                            alt="বেবি হুডি">
-                        <div class="slide-card-body">
-                            <h4>কিডস কার্টুন ফ্লিস হুডি</h4>
-                            <p>৳ ৭৫০</p>
-                            <button class="btn"
-                                onclick="goToCheckoutWithProduct('কিডস কার্টুন প্রিন্ট ফ্লিস হুডি', 750, '২ - ৮ বছর', 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=400&q=80')">অর্ডার
-                                করুন</button>
-                        </div>
-                    </div>
-                    <div class="slide-card">
-                        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=400&q=80"
-                            alt="শার্ট">
-                        <div class="slide-card-body">
-                            <h4>ম্যানফেয়ার সলিড শার্ট</h4>
-                            <p>৳ ১,০৫০</p>
-                            <button class="btn"
-                                onclick="goToCheckoutWithProduct('ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট (MS-03)', 1050, 'M, L, XL', 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=400&q=80')">অর্ডার
-                                করুন</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1142,7 +1180,7 @@
             <div class="collection-top-bar">
                 <div class="search-corner-box">
                     <input type="text" id="searchInput" class="search-input" onkeyup="applyFilters()"
-                        placeholder="🔍 কাপড় খুঁজুন (গাউন, শার্ট, বোরকা, বেবি)...">
+                        placeholder="🔍 কাপড় খুঁজুন (Kajkora, গাউন, শার্ট, বোরকা)...">
                 </div>
 
                 <div class="filter-buttons">
@@ -1155,6 +1193,72 @@
             </div>
 
             <div class="product-grid" id="productGrid">
+                <!-- ==================== নতুন ৪টি প্রোডাক্ট (Kajkora) ==================== -->
+                <!-- নতুন প্রোডাক্ট ১ (p1.png) -->
+                <div class="product-card" data-category="women">
+                    <span class="badge women">মেয়েদের</span>
+                    <img src="p1.png" alt="Kajkora নীল থ্রি-পিস">
+                    <div class="product-info">
+                        <h3>Kajkora থ্রি-পিস (নীল)</h3>
+                        <p class="size-info">সাইজ: XXL</p>
+                        <p class="price">৳ ১,৫০০ টাকা</p>
+                        <div class="card-actions">
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (নীল)', 1500, 'XXL', 'p1.png')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (নীল)', 1500)">+ কার্ট</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- নতুন প্রোডাক্ট ২ (p2.png) -->
+                <div class="product-card" data-category="women">
+                    <span class="badge women">মেয়েদের</span>
+                    <img src="p2.png" alt="Kajkora ল্যাভেন্ডার থ্রি-পিস">
+                    <div class="product-info">
+                        <h3>Kajkora থ্রি-পিস (ল্যাভেন্ডার)</h3>
+                        <p class="size-info">সাইজ: XXL</p>
+                        <p class="price">৳ ১,৮০০ টাকা</p>
+                        <div class="card-actions">
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (ল্যাভেন্ডার)', 1800, 'XXL', 'p2.png')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (ল্যাভেন্ডার)', 1800)">+ কার্ট</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- নতুন প্রোডাক্ট ৩ (p3.png) -->
+                <div class="product-card" data-category="women">
+                    <span class="badge women">মেয়েদের</span>
+                    <img src="p3.png" alt="Kajkora সবুজ থ্রি-পিস">
+                    <div class="product-info">
+                        <h3>Kajkora থ্রি-পিস (সবুজ)</h3>
+                        <p class="size-info">সাইজ: XXL</p>
+                        <p class="price">৳ ২,০০০ টাকা</p>
+                        <div class="card-actions">
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (সবুজ)', 2000, 'XXL', 'p3.png')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (সবুজ)', 2000)">+ কার্ট</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- নতুন প্রোডাক্ট ৪ (p4.png) -->
+                <div class="product-card" data-category="women">
+                    <span class="badge women">মেয়েদের</span>
+                    <img src="p4.png" alt="Kajkora গোলাপি থ্রি-পিস">
+                    <div class="product-info">
+                        <h3>Kajkora থ্রি-পিস (গোলাপি)</h3>
+                        <p class="size-info">সাইজ: XXL</p>
+                        <p class="price">৳ ২,০০০ টাকা</p>
+                        <div class="card-actions">
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('Kajkora থ্রি-পিস (গোলাপি)', 2000, 'XXL', 'p4.png')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('Kajkora থ্রি-পিস (গোলাপি)', 2000)">+ কার্ট</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== আগের সব প্রোডাক্ট (অপরিবর্তিত) ==================== -->
                 <div class="product-card" data-category="men">
                     <span class="badge">ছেলেদের</span>
                     <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80"
@@ -1567,12 +1671,10 @@
                         <div class="checkout-box-title">১. নির্বাচিত পণ্য ও সাইজ</div>
                         <div class="selected-item-card">
                             <div class="selected-item-details">
-                                <img id="checkoutImg"
-                                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80"
-                                    alt="Product">
+                                <img id="checkoutImg" src="p1.png" alt="Product">
                                 <div>
-                                    <h4 id="checkoutProductName" style="font-size:15px;">স্টাইলিশ উইন্টার জ্যাকেট</h4>
-                                    <p id="checkoutUnitPriceText" style="color:#8b1e2b; font-weight:bold;">৳ ২,২০০</p>
+                                    <h4 id="checkoutProductName" style="font-size:15px;">Kajkora থ্রি-পিস (নীল)</h4>
+                                    <p id="checkoutUnitPriceText" style="color:#8b1e2b; font-weight:bold;">৳ ১,৫০০</p>
                                 </div>
                             </div>
                             <div class="qty-controls">
@@ -1585,9 +1687,7 @@
                         <div class="input-group">
                             <label>সাইজ / বয়স নির্বাচন করুন *</label>
                             <select id="checkoutSize" required>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
                             </select>
                         </div>
 
@@ -1677,8 +1777,8 @@
 
                         <div class="summary-box">
                             <div class="summary-line">
-                                <span id="summaryProductText">স্টাইলিশ উইন্টার জ্যাকেট × 1</span>
-                                <span id="summarySubtotalText">৳ ২,২০০</span>
+                                <span id="summaryProductText">Kajkora থ্রি-পিস (নীল) × 1</span>
+                                <span id="summarySubtotalText">৳ ১,৫০০</span>
                             </div>
                             <div class="summary-line">
                                 <span>ডেলিভারি চার্জ</span>
@@ -1686,13 +1786,13 @@
                             </div>
                             <div class="summary-line total">
                                 <span>সর্বমোট বিল:</span>
-                                <span id="summaryTotalText">৳ ২,২৫০</span>
+                                <span id="summaryTotalText">৳ ১,৫৫০</span>
                             </div>
                         </div>
 
                         <button type="submit" class="btn btn-gold"
                             style="width:100%; padding:15px; font-size:17px; border-radius:30px;"
-                            id="confirmBtnText">অর্ডার কনফার্ম করুন ৳ ২,২৫০</button>
+                            id="confirmBtnText">অর্ডার কনফার্ম করুন ৳ ১,৫৫০</button>
                     </div>
                 </div>
             </form>
@@ -1732,6 +1832,7 @@
             </div>
         </div>
     </div>
+
     <!-- ==================== অর্ডার কনফার্মেশন নোটিফিকেশন পপ-আপ ==================== -->
     <div id="orderNotifModal" class="notification-modal">
         <div class="notification-card">
@@ -1847,8 +1948,8 @@
 
     <script>
         let selectedCategory = "all";
-        let checkoutProduct = "স্টাইলিশ উইন্টার জ্যাকেট";
-        let checkoutUnitPrice = 2200;
+        let checkoutProduct = "Kajkora থ্রি-পিস (নীল)";
+        let checkoutUnitPrice = 1500;
         let checkoutQuantity = 1;
         let cartItems = [];
         let pendingWhatsAppURL = "";
@@ -1909,7 +2010,7 @@
                 totalCart += item.price;
                 names.push(item.name);
             });
-            goToCheckoutWithProduct(names.join(" + "), totalCart, "Standard / Mixed", "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=400&q=80");
+            goToCheckoutWithProduct(names.join(" + "), totalCart, "Standard / Mixed", "p1.png");
         }
 
         function goToCheckoutWithProduct(name, price, sizes, imgUrl) {
@@ -2122,3 +2223,4 @@
 </body>
 
 </html>
+
