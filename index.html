@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>আনাস ফ্যাশন হাউজ | Anas Fabrics & Ladies Tailors</title>
-    <!-- ইনলাইন ভেক্টর ফ্যাভিকন (আলাদা ফাইল ছাড়াই ব্রাউজার ট্যাবে দেখাবে) -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23ffffff' stroke='%23d4af37' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='41' fill='none' stroke='%23063729' stroke-width='2' stroke-dasharray='6 3'/%3E%3Ctext x='50' y='57' font-family='Georgia, serif' font-size='28' font-weight='bold' fill='%23063729' text-anchor='middle'%3EANAS%3C/text%3E%3Ctext x='50' y='71' font-family='sans-serif' font-size='7' font-weight='bold' fill='%230d2847' text-anchor='middle'%3ETAILORS%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/webp" href="logo.png.webp">
     <style>
         * {
             margin: 0;
@@ -23,7 +21,7 @@
             overflow-x: hidden;
         }
 
-        /* নেভিগেশন বার (লোগোর এমেরাল্ড ও নেভি থিম) */
+        /* নেভিগেশন বার */
         header {
             background: linear-gradient(90deg, #062b21 0%, #0d2847 100%);
             color: #fff;
@@ -48,12 +46,12 @@
             cursor: pointer;
         }
 
-        .logo svg {
+        .logo img {
             width: 54px;
             height: 54px;
             border-radius: 50%;
             background-color: #ffffff;
-            padding: 2px;
+            object-fit: cover;
             border: 2px solid #d4af37;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
             flex-shrink: 0;
@@ -132,7 +130,7 @@
             }
         }
 
-        /* লোগো অনুযায়ী কাস্টমাইজড রয়্যাল হিরো ব্যানার */
+        /* রয়্যাল হিরো ব্যানার */
         .hero {
             background: linear-gradient(135deg, rgba(6, 55, 41, 0.90) 0%, rgba(13, 40, 71, 0.88) 55%, rgba(88, 24, 31, 0.85) 100%),
                 url('https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1400&q=80') center/cover;
@@ -165,7 +163,7 @@
             height: 145px;
             border-radius: 50%;
             background: #ffffff;
-            padding: 4px;
+            object-fit: cover;
             border: 4px solid #d4af37;
             margin-bottom: 18px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.55), 0 0 22px rgba(212, 175, 55, 0.45);
@@ -335,7 +333,7 @@
             margin-bottom: 6px;
         }
 
-        /* কালেকশন পেজ ও বাম কর্নারের সার্চ বার */
+        /* কালেকশন পেজ ও সার্চ বার */
         .products-section {
             padding: 40px 4%;
         }
@@ -563,7 +561,6 @@
             border-color: #063729;
         }
 
-        /* ফাইল আপলোড বক্স স্টাইল */
         .file-upload-wrapper {
             border: 2px dashed #063729;
             background-color: #f4faf7;
@@ -908,12 +905,13 @@
             margin-bottom: 12px;
         }
 
-        .footer-brand-logo svg {
+        .footer-brand-logo img {
             width: 44px;
             height: 44px;
             border-radius: 50%;
             border: 2px solid #d4af37;
             background: #fff;
+            object-fit: cover;
             flex-shrink: 0;
         }
 
@@ -1140,27 +1138,7 @@
     <!-- নেভিগেশন বার -->
     <header>
         <div class="logo" onclick="switchPage('home-page', document.getElementById('nav-home'))">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="anasTextGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#063729" />
-                        <stop offset="50%" stop-color="#0d2847" />
-                        <stop offset="100%" stop-color="#8b1e2b" />
-                    </linearGradient>
-                </defs>
-                <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#d4af37" stroke-width="5" />
-                <circle cx="100" cy="100" r="84" fill="none" stroke="#063729" stroke-width="2.5"
-                    stroke-dasharray="10 5" />
-                <circle cx="100" cy="100" r="76" fill="none" stroke="#d4af37" stroke-width="1.5" />
-                <text x="65" y="58" font-size="24" text-anchor="middle">🪡</text>
-                <text x="135" y="58" font-size="24" text-anchor="middle">✂️</text>
-                <text x="100" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="bold"
-                    fill="url(#anasTextGrad)" text-anchor="middle" letter-spacing="2">ANAS</text>
-                <text x="100" y="128" font-family="Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#0d2847"
-                    text-anchor="middle" letter-spacing="0.8">FABRICS &amp; LADIES TAILORS</text>
-                <text x="72" y="160" font-size="20" text-anchor="middle">🧵</text>
-                <text x="128" y="160" font-size="22" text-anchor="middle">👗</text>
-            </svg>
+            <img src="logo.png.webp" alt="Anas Fashion Logo" class="site-logo-img">
             <div>
                 আনাস ফ্যাশন হাউজ
                 <span>Anas Fabrics &amp; Ladies Tailors</span>
@@ -1184,20 +1162,7 @@
     <div id="home-page" class="page-view active-page">
         <section class="hero">
             <div class="hero-badge-top">✨ প্রিমিয়াম ফ্যাব্রিক্স • এক্সক্লুসিভ লেডিস টেইলরিং • ফ্যাশন হাউজ ✨</div>
-            <svg class="hero-logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#d4af37" stroke-width="4" />
-                <circle cx="100" cy="100" r="85" fill="none" stroke="#063729" stroke-width="2.5"
-                    stroke-dasharray="10 5" />
-                <circle cx="100" cy="100" r="77" fill="none" stroke="#d4af37" stroke-width="1.5" />
-                <text x="65" y="56" font-size="25" text-anchor="middle">🪡</text>
-                <text x="135" y="56" font-size="25" text-anchor="middle">✂️</text>
-                <text x="100" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="bold"
-                    fill="#063729" text-anchor="middle" letter-spacing="2">ANAS</text>
-                <text x="100" y="128" font-family="Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#0d2847"
-                    text-anchor="middle" letter-spacing="0.8">FABRICS &amp; LADIES TAILORS</text>
-                <text x="72" y="160" font-size="21" text-anchor="middle">🧵</text>
-                <text x="128" y="160" font-size="23" text-anchor="middle">👗</text>
-            </svg>
+            <img src="logo.png.webp" alt="Anas Fashion Logo" class="hero-logo-svg site-logo-img">
             <h1>ANAS FABRICS &amp; LADIES TAILORS</h1>
             <p>ঐতিহ্য ও আধুনিকতার অপূর্ব সমন্বয়! ছেলে, মেয়ে ও বাচ্চাদের প্রিমিয়াম রেডিমেড পোশাকের পাশাপাশি দক্ষ
                 কারিগর দ্বারা আপনার নিজের পছন্দমতো মাপ ও ডিজাইনে পোশাক তৈরি করে নেওয়ার বিশ্বস্ত প্রতিষ্ঠান।</p>
@@ -1219,7 +1184,6 @@
             <p class="section-subtitle">পছন্দের পোশাকটিতে ক্লিক করে সরাসরি অর্ডার করুন</p>
             <div class="slider-container">
                 <div class="slider-track" id="autoSliderTrack">
-                    <!-- নতুন যুক্ত ৪টি প্রোডাক্ট স্লাইডারে -->
                     <div class="slide-card">
                         <img src="p1.png.png" alt="Kajkora নীল থ্রি-পিস">
                         <div class="slide-card-body">
@@ -1261,7 +1225,6 @@
                         </div>
                     </div>
 
-                    <!-- আগের স্লাইডার প্রোডাক্টসমূহ -->
                     <div class="slide-card">
                         <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80"
                             alt="জ্যাকেট">
@@ -1349,8 +1312,6 @@
             </div>
 
             <div class="product-grid" id="productGrid">
-                <!-- ==================== নতুন ৪টি প্রোডাক্ট (Kajkora) ==================== -->
-                <!-- নতুন প্রোডাক্ট ১ (p1.png.png) -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="p1.png.png" alt="Kajkora নীল থ্রি-পিস">
@@ -1367,7 +1328,6 @@
                     </div>
                 </div>
 
-                <!-- নতুন প্রোডাক্ট ২ (p2.png.png) -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="p2.png.png" alt="Kajkora ল্যাভেন্ডার থ্রি-পিস">
@@ -1384,7 +1344,6 @@
                     </div>
                 </div>
 
-                <!-- নতুন প্রোডাক্ট ৩ (p3.png.png) -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="p3.png.png" alt="Kajkora সবুজ থ্রি-পিস">
@@ -1401,7 +1360,6 @@
                     </div>
                 </div>
 
-                <!-- নতুন প্রোডাক্ট ৪ (p4.png.png) -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
                     <img src="p4.png.png" alt="Kajkora গোলাপি থ্রি-পিস">
@@ -1418,7 +1376,6 @@
                     </div>
                 </div>
 
-                <!-- ==================== আগের সব প্রোডাক্ট (অপরিবর্তিত) ==================== -->
                 <div class="product-card" data-category="men">
                     <span class="badge">ছেলেদের</span>
                     <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80"
@@ -1759,7 +1716,6 @@
                     </div>
                 </div>
 
-                <!-- পণ্যের ছবি ফাইল আপলোড করার অপশন -->
                 <div class="input-group">
                     <label>পণ্যের আসল ছবি আপলোড করুন (Upload Product Photo) *</label>
                     <div class="file-upload-wrapper" onclick="document.getElementById('sProductImageFile').click()">
@@ -1826,7 +1782,6 @@
 
             <form onsubmit="processFinalOrder(event)">
                 <div class="checkout-grid">
-                    <!-- বাম পাশ -->
                     <div>
                         <div class="checkout-box-title">১. নির্বাচিত পণ্য ও সাইজ</div>
                         <div class="selected-item-card">
@@ -1867,7 +1822,6 @@
                         </div>
                     </div>
 
-                    <!-- ডান পাশ -->
                     <div>
                         <div class="checkout-box-title">৩. ডেলিভারি এলাকা (Shipping)</div>
                         <div class="order-type-box">
@@ -1962,20 +1916,8 @@
     <!-- ==================== পেজ ৭: যোগাযোগ পেজ ==================== -->
     <div id="contact-page" class="page-view">
         <div class="form-page-container" style="text-align:center;">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
-                style="width:95px; height:95px; border-radius:50%; border:2px solid #d4af37; background:#fff; margin-bottom:10px;">
-                <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#d4af37" stroke-width="5" />
-                <circle cx="100" cy="100" r="84" fill="none" stroke="#063729" stroke-width="2.5"
-                    stroke-dasharray="10 5" />
-                <text x="65" y="58" font-size="24" text-anchor="middle">🪡</text>
-                <text x="135" y="58" font-size="24" text-anchor="middle">✂️</text>
-                <text x="100" y="108" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#063729"
-                    text-anchor="middle" letter-spacing="2">ANAS</text>
-                <text x="100" y="128" font-family="Arial, sans-serif" font-size="9.5" font-weight="bold" fill="#0d2847"
-                    text-anchor="middle">FABRICS &amp; LADIES TAILORS</text>
-                <text x="72" y="160" font-size="20" text-anchor="middle">🧵</text>
-                <text x="128" y="160" font-size="22" text-anchor="middle">👗</text>
-            </svg>
+            <img src="logo.png.webp" alt="Anas Fashion Logo" class="site-logo-img"
+                style="width:95px; height:95px; border-radius:50%; border:2px solid #d4af37; background:#fff; object-fit:cover; margin-bottom:10px;">
             <h2 class="section-title">📞 আমাদের সাথে যোগাযোগ করুন</h2>
             <p class="section-subtitle">যেকোনো অর্ডার, কাস্টম টেইলরিং বা সেলার পার্টনারশিপের জন্য সরাসরি যোগাযোগ করুন
             </p>
@@ -2031,15 +1973,7 @@
         <div class="naturo-footer-grid">
             <div class="footer-col">
                 <div class="footer-brand-logo">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="100" cy="100" r="95" fill="#ffffff" stroke="#d4af37" stroke-width="6" />
-                        <circle cx="100" cy="100" r="82" fill="none" stroke="#063729" stroke-width="3"
-                            stroke-dasharray="10 5" />
-                        <text x="100" y="114" font-family="Georgia, serif" font-size="52" font-weight="bold"
-                            fill="#063729" text-anchor="middle">ANAS</text>
-                        <text x="100" y="140" font-family="Arial, sans-serif" font-size="14" font-weight="bold"
-                            fill="#0d2847" text-anchor="middle">TAILORS</text>
-                    </svg>
+                    <img src="logo.png.webp" alt="Anas Fashion Logo" class="site-logo-img">
                     <span>ANAS FASHION</span>
                 </div>
                 <p>আনাস ফ্যাশন হাউজ হলো প্রিমিয়াম লেডিস টেইলারিং ও আধুনিক পোশাকের বিশ্বস্ত প্রতিষ্ঠান। ঘরে বসেই নিজের
@@ -2107,6 +2041,128 @@
             <p>💳 Accepted: Bkash, Nagad, Rocket, Upay, Bank Transfer &amp; Cash on Delivery</p>
         </div>
     </footer>
+
+    <!-- ১. প্রোডাক্ট ভিডিও ও অ্যাডমিন কন্ট্রোল সেকশন -->
+    <section class="video-section">
+        <div class="video-header">
+            <div>
+                <h2 style="color:#063729;">🎬 প্রোডাক্ট ভিডিও রিভিউ ও শোকেস</h2>
+                <p style="font-size:14px; color:#555;">পোশাকের আসল ডিজাইন ও কাজ সরাসরি ভিডিওতে দেখুন</p>
+            </div>
+
+            <!-- চোখের সামনে থাকা Admin Login বাটন -->
+            <button type="button" id="adminLoginBtn" class="custom-btn" onclick="openSecretAuthModal()">🔐 Admin Login</button>
+
+            <!-- লগইন করার পর এই বাটনগুলো দেখাবে -->
+            <div id="adminControlsBar" style="display:none; gap:8px; flex-wrap:wrap;">
+                <button type="button" class="custom-btn" onclick="toggleVideoForm()">➕ নতুন ভিডিও যোগ করুন</button>
+                <button type="button" class="custom-btn" onclick="toggleLogoUploadBox()">🖼️ লোগো পরিবর্তন</button>
+                <button type="button" onclick="lockAdminMode()" style="background:#8b1e2b; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">🔒 লক করুন</button>
+            </div>
+        </div>
+
+        <!-- অ্যাডমিন লোগো পরিবর্তন বক্স -->
+        <div id="adminLogoBox" class="admin-video-box" style="border-color:#d4af37;">
+            <h3 style="color:#063729; margin-bottom:10px;">🖼️ ওয়েবসাইটের লোগো পরিবর্তন করুন</h3>
+            <p style="font-size:13px; color:#555; margin-bottom:10px;">আপনার গ্যালারি থেকে নতুন লোগোর ছবি সিলেক্ট করুন:</p>
+            <input type="file" id="newLogoFileInput" class="custom-input" accept="image/*">
+            <div style="display:flex; gap:8px;">
+                <button type="button" class="custom-btn" style="flex:1;" onclick="updateWebsiteLogo()">✅ নতুন লোগো সেভ করুন</button>
+                <button type="button" onclick="resetDefaultLogo()" style="background:#6c757d; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">রিসেট</button>
+            </div>
+        </div>
+
+        <!-- নতুন ভিডিও আপলোড বক্স -->
+        <div id="adminVideoBox" class="admin-video-box">
+            <h3 style="color:#063729; margin-bottom:12px;">নতুন প্রোডাক্ট ভিডিও যুক্ত করুন</h3>
+            <form onsubmit="uploadProductVideo(event)">
+                <input type="text" id="vidTitle" class="custom-input" placeholder="প্রোডাক্টের নাম লিখুন *" required>
+                <input type="number" id="vidPrice" class="custom-input" placeholder="প্রোডাক্টের দাম (টাকায়) *" required>
+
+                <select id="vidType" class="custom-input" onchange="switchVideoSource()">
+                    <option value="mp4">📁 মোবাইল/ল্যাপটপ থেকে MP4 ভিডিও আপলোড</option>
+                    <option value="yt">🔗 YouTube ভিডিও লিংক দিন</option>
+                </select>
+
+                <div id="mp4InputDiv">
+                    <input type="file" id="vidFile" class="custom-input" accept="video/*">
+                </div>
+
+                <div id="ytInputDiv" style="display:none;">
+                    <input type="url" id="vidYtLink" class="custom-input" placeholder="YouTube ভিডিও লিংক পেস্ট করুন">
+                </div>
+
+                <button type="submit" class="custom-btn" style="width:100%;">✅ ভিডিও পাবলিশ করুন</button>
+            </form>
+        </div>
+
+        <div class="video-grid" id="videoShowcaseGrid"></div>
+    </section>
+
+    <!-- ২. কাস্টমার স্টার রেটিং ও রিভিউ সেকশন -->
+    <section class="review-section">
+        <h2 style="text-align:center; color:#063729; margin-bottom:6px;">⭐ কাস্টমার রিভিউ ও রেটিং</h2>
+        <p style="text-align:center; color:#666; margin-bottom:22px;">আমাদের পণ্য সম্পর্কে আপনার মূল্যবান মতামত ও স্টার রেটিং দিন</p>
+
+        <div class="review-form-card">
+            <h3 style="color:#063729; margin-bottom:8px;">✍️ আপনার রিভিউ লিখুন</h3>
+            <form onsubmit="postCustomerReview(event)">
+                <label style="font-weight:bold; font-size:14px;">রেটিং দিন (স্টারে ক্লিক করুন):</label>
+                <div class="star-picker" id="starRatingContainer">
+                    <span class="star-item active" onclick="setRating(1)">★</span>
+                    <span class="star-item active" onclick="setRating(2)">★</span>
+                    <span class="star-item active" onclick="setRating(3)">★</span>
+                    <span class="star-item active" onclick="setRating(4)">★</span>
+                    <span class="star-item active" onclick="setRating(5)">★</span>
+                </div>
+
+                <input type="text" id="revName" class="custom-input" placeholder="আপনার নাম ও ঠিকানা (যেমন: নুসরাত, বগুড়া) *" required>
+                <input type="text" id="revProduct" class="custom-input" placeholder="কোন প্রোডাক্টটি নিয়েছেন? (যেমন: Kajkora থ্রি-পিস) *" required>
+                <textarea id="revMessage" class="custom-input" rows="3" placeholder="আপনার মতামত / কমেন্ট লিখুন *" required></textarea>
+
+                <button type="submit" class="custom-btn" style="width:100%;">⭐ রিভিউ সাবমিট করুন</button>
+            </form>
+        </div>
+
+        <div class="reviews-list" id="customerReviewsList"></div>
+    </section>
+
+    <!-- ৩. মোবাইল নম্বর, পাসওয়ার্ড ও OTP রিসেটসহ অ্যাডমিন পপ-আপ -->
+    <div id="secretAuthModal" class="secret-modal-overlay">
+        <div class="secret-modal-card">
+            <h3 id="authModalTitle" style="color:#063729; margin-bottom:6px;">🔐 অ্যাডমিন অ্যাকাউন্ট সেটআপ</h3>
+            <p id="authModalDesc" style="font-size:13px; color:#555; margin-bottom:15px;">আপনার মোবাইল নম্বর ও গোপন পাসওয়ার্ড দিয়ে অ্যাকাউন্ট তৈরি করুন:</p>
+
+            <form id="mainAuthForm" onsubmit="handleAdminAuthSubmit(event)">
+                <input type="tel" id="adminPhoneInput" class="custom-input" maxlength="11" placeholder="মোবাইল নম্বর (যেমন: 01341725738) *" required>
+                <input type="password" id="adminPassInput" class="custom-input" placeholder="পাসওয়ার্ড লিখুন *" required>
+                <input type="password" id="adminConfirmPassInput" class="custom-input" placeholder="পাসওয়ার্ডটি আবার লিখুন (Confirm) *">
+
+                <div style="display:flex; gap:8px; margin-bottom:10px;">
+                    <button type="submit" class="custom-btn" style="flex:1;" id="authSubmitBtn">সেভ করুন</button>
+                    <button type="button" onclick="closeAuthModal()" style="background:#6c757d; color:#fff; border:none; padding:10px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">বাতিল</button>
+                </div>
+
+                <div id="forgetLinkBox" style="display:none; text-align:right;">
+                    <a href="javascript:void(0)" onclick="showForgetPasswordBox()" style="color:#8b1e2b; font-size:13px; font-weight:bold; text-decoration:underline;">পাসওয়ার্ড ভুলে গেছেন? (Forget Password)</a>
+                </div>
+            </form>
+
+            <form id="forgetOtpForm" style="display:none;" onsubmit="verifyOtpAndResetPass(event)">
+                <input type="tel" id="resetPhoneInput" class="custom-input" maxlength="11" placeholder="রেজিস্টার করা মোবাইল নম্বর দিন *" required>
+                <button type="button" onclick="sendOtpToPhone()" style="width:100%; background:#25D366; color:#fff; border:none; padding:9px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:12px;">📲 এই নম্বরে OTP কোড পাঠান</button>
+
+                <div id="otpVerifyFields" style="display:none;">
+                    <input type="text" id="enteredOtpInput" class="custom-input" maxlength="6" placeholder="৬ ডিজিটের OTP কোডটি লিখুন *" required>
+                    <input type="password" id="newResetPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ড লিখুন *" required>
+                    <input type="password" id="confirmNewResetPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ডটি আবার লিখুন *" required>
+                    <button type="submit" class="custom-btn" style="width:100%; margin-bottom:8px;">✅ নতুন পাসওয়ার্ড সেভ করুন</button>
+                </div>
+
+                <button type="button" onclick="openSecretAuthModal()" style="background:#6c757d; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;">← লগইনে ফিরে যান</button>
+            </form>
+        </div>
+    </div>
 
     <script>
         let selectedCategory = "all";
@@ -2380,118 +2436,8 @@
             alert("✅ আপনার আবেদন ও ছবির তথ্য প্রস্তুত হয়েছে! পরবর্তী স্ক্রিনে হোয়াটসঅ্যাপ ওপেন হলে আপনার গ্যালারি থেকে পণ্যের ছবিটি অ্যাটাচ করে পাঠিয়ে দিন।");
             window.open(`https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`, "_blank");
         }
-    </script>
-    <!-- ১. প্রোডাক্ট ভিডিও সেকশন (গোপন অ্যাডমিন ট্রিগারসহ) -->
-    <!-- ১. প্রোডাক্ট ভিডিও সেকশন -->
-    <section class="video-section">
-        <div class="video-header">
-            <div>
-                <h2 style="color:#063729;">🎬 প্রোডাক্ট ভিডিও রিভিউ ও শোকেস</h2>
-                <p style="font-size:14px; color:#555;">পোশাকের আসল ডিজাইন ও কাজ সরাসরি ভিডিওতে দেখুন</p>
-            </div>
 
-            <!-- চোখের সামনে থাকা Admin Login বাটন -->
-            <button type="button" id="adminLoginBtn" class="custom-btn" onclick="openSecretAuthModal()">🔐 Admin Login</button>
-
-            <!-- লগইন করার পর এই বাটনগুলো দেখাবে -->
-            <div id="adminControlsBar" style="display:none; gap:8px;">
-                <button type="button" class="custom-btn" onclick="toggleVideoForm()">➕ নতুন ভিডিও যোগ করুন</button>
-                <button type="button" onclick="lockAdminMode()" style="background:#8b1e2b; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">🔒 লক করুন</button>
-            </div>
-        </div>
-
-        <div id="adminVideoBox" class="admin-video-box">
-            <h3 style="color:#063729; margin-bottom:12px;">নতুন প্রোডাক্ট ভিডিও যুক্ত করুন</h3>
-            <form onsubmit="uploadProductVideo(event)">
-                <input type="text" id="vidTitle" class="custom-input" placeholder="প্রোডাক্টের নাম লিখুন *" required>
-                <input type="number" id="vidPrice" class="custom-input" placeholder="প্রোডাক্টের দাম (টাকায়) *" required>
-
-                <select id="vidType" class="custom-input" onchange="switchVideoSource()">
-                    <option value="mp4">📁 মোবাইল/ল্যাপটপ থেকে MP4 ভিডিও আপলোড</option>
-                    <option value="yt">🔗 YouTube ভিডিও লিংক দিন</option>
-                </select>
-
-                <div id="mp4InputDiv">
-                    <input type="file" id="vidFile" class="custom-input" accept="video/*">
-                </div>
-
-                <div id="ytInputDiv" style="display:none;">
-                    <input type="url" id="vidYtLink" class="custom-input" placeholder="YouTube ভিডিও লিংক পেস্ট করুন">
-                </div>
-
-                <button type="submit" class="custom-btn" style="width:100%;">✅ ভিডিও পাবলিশ করুন</button>
-            </form>
-        </div>
-
-        <div class="video-grid" id="videoShowcaseGrid"></div>
-    </section>
-
-    <!-- ২. কাস্টমার স্টার রেটিং ও রিভিউ সেকশন -->
-    <section class="review-section">
-        <h2 style="text-align:center; color:#063729; margin-bottom:6px;">⭐ কাস্টমার রিভিউ ও রেটিং</h2>
-        <p style="text-align:center; color:#666; margin-bottom:22px;">আমাদের পণ্য সম্পর্কে আপনার মূল্যবান মতামত ও স্টার রেটিং দিন</p>
-
-        <div class="review-form-card">
-            <h3 style="color:#063729; margin-bottom:8px;">✍️ আপনার রিভিউ লিখুন</h3>
-            <form onsubmit="postCustomerReview(event)">
-                <label style="font-weight:bold; font-size:14px;">রেটিং দিন (স্টারে ক্লিক করুন):</label>
-                <div class="star-picker" id="starRatingContainer">
-                    <span class="star-item active" onclick="setRating(1)">★</span>
-                    <span class="star-item active" onclick="setRating(2)">★</span>
-                    <span class="star-item active" onclick="setRating(3)">★</span>
-                    <span class="star-item active" onclick="setRating(4)">★</span>
-                    <span class="star-item active" onclick="setRating(5)">★</span>
-                </div>
-
-                <input type="text" id="revName" class="custom-input" placeholder="আপনার নাম ও ঠিকানা (যেমন: নুসরাত, বগুড়া) *" required>
-                <input type="text" id="revProduct" class="custom-input" placeholder="কোন প্রোডাক্টটি নিয়েছেন? (যেমন: Kajkora থ্রি-পিস) *" required>
-                <textarea id="revMessage" class="custom-input" rows="3" placeholder="আপনার মতামত / কমেন্ট লিখুন *" required></textarea>
-
-                <button type="submit" class="custom-btn" style="width:100%;">⭐ রিভিউ সাবমিট করুন</button>
-            </form>
-        </div>
-
-        <div class="reviews-list" id="customerReviewsList"></div>
-    </section>
-
-    <!-- ৩. মোবাইল নম্বর, পাসওয়ার্ড ও OTP রিসেটসহ অ্যাডমিন পপ-আপ -->
-    <div id="secretAuthModal" class="secret-modal-overlay">
-        <div class="secret-modal-card">
-            <h3 id="authModalTitle" style="color:#063729; margin-bottom:6px;">🔐 অ্যাডমিন অ্যাকাউন্ট সেটআপ</h3>
-            <p id="authModalDesc" style="font-size:13px; color:#555; margin-bottom:15px;">আপনার মোবাইল নম্বর ও গোপন পাসওয়ার্ড দিয়ে অ্যাকাউন্ট তৈরি করুন:</p>
-
-            <form id="mainAuthForm" onsubmit="handleAdminAuthSubmit(event)">
-                <input type="tel" id="adminPhoneInput" class="custom-input" maxlength="11" placeholder="মোবাইল নম্বর (যেমন: 01341725738) *" required>
-                <input type="password" id="adminPassInput" class="custom-input" placeholder="পাসওয়ার্ড লিখুন *" required>
-                <input type="password" id="adminConfirmPassInput" class="custom-input" placeholder="পাসওয়ার্ডটি আবার লিখুন (Confirm) *">
-
-                <div style="display:flex; gap:8px; margin-bottom:10px;">
-                    <button type="submit" class="custom-btn" style="flex:1;" id="authSubmitBtn">সেভ করুন</button>
-                    <button type="button" onclick="closeAuthModal()" style="background:#6c757d; color:#fff; border:none; padding:10px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">বাতিল</button>
-                </div>
-
-                <div id="forgetLinkBox" style="display:none; text-align:right;">
-                    <a href="javascript:void(0)" onclick="showForgetPasswordBox()" style="color:#8b1e2b; font-size:13px; font-weight:bold; text-decoration:underline;">পাসওয়ার্ড ভুলে গেছেন? (Forget Password)</a>
-                </div>
-            </form>
-
-            <form id="forgetOtpForm" style="display:none;" onsubmit="verifyOtpAndResetPass(event)">
-                <input type="tel" id="resetPhoneInput" class="custom-input" maxlength="11" placeholder="রেজিস্টার করা মোবাইল নম্বর দিন *" required>
-                <button type="button" onclick="sendOtpToPhone()" style="width:100%; background:#25D366; color:#fff; border:none; padding:9px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:12px;">📲 এই নম্বরে OTP কোড পাঠান</button>
-
-                <div id="otpVerifyFields" style="display:none;">
-                    <input type="text" id="enteredOtpInput" class="custom-input" maxlength="6" placeholder="৬ ডিজিটের OTP কোডটি লিখুন *" required>
-                    <input type="password" id="newResetPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ড লিখুন *" required>
-                    <input type="password" id="confirmNewResetPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ডটি আবার লিখুন *" required>
-                    <button type="submit" class="custom-btn" style="width:100%; margin-bottom:8px;">✅ নতুন পাসওয়ার্ড সেভ করুন</button>
-                </div>
-
-                <button type="button" onclick="openSecretAuthModal()" style="background:#6c757d; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;">← লগইনে ফিরে যান</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
+        // ==================== অ্যাডমিন লগইন, OTP রিসেট, ভিডিও ও লোগো কন্ট্রোল ====================
         let isAdminUnlocked = false;
         let generatedResetOTP = null;
 
@@ -2580,7 +2526,7 @@
                 if (phone === savedPhone && enteredHash === savedHash) {
                     closeAuthModal();
                     activateAdminUI();
-                    alert("✅ লগইন সফল হয়েছে! এখন ভিডিও যোগ ও ডিলিট করতে পারবেন।");
+                    alert("✅ লগইন সফল হয়েছে! এখন ভিডিও যোগ, ডিলিট ও লোগো পরিবর্তন করতে পারবেন।");
                 } else {
                     alert("❌ মোবাইল নম্বর অথবা পাসওয়ার্ড ভুল হয়েছে!");
                 }
@@ -2654,12 +2600,57 @@
             document.getElementById("adminLoginBtn").style.display = "inline-block";
             document.getElementById("adminControlsBar").style.display = "none";
             document.getElementById("adminVideoBox").style.display = "none";
+            document.getElementById("adminLogoBox").style.display = "none";
             document.querySelectorAll(".admin-only-del").forEach(btn => btn.style.display = "none");
             alert("🔒 অ্যাডমিন মোড লক করা হয়েছে।");
         }
 
+        // লোগো পরিবর্তন ফাংশনসমূহ
+        function toggleLogoUploadBox() {
+            if (!isAdminUnlocked) return;
+            let logoBox = document.getElementById("adminLogoBox");
+            document.getElementById("adminVideoBox").style.display = "none";
+            logoBox.style.display = (logoBox.style.display === "block") ? "none" : "block";
+        }
+
+        function updateWebsiteLogo() {
+            if (!isAdminUnlocked) return;
+            const fileInput = document.getElementById("newLogoFileInput");
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("⚠️ অনুগ্রহ করে আপনার গ্যালারি থেকে একটি লোগোর ছবি সিলেক্ট করুন!");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const logoDataUrl = e.target.result;
+                localStorage.setItem("anasCustomSiteLogo", logoDataUrl);
+                applyCustomLogoToSite(logoDataUrl);
+                document.getElementById("adminLogoBox").style.display = "none";
+                fileInput.value = "";
+                alert("✅ ওয়েবসাইটের লোগো সফলভাবে পরিবর্তন হয়েছে!");
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyCustomLogoToSite(logoSrc) {
+            document.querySelectorAll(".site-logo-img").forEach(img => {
+                img.src = logoSrc;
+            });
+        }
+
+        function resetDefaultLogo() {
+            if (!isAdminUnlocked) return;
+            localStorage.removeItem("anasCustomSiteLogo");
+            applyCustomLogoToSite("logo.png.webp");
+            document.getElementById("adminLogoBox").style.display = "none";
+            alert("🔄 আগের ডিফল্ট লোগো ফিরিয়ে আনা হয়েছে।");
+        }
+
+        // ভিডিও কন্ট্রোল ফাংশনসমূহ
         function toggleVideoForm() {
             let box = document.getElementById("adminVideoBox");
+            document.getElementById("adminLogoBox").style.display = "none";
             box.style.display = (box.style.display === "block") ? "none" : "block";
         }
 
@@ -2730,6 +2721,7 @@
             }
         }
 
+        // কাস্টমার রিভিউ সিস্টেম
         let selectedStars = 5;
 
         function setRating(count) {
@@ -2786,6 +2778,11 @@
         }
 
         window.addEventListener("DOMContentLoaded", function () {
+            const savedLogo = localStorage.getItem("anasCustomSiteLogo");
+            if (savedLogo) {
+                applyCustomLogoToSite(savedLogo);
+            }
+
             let savedReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
             savedReviews.forEach(item => displayReviewCard(item));
 
