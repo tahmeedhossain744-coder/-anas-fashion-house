@@ -2382,19 +2382,21 @@
         }
     </script>
     <!-- ১. প্রোডাক্ট ভিডিও সেকশন (গোপন অ্যাডমিন ট্রিগারসহ) -->
+    <!-- ১. প্রোডাক্ট ভিডিও সেকশন -->
     <section class="video-section">
         <div class="video-header">
             <div>
-                <!-- এই টাইটেলে পরপর ৩ বার ক্লিক করলে পাসওয়ার্ড সেট/লগইন পপ-আপ আসবে -->
-                <h2 onclick="handleSecretClick()" style="color:#063729; cursor:default; user-select:none;">🎬 প্রোডাক্ট
-                    ভিডিও রিভিউ ও শোকেস</h2>
+                <h2 style="color:#063729;">🎬 প্রোডাক্ট ভিডিও রিভিউ ও শোকেস</h2>
                 <p style="font-size:14px; color:#555;">পোশাকের আসল ডিজাইন ও কাজ সরাসরি ভিডিওতে দেখুন</p>
             </div>
+
+            <!-- চোখের সামনে থাকা Admin Login বাটন -->
+            <button type="button" id="adminLoginBtn" class="custom-btn" onclick="openSecretAuthModal()">🔐 Admin Login</button>
+
+            <!-- লগইন করার পর এই বাটনগুলো দেখাবে -->
             <div id="adminControlsBar" style="display:none; gap:8px;">
                 <button type="button" class="custom-btn" onclick="toggleVideoForm()">➕ নতুন ভিডিও যোগ করুন</button>
-                <button type="button" onclick="lockAdminMode()"
-                    style="background:#8b1e2b; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">🔒
-                    লক করুন</button>
+                <button type="button" onclick="lockAdminMode()" style="background:#8b1e2b; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">🔒 লক করুন</button>
             </div>
         </div>
 
@@ -2402,8 +2404,7 @@
             <h3 style="color:#063729; margin-bottom:12px;">নতুন প্রোডাক্ট ভিডিও যুক্ত করুন</h3>
             <form onsubmit="uploadProductVideo(event)">
                 <input type="text" id="vidTitle" class="custom-input" placeholder="প্রোডাক্টের নাম লিখুন *" required>
-                <input type="number" id="vidPrice" class="custom-input" placeholder="প্রোডাক্টের দাম (টাকায়) *"
-                    required>
+                <input type="number" id="vidPrice" class="custom-input" placeholder="প্রোডাক্টের দাম (টাকায়) *" required>
 
                 <select id="vidType" class="custom-input" onchange="switchVideoSource()">
                     <option value="mp4">📁 মোবাইল/ল্যাপটপ থেকে MP4 ভিডিও আপলোড</option>
@@ -2428,8 +2429,7 @@
     <!-- ২. কাস্টমার স্টার রেটিং ও রিভিউ সেকশন -->
     <section class="review-section">
         <h2 style="text-align:center; color:#063729; margin-bottom:6px;">⭐ কাস্টমার রিভিউ ও রেটিং</h2>
-        <p style="text-align:center; color:#666; margin-bottom:22px;">আমাদের পণ্য সম্পর্কে আপনার মূল্যবান মতামত ও স্টার
-            রেটিং দিন</p>
+        <p style="text-align:center; color:#666; margin-bottom:22px;">আমাদের পণ্য সম্পর্কে আপনার মূল্যবান মতামত ও স্টার রেটিং দিন</p>
 
         <div class="review-form-card">
             <h3 style="color:#063729; margin-bottom:8px;">✍️ আপনার রিভিউ লিখুন</h3>
@@ -2443,12 +2443,9 @@
                     <span class="star-item active" onclick="setRating(5)">★</span>
                 </div>
 
-                <input type="text" id="revName" class="custom-input"
-                    placeholder="আপনার নাম ও ঠিকানা (যেমন: নুসরাত, বগুড়া) *" required>
-                <input type="text" id="revProduct" class="custom-input"
-                    placeholder="কোন প্রোডাক্টটি নিয়েছেন? (যেমন: Kajkora থ্রি-পিস) *" required>
-                <textarea id="revMessage" class="custom-input" rows="3" placeholder="আপনার মতামত / কমেন্ট লিখুন *"
-                    required></textarea>
+                <input type="text" id="revName" class="custom-input" placeholder="আপনার নাম ও ঠিকানা (যেমন: নুসরাত, বগুড়া) *" required>
+                <input type="text" id="revProduct" class="custom-input" placeholder="কোন প্রোডাক্টটি নিয়েছেন? (যেমন: Kajkora থ্রি-পিস) *" required>
+                <textarea id="revMessage" class="custom-input" rows="3" placeholder="আপনার মতামত / কমেন্ট লিখুন *" required></textarea>
 
                 <button type="submit" class="custom-btn" style="width:100%;">⭐ রিভিউ সাবমিট করুন</button>
             </form>
@@ -2457,56 +2454,39 @@
         <div class="reviews-list" id="customerReviewsList"></div>
     </section>
 
-    <!-- ৩. অ্যাকাউন্ট খোলার মতো নিজস্ব পাসওয়ার্ড সেট ও লগইন পপ-আপ -->
     <!-- ৩. মোবাইল নম্বর, পাসওয়ার্ড ও OTP রিসেটসহ অ্যাডমিন পপ-আপ -->
     <div id="secretAuthModal" class="secret-modal-overlay">
         <div class="secret-modal-card">
             <h3 id="authModalTitle" style="color:#063729; margin-bottom:6px;">🔐 অ্যাডমিন অ্যাকাউন্ট সেটআপ</h3>
-            <p id="authModalDesc" style="font-size:13px; color:#555; margin-bottom:15px;">আপনার মোবাইল নম্বর ও গোপন
-                পাসওয়ার্ড দিয়ে অ্যাকাউন্ট তৈরি করুন:</p>
+            <p id="authModalDesc" style="font-size:13px; color:#555; margin-bottom:15px;">আপনার মোবাইল নম্বর ও গোপন পাসওয়ার্ড দিয়ে অ্যাকাউন্ট তৈরি করুন:</p>
 
             <form id="mainAuthForm" onsubmit="handleAdminAuthSubmit(event)">
-                <input type="tel" id="adminPhoneInput" class="custom-input" maxlength="11"
-                    placeholder="মোবাইল নম্বর (যেমন: 01341725738) *" required>
-                <input type="password" id="adminPassInput" class="custom-input" placeholder="পাসওয়ার্ড লিখুন *"
-                    required>
-                <input type="password" id="adminConfirmPassInput" class="custom-input"
-                    placeholder="পাসওয়ার্ডটি আবার লিখুন (Confirm) *">
+                <input type="tel" id="adminPhoneInput" class="custom-input" maxlength="11" placeholder="মোবাইল নম্বর (যেমন: 01341725738) *" required>
+                <input type="password" id="adminPassInput" class="custom-input" placeholder="পাসওয়ার্ড লিখুন *" required>
+                <input type="password" id="adminConfirmPassInput" class="custom-input" placeholder="পাসওয়ার্ডটি আবার লিখুন (Confirm) *">
 
                 <div style="display:flex; gap:8px; margin-bottom:10px;">
                     <button type="submit" class="custom-btn" style="flex:1;" id="authSubmitBtn">সেভ করুন</button>
-                    <button type="button" onclick="closeAuthModal()"
-                        style="background:#6c757d; color:#fff; border:none; padding:10px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">বাতিল</button>
+                    <button type="button" onclick="closeAuthModal()" style="background:#6c757d; color:#fff; border:none; padding:10px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">বাতিল</button>
                 </div>
 
                 <div id="forgetLinkBox" style="display:none; text-align:right;">
-                    <a href="javascript:void(0)" onclick="showForgetPasswordBox()"
-                        style="color:#8b1e2b; font-size:13px; font-weight:bold; text-decoration:underline;">পাসওয়ার্ড
-                        ভুলে গেছেন? (Forget Password)</a>
+                    <a href="javascript:void(0)" onclick="showForgetPasswordBox()" style="color:#8b1e2b; font-size:13px; font-weight:bold; text-decoration:underline;">পাসওয়ার্ড ভুলে গেছেন? (Forget Password)</a>
                 </div>
             </form>
 
             <form id="forgetOtpForm" style="display:none;" onsubmit="verifyOtpAndResetPass(event)">
-                <input type="tel" id="resetPhoneInput" class="custom-input" maxlength="11"
-                    placeholder="রেজিস্টার করা মোবাইল নম্বর দিন *" required>
-                <button type="button" onclick="sendOtpToPhone()"
-                    style="width:100%; background:#25D366; color:#fff; border:none; padding:9px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:12px;">📲
-                    এই নম্বরে OTP কোড পাঠান</button>
+                <input type="tel" id="resetPhoneInput" class="custom-input" maxlength="11" placeholder="রেজিস্টার করা মোবাইল নম্বর দিন *" required>
+                <button type="button" onclick="sendOtpToPhone()" style="width:100%; background:#25D366; color:#fff; border:none; padding:9px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:12px;">📲 এই নম্বরে OTP কোড পাঠান</button>
 
                 <div id="otpVerifyFields" style="display:none;">
-                    <input type="text" id="enteredOtpInput" class="custom-input" maxlength="6"
-                        placeholder="৬ ডিজিটের OTP কোডটি লিখুন *" required>
-                    <input type="password" id="newResetPassInput" class="custom-input"
-                        placeholder="নতুন পাসওয়ার্ড লিখুন *" required>
-                    <input type="password" id="confirmNewResetPassInput" class="custom-input"
-                        placeholder="নতুন পাসওয়ার্ডটি আবার লিখুন *" required>
-                    <button type="submit" class="custom-btn" style="width:100%; margin-bottom:8px;">✅ নতুন পাসওয়ার্ড সেভ
-                        করুন</button>
+                    <input type="text" id="enteredOtpInput" class="custom-input" maxlength="6" placeholder="৬ ডিজিটের OTP কোডটি লিখুন *" required>
+                    <input type="password" id="newResetPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ড লিখুন *" required>
+                    <input type="password" id="confirmNewResetPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ডটি আবার লিখুন *" required>
+                    <button type="submit" class="custom-btn" style="width:100%; margin-bottom:8px;">✅ নতুন পাসওয়ার্ড সেভ করুন</button>
                 </div>
 
-                <button type="button" onclick="openSecretAuthModal()"
-                    style="background:#6c757d; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;">←
-                    লগইনে ফিরে যান</button>
+                <button type="button" onclick="openSecretAuthModal()" style="background:#6c757d; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;">← লগইনে ফিরে যান</button>
             </form>
         </div>
     </div>
@@ -2727,13 +2707,13 @@
             let delDisplay = isAdminUnlocked ? "inline-block" : "none";
 
             card.innerHTML = `
-        ${mediaHTML}
-        <div class="video-card-body">
-            <h4 style="color:#063729;">${title}</h4>
-            <p style="color:#8b1e2b; font-weight:bold; margin:4px 0 8px 0;">৳ ${price} টাকা</p>
-            <button type="button" class="admin-only-del" onclick="deleteProductVideo(this, '${ytId || ""}')" style="display:${delDisplay}; background:#8b1e2b; color:#fff; border:none; padding:6px 12px; border-radius:5px; cursor:pointer; font-size:13px; font-weight:bold;">🗑️ ডিলিট করুন</button>
-        </div>
-    `;
+                ${mediaHTML}
+                <div class="video-card-body">
+                    <h4 style="color:#063729;">${title}</h4>
+                    <p style="color:#8b1e2b; font-weight:bold; margin:4px 0 8px 0;">৳ ${price} টাকা</p>
+                    <button type="button" class="admin-only-del" onclick="deleteProductVideo(this, '${ytId || ""}')" style="display:${delDisplay}; background:#8b1e2b; color:#fff; border:none; padding:6px 12px; border-radius:5px; cursor:pointer; font-size:13px; font-weight:bold;">🗑️ ডিলিট করুন</button>
+                </div>
+            `;
             grid.prepend(card);
         }
 
@@ -2786,12 +2766,12 @@
             let delDisplay = isAdminUnlocked ? "inline-block" : "none";
 
             card.innerHTML = `
-        <div style="color:#f59e0b; font-size:20px;">${starsHTML}</div>
-        <p style="margin:8px 0; font-style:italic; color:#333;">"${data.message}"</p>
-        <strong style="color:#063729;">— ${data.name}</strong><br>
-        <span style="font-size:12px; color:#8b1e2b; font-weight:bold;">🛍️ পণ্য: ${data.product}</span><br>
-        <button type="button" class="admin-only-del" onclick="deleteReview(this, ${data.id})" style="display:${delDisplay}; margin-top:8px; background:#8b1e2b; color:#fff; border:none; padding:4px 10px; border-radius:4px; cursor:pointer; font-size:12px;">🗑️ রিভিউ মুছুন</button>
-    `;
+                <div style="color:#f59e0b; font-size:20px;">${starsHTML}</div>
+                <p style="margin:8px 0; font-style:italic; color:#333;">"${data.message}"</p>
+                <strong style="color:#063729;">— ${data.name}</strong><br>
+                <span style="font-size:12px; color:#8b1e2b; font-weight:bold;">🛍️ পণ্য: ${data.product}</span><br>
+                <button type="button" class="admin-only-del" onclick="deleteReview(this, ${data.id})" style="display:${delDisplay}; margin-top:8px; background:#8b1e2b; color:#fff; border:none; padding:4px 10px; border-radius:4px; cursor:pointer; font-size:12px;">🗑️ রিভিউ মুছুন</button>
+            `;
             list.prepend(card);
         }
 
