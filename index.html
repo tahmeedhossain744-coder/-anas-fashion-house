@@ -1160,7 +1160,7 @@
 
     <!-- ==================== পেজ ১: হোম পেজ ==================== -->
     <div id="home-page" class="page-view active-page">
-        <section class="hero">
+       <section class="hero" id="heroBannerSection">
             <div class="hero-badge-top">✨ প্রিমিয়াম ফ্যাব্রিক্স • এক্সক্লুসিভ লেডিস টেইলরিং • ফ্যাশন হাউজ ✨</div>
             <img src="logo.png.webp" alt="Anas Fashion Logo" class="hero-logo-svg site-logo-img">
             <h1>ANAS FABRICS &amp; LADIES TAILORS</h1>
@@ -2057,6 +2057,7 @@
             <div id="adminControlsBar" style="display:none; gap:8px; flex-wrap:wrap;">
                 <button type="button" class="custom-btn" onclick="toggleVideoForm()">➕ নতুন ভিডিও যোগ করুন</button>
                 <button type="button" class="custom-btn" onclick="toggleLogoUploadBox()">🖼️ লোগো পরিবর্তন</button>
+                <button type="button" class="custom-btn" onclick="toggleBannerUploadBox()">🏞️ ব্যানার পরিবর্তন</button>
                 <button type="button" onclick="lockAdminMode()" style="background:#8b1e2b; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">🔒 লক করুন</button>
             </div>
         </div>
@@ -2071,6 +2072,16 @@
                 <button type="button" onclick="resetDefaultLogo()" style="background:#6c757d; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">রিসেট</button>
             </div>
         </div>
+        <!-- অ্যাডমিন ব্যানার পরিবর্তন বক্স -->
+<div id="adminBannerBox" class="admin-video-box" style="border-color:#d4af37;">
+    <h3 style="color:#063729; margin-bottom:10px;">🏞️ হোম পেজের ব্যানার পরিবর্তন করুন</h3>
+    <p style="font-size:13px; color:#555; margin-bottom:10px;">গ্যালারি থেকে নতুন ব্যানারের ছবি সিলেক্ট করুন:</p>
+    <input type="file" id="newBannerFileInput" class="custom-input" accept="image/*">
+    <div style="display:flex; gap:8px;">
+        <button type="button" class="custom-btn" style="flex:1;" onclick="updateWebsiteBanner()">✅ নতুন ব্যানার সেভ করুন</button>
+        <button type="button" onclick="resetDefaultBanner()" style="background:#6c757d; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">রিসেট</button>
+    </div>
+</div>
 
         <!-- নতুন ভিডিও আপলোড বক্স -->
         <div id="adminVideoBox" class="admin-video-box">
@@ -2646,6 +2657,50 @@
             document.getElementById("adminLogoBox").style.display = "none";
             alert("🔄 আগের ডিফল্ট লোগো ফিরিয়ে আনা হয়েছে।");
         }
+        // ব্যানার পরিবর্তন ফাংশনসমূহ
+function toggleBannerUploadBox() {
+    if (!isAdminUnlocked) return;
+    let bannerBox = document.getElementById("adminBannerBox");
+    document.getElementById("adminVideoBox").style.display = "none";
+    document.getElementById("adminLogoBox").style.display = "none";
+    bannerBox.style.display = (bannerBox.style.display === "block") ? "none" : "block";
+}
+
+function updateWebsiteBanner() {
+    if (!isAdminUnlocked) return;
+    const fileInput = document.getElementById("newBannerFileInput");
+    const file = fileInput.files[0];
+    if (!file) {
+        alert("⚠️ অনুগ্রহ করে গ্যালারি থেকে একটি ব্যানারের ছবি সিলেক্ট করুন!");
+        return;
+    }
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const bannerDataUrl = e.target.result;
+        localStorage.setItem("anasCustomSiteBanner", bannerDataUrl);
+        applyCustomBannerToSite(bannerDataUrl);
+        document.getElementById("adminBannerBox").style.display = "none";
+        fileInput.value = "";
+        alert("✅ ওয়েবসাইটের ব্যানার সফলভাবে পরিবর্তন হয়েছে!");
+    };
+    reader.readAsDataURL(file);
+}
+
+function applyCustomBannerToSite(bannerSrc) {
+    const hero = document.getElementById("heroBannerSection");
+    if (hero) {
+        hero.style.backgroundImage = `linear-gradient(135deg, rgba(6, 55, 41, 0.85) 0%, rgba(13, 40, 71, 0.82) 55%, rgba(88, 24, 31, 0.80) 100%), url('${bannerSrc}')`;
+    }
+}
+
+function resetDefaultBanner() {
+    if (!isAdminUnlocked) return;
+    localStorage.removeItem("anasCustomSiteBanner");
+    const hero = document.getElementById("heroBannerSection");
+    if (hero) hero.style.backgroundImage = "";
+    document.getElementById("adminBannerBox").style.display = "none";
+    alert("🔄 আগের ডিফল্ট ব্যানার ফিরিয়ে আনা হয়েছে।");
+}
 
         // ভিডিও কন্ট্রোল ফাংশনসমূহ
         function toggleVideoForm() {
@@ -2782,6 +2837,10 @@
             if (savedLogo) {
                 applyCustomLogoToSite(savedLogo);
             }
+            const savedBanner = localStorage.getItem("anasCustomSiteBanner");
+if (savedBanner) {
+    applyCustomBannerToSite(savedBanner);
+}
 
             let savedReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
             savedReviews.forEach(item => displayReviewCard(item));
