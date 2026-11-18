@@ -120,8 +120,15 @@
         }
 
         @keyframes pageFade {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* লোগো অনুযায়ী কাস্টমাইজড রয়্যাল হিরো ব্যানার */
@@ -260,8 +267,13 @@
         }
 
         @keyframes autoSlide {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .slide-card {
@@ -415,9 +427,17 @@
             font-weight: bold;
         }
 
-        .badge.women { background-color: #8b1e2b; }
-        .badge.unisex { background-color: #063729; }
-        .badge.kids { background-color: #b5891d; }
+        .badge.women {
+            background-color: #8b1e2b;
+        }
+
+        .badge.unisex {
+            background-color: #063729;
+        }
+
+        .badge.kids {
+            background-color: #b5891d;
+        }
 
         .product-card img {
             width: 100%;
@@ -731,7 +751,7 @@
             border: 1px dashed #999;
         }
 
-        /* ফ্লোটিং হোয়াটসঅ্যাপ বাটন */
+        /* ফ্লোটিং হোয়াটসঅ্যাপ ও ফেসবুক বাটন */
         .floating-whatsapp {
             position: fixed;
             bottom: 20px;
@@ -745,20 +765,160 @@
             font-size: 14px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             z-index: 1500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        footer {
-            background: linear-gradient(90deg, #062b21 0%, #0d2847 100%);
-            color: #e2e8f0;
-            padding: 20px 5%;
-            font-size: 14px;
-            text-align: center;
+        /* ==================== Naturo স্টাইল নতুন ফুটার CSS ==================== */
+        .naturo-footer {
+            background-color: #0b251c;
+            color: #ffffff;
+            padding-top: 20px;
+            border-top: 3px solid #d4af37;
             margin-top: 40px;
-            border-top: 2px solid #d4af37;
+        }
+
+        .footer-support-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #11382b;
+            padding: 20px 6%;
+            border-bottom: 1px solid #1e4d3c;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .support-text h3 {
+            font-size: 20px;
+            color: #f9e08e;
+            margin-bottom: 4px;
+        }
+
+        .support-text p {
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .support-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-phone-btn {
+            background-color: #d4af37;
+            color: #0b251c;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-wa-btn {
+            background-color: #25D366;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .naturo-footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 30px;
+            padding: 40px 6%;
+            border-bottom: 1px solid #1e4d3c;
+        }
+
+        .footer-col h4 {
+            color: #f9e08e;
+            font-size: 16px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            border-bottom: 1px solid #1e4d3c;
+            padding-bottom: 8px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #d4af37;
+            padding-left: 4px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #f9e08e;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-logo img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            background: #fff;
+            object-fit: contain;
+        }
+
+        .footer-bottom-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 6%;
+            background-color: #081c15;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 992px) {
+            .naturo-footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
+            .menu-toggle {
+                display: block;
+            }
+
             nav {
                 display: none;
                 flex-direction: column;
@@ -769,10 +929,31 @@
                 background-color: #062b21;
                 padding: 15px;
             }
-            nav.show { display: flex; }
-            nav button.nav-btn { width: 100%; text-align: left; }
-            .hero h1 { font-size: 27px; }
-            .checkout-grid, .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav button.nav-btn {
+                width: 100%;
+                text-align: left;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+            .checkout-grid,
+            .form-grid-2,
+            .form-grid-3,
+            .naturo-footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-support-banner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -797,21 +978,28 @@
             <button id="nav-reviews" class="nav-btn" onclick="switchPage('reviews-page', this)">রিভিউ</button>
             <button id="nav-checkout" class="nav-btn" onclick="switchPage('checkout-page', this)">অর্ডার ফর্ম</button>
             <button id="nav-contact" class="nav-btn" onclick="switchPage('contact-page', this)">যোগাযোগ</button>
-            <button class="nav-btn cart-nav-btn" onclick="openCartModal()">🛒 কার্ট (<span id="cartCount">0</span>)</button>
+            <button class="nav-btn cart-nav-btn" onclick="openCartModal()">🛒 কার্ট (<span
+                    id="cartCount">0</span>)</button>
         </nav>
     </header>
 
-    <!-- ==================== পেজ ১: হোম পেজ (লোগো অনুযায়ী কাস্টমাইজড ব্যানার) ==================== -->
+    <!-- ==================== পেজ ১: হোম পেজ ==================== -->
     <div id="home-page" class="page-view active-page">
         <section class="hero">
             <div class="hero-badge-top">✨ প্রিমিয়াম ফ্যাব্রিক্স • এক্সক্লুসিভ লেডিস টেইলরিং • ফ্যাশন হাউজ ✨</div>
             <img src="logo.png" alt="Anas Fabrics & Ladies Tailors Logo" class="hero-logo">
             <h1>ANAS FABRICS & LADIES TAILORS</h1>
-            <p>ঐতিহ্য ও আধুনিকতার অপূর্ব সমন্বয়! ছেলে, মেয়ে ও বাচ্চাদের প্রিমিয়াম রেডিমেড পোশাকের পাশাপাশি দক্ষ কারিগর দ্বারা আপনার নিজের পছন্দমতো মাপ ও ডিজাইনে পোশাক তৈরি করে নেওয়ার বিশ্বস্ত প্রতিষ্ঠান।</p>
+            <p>ঐতিহ্য ও আধুনিকতার অপূর্ব সমন্বয়! ছেলে, মেয়ে ও বাচ্চাদের প্রিমিয়াম রেডিমেড পোশাকের পাশাপাশি দক্ষ কারিগর
+                দ্বারা আপনার নিজের পছন্দমতো মাপ ও ডিজাইনে পোশাক তৈরি করে নেওয়ার বিশ্বস্ত প্রতিষ্ঠান।</p>
             <div class="hero-btns">
-                <button class="btn btn-gold" onclick="switchPage('collection-page', document.getElementById('nav-collection'))">🛍️ সব কালেকশন দেখুন</button>
-                <button class="btn" onclick="switchPage('tailor-page', document.getElementById('nav-tailor'))">✂️ নিজের মাপে কাপড় বানান</button>
-                <button class="btn" style="background:#25D366; border:none;" onclick="switchPage('checkout-page', document.getElementById('nav-checkout'))">সরাসরি অর্ডার করুন</button>
+                <button class="btn btn-gold"
+                    onclick="switchPage('collection-page', document.getElementById('nav-collection'))">🛍️ সব কালেকশন
+                    দেখুন</button>
+                <button class="btn" onclick="switchPage('tailor-page', document.getElementById('nav-tailor'))">✂️ নিজের
+                    মাপে কাপড় বানান</button>
+                <button class="btn" style="background:#25D366; border:none;"
+                    onclick="switchPage('checkout-page', document.getElementById('nav-checkout'))">সরাসরি অর্ডার
+                    করুন</button>
             </div>
         </section>
 
@@ -822,51 +1010,69 @@
             <div class="slider-container">
                 <div class="slider-track" id="autoSliderTrack">
                     <div class="slide-card">
-                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80" alt="জ্যাকেট">
+                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80"
+                            alt="জ্যাকেট">
                         <div class="slide-card-body">
                             <h4>স্টাইলিশ উইন্টার জ্যাকেট</h4>
                             <p>৳ ২,২০০</p>
-                            <button class="btn" onclick="goToCheckoutWithProduct('স্টাইলিশ উইন্টার জ্যাকেট', 2200, 'M, L, XL', 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80')">অর্ডার করুন</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('স্টাইলিশ উইন্টার জ্যাকেট', 2200, 'M, L, XL', 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80')">অর্ডার
+                                করুন</button>
                         </div>
                     </div>
                     <div class="slide-card">
-                        <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=400&q=80" alt="থ্রি-পিস">
+                        <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=400&q=80"
+                            alt="থ্রি-পিস">
                         <div class="slide-card-body">
                             <h4>প্রিমিয়াম জর্জেট থ্রি-পিস</h4>
                             <p>৳ ১,৮৫০</p>
-                            <button class="btn" onclick="goToCheckoutWithProduct('প্রিমিয়াম জর্জেট এমব্রয়ডারি থ্রি-পিস', 1850, 'Unstitched, M, L, XL', 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=400&q=80')">অর্ডার করুন</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('প্রিমিয়াম জর্জেট এমব্রয়ডারি থ্রি-পিস', 1850, 'Unstitched, M, L, XL', 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=400&q=80')">অর্ডার
+                                করুন</button>
                         </div>
                     </div>
                     <div class="slide-card">
-                        <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=400&q=80" alt="বোরকা">
+                        <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=400&q=80"
+                            alt="বোরকা">
                         <div class="slide-card-body">
                             <h4>দুবাই চেরি বোরকা সেট</h4>
                             <p>৳ ১,৬০০</p>
-                            <button class="btn" onclick="goToCheckoutWithProduct('দুবাই চেরি প্রিমিয়াম বোরকা ও হিজাব সেট', 1600, '52, 54, 56', 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=400&q=80')">অর্ডার করুন</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('দুবাই চেরি প্রিমিয়াম বোরকা ও হিজাব সেট', 1600, '52, 54, 56', 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=400&q=80')">অর্ডার
+                                করুন</button>
                         </div>
                     </div>
                     <div class="slide-card">
-                        <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=400&q=80" alt="গাউন">
+                        <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=400&q=80"
+                            alt="গাউন">
                         <div class="slide-card-body">
                             <h4>লাক্সারি পার্টি গাউন</h4>
                             <p>৳ ২,৯৫০</p>
-                            <button class="btn" onclick="goToCheckoutWithProduct('লাক্সারি পার্টি গাউন ড্রেস', 2950, 'S, M, L, XL', 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=400&q=80')">অর্ডার করুন</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('লাক্সারি পার্টি গাউন ড্রেস', 2950, 'S, M, L, XL', 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=400&q=80')">অর্ডার
+                                করুন</button>
                         </div>
                     </div>
                     <div class="slide-card">
-                        <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=400&q=80" alt="বেবি হুডি">
+                        <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=400&q=80"
+                            alt="বেবি হুডি">
                         <div class="slide-card-body">
                             <h4>কিডস কার্টুন ফ্লিস হুডি</h4>
                             <p>৳ ৭৫০</p>
-                            <button class="btn" onclick="goToCheckoutWithProduct('কিডস কার্টুন প্রিন্ট ফ্লিস হুডি', 750, '২ - ৮ বছর', 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=400&q=80')">অর্ডার করুন</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('কিডস কার্টুন প্রিন্ট ফ্লিস হুডি', 750, '২ - ৮ বছর', 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=400&q=80')">অর্ডার
+                                করুন</button>
                         </div>
                     </div>
                     <div class="slide-card">
-                        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=400&q=80" alt="শার্ট">
+                        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=400&q=80"
+                            alt="শার্ট">
                         <div class="slide-card-body">
                             <h4>ম্যানফেয়ার সলিড শার্ট</h4>
                             <p>৳ ১,০৫০</p>
-                            <button class="btn" onclick="goToCheckoutWithProduct('ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট (MS-03)', 1050, 'M, L, XL', 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=400&q=80')">অর্ডার করুন</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট (MS-03)', 1050, 'M, L, XL', 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=400&q=80')">অর্ডার
+                                করুন</button>
                         </div>
                     </div>
                 </div>
@@ -877,14 +1083,15 @@
         <div class="features-grid">
             <div class="feature-box">
                 <h3>🚚 Hand Pay & Pay Order</h3>
-                <p>পণ্য হাতে পেয়ে টাকা পরিশোধ (Hand Pay) অথবা বিকাশ, নগদ, রকেট ও ব্যাংকের মাধ্যমে অগ্রিম পেমেন্টের সুবিধা।</p>
+                <p>পণ্য হাতে পেয়ে টাকা পরিশোধ (Hand Pay) অথবা বিকাশ, নগদ, রকেট ও ব্যাংকের মাধ্যমে অগ্রিম পেমেন্টের
+                    সুবিধা।</p>
             </div>
             <div class="feature-box">
                 <h3>✂️ অনলাইন লেডিস টেইলর</h3>
                 <p>ঘরে বসেই আপনার জামার লম্বা, বডি, কোমর ও হাতার মাপ দিয়ে দক্ষ কারিগর দ্বারা পোশাক বানিয়ে নিন।</p>
             </div>
             <div class="feature-box">
-                <h3>🏪 সেলার পার্টনারশিপ</h3>
+                <h3>🏪 সেলার পার்ட்নারশিপ</h3>
                 <p>আপনার নিজের দোকানের বা হাতের তৈরি পোশাকের ছবি আপলোড করে আমাদের ওয়েবসাইটে বিক্রি করুন।</p>
             </div>
         </div>
@@ -898,7 +1105,8 @@
 
             <div class="collection-top-bar">
                 <div class="search-corner-box">
-                    <input type="text" id="searchInput" class="search-input" onkeyup="applyFilters()" placeholder="🔍 কাপড় খুঁজুন (গাউন, শার্ট, বোরকা, বেবি)...">
+                    <input type="text" id="searchInput" class="search-input" onkeyup="applyFilters()"
+                        placeholder="🔍 কাপড় খুঁজুন (গাউন, শার্ট, বোরকা, বেবি)...">
                 </div>
 
                 <div class="filter-buttons">
@@ -914,14 +1122,17 @@
                 <!-- প্রোডাক্ট ১ -->
                 <div class="product-card" data-category="men">
                     <span class="badge">ছেলেদের</span>
-                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80" alt="উইন্টার জ্যাকেট">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80"
+                        alt="উইন্টার জ্যাকেট">
                     <div class="product-info">
                         <h3>স্টাইলিশ উইন্টার জ্যাকেট</h3>
                         <p class="size-info">সাইজ: M, L, XL</p>
                         <p class="price">৳ ২,২০০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('স্টাইলিশ উইন্টার জ্যাকেট', 2200, 'M, L, XL', 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('স্টাইলিশ উইন্টার জ্যাকেট', 2200)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('স্টাইলিশ উইন্টার জ্যাকেট', 2200, 'M, L, XL', 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('স্টাইলিশ উইন্টার জ্যাকেট', 2200)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -929,14 +1140,17 @@
                 <!-- প্রোডাক্ট ২ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
-                    <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=600&q=80" alt="উইন্টার কার্ডিগান">
+                    <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=600&q=80"
+                        alt="উইন্টার কার্ডিগান">
                     <div class="product-info">
                         <h3>প্রিমিয়াম নিটেড কার্ডিগান</h3>
                         <p class="size-info">সাইজ: S, M, L, XL</p>
                         <p class="price">৳ ১,৪৫০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('প্রিমিয়াম নিটেড কার্ডিগান', 1450, 'S, M, L, XL', 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('প্রিমিয়াম নিটেড কার্ডিগান', 1450)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('প্রিমিয়াম নিটেড কার্ডিগান', 1450, 'S, M, L, XL', 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('প্রিমিয়াম নিটেড কার্ডিগান', 1450)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -944,13 +1158,15 @@
                 <!-- প্রোডাক্ট ৩ -->
                 <div class="product-card" data-category="unisex">
                     <span class="badge unisex">ছেলে ও মেয়ে</span>
-                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80" alt="কটন হুডি">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80"
+                        alt="কটন হুডি">
                     <div class="product-info">
                         <h3>প্রিমিয়াম ফ্লিস হুডি</h3>
                         <p class="size-info">সাইজ: S, M, L, XL</p>
                         <p class="price">৳ ১,১৫০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('প্রিমিয়াম ফ্লিস হুডি', 1150, 'S, M, L, XL', 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('প্রিমিয়াম ফ্লিস হুডি', 1150, 'S, M, L, XL', 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
                             <button class="btn-cart" onclick="addToCart('প্রিমিয়াম ফ্লিস হুডি', 1150)">+ কার্ট</button>
                         </div>
                     </div>
@@ -959,14 +1175,17 @@
                 <!-- প্রোডাক্ট ৪ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
-                    <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80" alt="প্রিমিয়াম জর্জেট থ্রি-পিস">
+                    <img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80"
+                        alt="প্রিমিয়াম জর্জেট থ্রি-পিস">
                     <div class="product-info">
                         <h3>প্রিমিয়াম জর্জেট এমব্রয়ডারি থ্রি-পিস</h3>
                         <p class="size-info">সাইজ: Unstitched, M, L, XL</p>
                         <p class="price">৳ ১,৮৫০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('প্রিমিয়াম জর্জেট এমব্রয়ডারি থ্রি-পিস', 1850, 'Unstitched, M, L, XL', 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('প্রিমিয়াম জর্জেট এমব্রয়ডারি থ্রি-পিস', 1850)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('প্রিমিয়াম জর্জেট এমব্রয়ডারি থ্রি-পিস', 1850, 'Unstitched, M, L, XL', 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart"
+                                onclick="addToCart('প্রিমিয়াম জর্জেট এমব্রয়ডারি থ্রি-পিস', 1850)">+ কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -974,14 +1193,17 @@
                 <!-- প্রোডাক্ট ৫ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
-                    <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=600&q=80" alt="দুবাই চেরি বোরকা সেট">
+                    <img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=600&q=80"
+                        alt="দুবাই চেরি বোরকা সেট">
                     <div class="product-info">
                         <h3>দুবাই চেরি প্রিমিয়াম বোরকা ও হিজাব সেট</h3>
                         <p class="size-info">সাইজ: 52, 54, 56</p>
                         <p class="price">৳ ১,৬০০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('দুবাই চেরি প্রিমিয়াম বোরকা ও হিজাব সেট', 1600, '52, 54, 56', 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('দুবাই চেরি প্রিমিয়াম বোরকা ও হিজাব সেট', 1600)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('দুবাই চেরি প্রিমিয়াম বোরকা ও হিজাব সেট', 1600, '52, 54, 56', 'https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart"
+                                onclick="addToCart('দুবাই চেরি প্রিমিয়াম বোরকা ও হিজাব সেট', 1600)">+ কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -989,14 +1211,17 @@
                 <!-- প্রোডাক্ট ৬ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
-                    <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80" alt="লাক্সারি পার্টি গাউন">
+                    <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80"
+                        alt="লাক্সারি পার্টি গাউন">
                     <div class="product-info">
                         <h3>লাক্সারি পার্টি গাউন ড্রেস</h3>
                         <p class="size-info">সাইজ: S, M, L, XL</p>
                         <p class="price">৳ ২,৯৫০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('লাক্সারি পার্টি গাউন ড্রেস', 2950, 'S, M, L, XL', 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('লাক্সারি পার্টি গাউন ড্রেস', 2950)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('লাক্সারি পার্টি গাউন ড্রেস', 2950, 'S, M, L, XL', 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('লাক্সারি পার্টি গাউন ড্রেস', 2950)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1004,14 +1229,17 @@
                 <!-- প্রোডাক্ট ৭ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
-                    <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80" alt="এলিগ্যান্ট লং গাউন ড্রেস">
+                    <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80"
+                        alt="এলিগ্যান্ট লং গাউন ড্রেস">
                     <div class="product-info">
                         <h3>এলিগ্যান্ট লং গাউন ড্রেস (Smokie Hand, 53")</h3>
                         <p class="size-info">সাইজ: Free Size</p>
                         <p class="price">৳ ৮২০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('এলিগ্যান্ট লং গাউন ড্রেস (Smokie Hand)', 820, 'Free Size (53 Inches)', 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('এলিগ্যান্ট লং গাউন ড্রেস (Smokie Hand)', 820)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('এলিগ্যান্ট লং গাউন ড্রেস (Smokie Hand)', 820, 'Free Size (53 Inches)', 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart"
+                                onclick="addToCart('এলিগ্যান্ট লং গাউন ড্রেস (Smokie Hand)', 820)">+ কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1019,14 +1247,17 @@
                 <!-- প্রোডাক্ট ৮ -->
                 <div class="product-card" data-category="women">
                     <span class="badge women">মেয়েদের</span>
-                    <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=600&q=80" alt="লাক্সারি পিওর লিনেন শার্ট ড্রেস">
+                    <img src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=600&q=80"
+                        alt="লাক্সারি পিওর লিনেন শার্ট ড্রেস">
                     <div class="product-info">
                         <h3>K2059L লাক্সারি পিওর লিনেন শার্ট ড্রেস</h3>
                         <p class="size-info">সাইজ: S, M, L, XL</p>
                         <p class="price">৳ ১,৭৫০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('K2059L লাক্সারি পিওর লিনেন শার্ট ড্রেস', 1750, 'S, M, L, XL', 'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('K2059L লাক্সারি পিওর লিনেন শার্ট ড্রেস', 1750)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('K2059L লাক্সারি পিওর লিনেন শার্ট ড্রেস', 1750, 'S, M, L, XL', 'https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart"
+                                onclick="addToCart('K2059L লাক্সারি পিওর লিনেন শার্ট ড্রেস', 1750)">+ কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1034,14 +1265,17 @@
                 <!-- প্রোডাক্ট ৯ -->
                 <div class="product-card" data-category="men">
                     <span class="badge">ছেলেদের</span>
-                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80" alt="ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট">
+                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80"
+                        alt="ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট">
                     <div class="product-info">
                         <h3>ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট (MS-03)</h3>
                         <p class="size-info">সাইজ: M, L, XL</p>
                         <p class="price">৳ ১,০৫০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট (MS-03)', 1050, 'M, L, XL', 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট (MS-03)', 1050)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট (MS-03)', 1050, 'M, L, XL', 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart"
+                                onclick="addToCart('ম্যানফেয়ার প্রিমিয়াম সলিড শার্ট (MS-03)', 1050)">+ কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1049,14 +1283,17 @@
                 <!-- প্রোডাক্ট ১০ -->
                 <div class="product-card" data-category="men">
                     <span class="badge">ছেলেদের</span>
-                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="হ্যান্ডউইভেন কটন পাঞ্জাবি">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"
+                        alt="হ্যান্ডউইভেন কটন পাঞ্জাবি">
                     <div class="product-info">
                         <h3>ক্লাসিক হ্যান্ডউইভেন কটন পাঞ্জাবি</h3>
                         <p class="size-info">সাইজ: 38, 40, 42, 44</p>
                         <p class="price">৳ ১,৬৫০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('ক্লাসিক হ্যান্ডউইভেন কটন পাঞ্জাবি', 1650, '38, 40, 42, 44', 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('ক্লাসিক হ্যান্ডউইভেন কটন পাঞ্জাবি', 1650)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('ক্লাসিক হ্যান্ডউইভেন কটন পাঞ্জাবি', 1650, '38, 40, 42, 44', 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('ক্লাসিক হ্যান্ডউইভেন কটন পাঞ্জাবি', 1650)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1064,14 +1301,17 @@
                 <!-- প্রোডাক্ট ১১ -->
                 <div class="product-card" data-category="kids">
                     <span class="badge kids">বাচ্চাদের</span>
-                    <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80" alt="বাচ্চাদের উইন্টার হুডি">
+                    <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80"
+                        alt="বাচ্চাদের উইন্টার হুডি">
                     <div class="product-info">
                         <h3>কিডস কার্টুন প্রিন্ট ফ্লিস হুডি</h3>
                         <p class="size-info">বয়স: ২ - ৮ বছর</p>
                         <p class="price">৳ ৭৫০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('কিডস কার্টুন প্রিন্ট ফ্লিস হুডি', 750, '২ - ৮ বছর', 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('কিডস কার্টুন প্রিন্ট ফ্লিস হুডি', 750)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('কিডস কার্টুন প্রিন্ট ফ্লিস হুডি', 750, '২ - ৮ বছর', 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('কিডস কার্টুন প্রিন্ট ফ্লিস হুডি', 750)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1079,14 +1319,17 @@
                 <!-- প্রোডাক্ট ১২ -->
                 <div class="product-card" data-category="kids">
                     <span class="badge kids">বাচ্চাদের</span>
-                    <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=600&q=80" alt="বাচ্চাদের পার্টি ফ্রক">
+                    <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=600&q=80"
+                        alt="বাচ্চাদের পার্টি ফ্রক">
                     <div class="product-info">
                         <h3>বেবি গার্ল ভেলভেট উইন্টার ফ্রক</h3>
                         <p class="size-info">বয়স: ১ - ৬ বছর</p>
                         <p class="price">৳ ১,০৫০ টাকা</p>
                         <div class="card-actions">
-                            <button class="btn" onclick="goToCheckoutWithProduct('বেবি গার্ল ভেলভেট উইন্টার ফ্রক', 1050, '১ - ৬ বছর', 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
-                            <button class="btn-cart" onclick="addToCart('বেবি গার্ল ভেলভেট উইন্টার ফ্রক', 1050)">+ কার্ট</button>
+                            <button class="btn"
+                                onclick="goToCheckoutWithProduct('বেবি গার্ল ভেলভেট উইন্টার ফ্রক', 1050, '১ - ৬ বছর', 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=600&q=80')">অর্ডার</button>
+                            <button class="btn-cart" onclick="addToCart('বেবি গার্ল ভেলভেট উইন্টার ফ্রক', 1050)">+
+                                কার্ট</button>
                         </div>
                     </div>
                 </div>
@@ -1098,14 +1341,16 @@
     <div id="tailor-page" class="page-view">
         <div class="form-page-container">
             <h2 class="section-title">✂️ অনলাইন লেডিস টেইলরিং (নিজের মাপে পোশাক বানান)</h2>
-            <p class="section-subtitle">ট্রেইলার্সের দোকানে যাওয়ার ঝামেলা ছাড়াই আপনার সঠিক মাপ ও ডিজাইন দিয়ে <strong>Anas Fabrics and Ladies Tailors</strong> থেকে পোশাক তৈরি করে নিন।</p>
+            <p class="section-subtitle">ট্রেইলার্সের দোকানে যাওয়ার ঝামেলা ছাড়াই আপনার সঠিক মাপ ও ডিজাইন দিয়ে
+                <strong>Anas Fabrics and Ladies Tailors</strong> থেকে পোশাক তৈরি করে নিন।</p>
 
             <form onsubmit="submitTailorOrder(event)">
                 <div class="form-grid-2">
                     <div class="input-group">
                         <label>পোশাকের ধরন নির্বাচন করুন *</label>
                         <select id="tailorDressType" required>
-                            <option value="সালোয়ার কামিজ (থ্রি-পিস সেলাই)">সালোয়ার কামিজ (থ্রি-পিস সেলাই) - মজুরি ৳ ৪৫০</option>
+                            <option value="সালোয়ার কামিজ (থ্রি-পিস সেলাই)">সালোয়ার কামিজ (থ্রি-পিস সেলাই) - মজুরি ৳
+                                ৪৫০</option>
                             <option value="ডিজাইনার ব্লাউজ">ডিজাইনার ব্লাউজ - মজুরি ৳ ৩০০</option>
                             <option value="কাস্টম বোরকা / আবায়া">কাস্টম বোরকা / আবায়া - মজুরি ৳ ৫৫০</option>
                             <option value="পার্টি গাউন / লং ফ্রক">পার্টি গাউন / লং ফ্রক - মজুরি ৳ ৬৫০</option>
@@ -1151,7 +1396,8 @@
 
                 <div class="input-group">
                     <label>পায়জামা / সালোয়ারের মাপ ও বিশেষ ডিজাইন নির্দেশনা</label>
-                    <textarea id="mNotes" rows="3" placeholder="যেমন: সালোয়ারের লম্বা ৩৮ ইঞ্চি, পকেট লাগবে, হাতায় লেস বসবে ইত্যাদি..."></textarea>
+                    <textarea id="mNotes" rows="3"
+                        placeholder="যেমন: সালোয়ারের লম্বা ৩৮ ইঞ্চি, পকেট লাগবে, হাতায় লেস বসবে ইত্যাদি..."></textarea>
                 </div>
 
                 <div class="form-grid-2">
@@ -1170,16 +1416,18 @@
                     <input type="text" id="tCustAddress" placeholder="গ্রাম/মহল্লা, থানা ও জেলার নাম" required>
                 </div>
 
-                <button type="submit" class="btn btn-gold" style="width:100%; padding:14px; font-size:16px;">✂️ কাস্টম টেইলরিং অর্ডার পাঠান</button>
+                <button type="submit" class="btn btn-gold" style="width:100%; padding:14px; font-size:16px;">✂️ কাস্টম
+                    টেইলরিং অর্ডার পাঠান</button>
             </form>
         </div>
     </div>
 
-    <!-- ==================== পেজ ৪: সেলার রেজিস্ট্রেশন (ফাইল আপলোড ও প্রিভিউসহ) ==================== -->
+    <!-- ==================== পেজ ৪: সেলার রেজিস্ট্রেশন ==================== -->
     <div id="seller-page" class="page-view">
         <div class="form-page-container" style="border-top-color: #d4af37;">
             <h2 class="section-title">🏪 সেলার হিসেবে পণ্য বিক্রি করুন (Vendor Request)</h2>
-            <p class="section-subtitle">আপনার পণ্যের ছবি আপলোড করে ও তথ্য দিয়ে আবেদন করুন। অ্যাডমিন রিভিউ করে <strong>Approved</strong> দিলেই আপনার পণ্যটি আমাদের ওয়েবসাইটে লাইভ হয়ে যাবে।</p>
+            <p class="section-subtitle">আপনার পণ্যের ছবি আপলোড করে ও তথ্য দিয়ে আবেদন করুন। অ্যাডমিন রিভিউ করে
+                <strong>Approved</strong> দিলেই আপনার পণ্যটি আমাদের ওয়েবসাইটে লাইভ হয়ে যাবে।</p>
 
             <form onsubmit="submitSellerProduct(event)">
                 <div class="form-grid-2">
@@ -1223,22 +1471,27 @@
                 <div class="input-group">
                     <label>পণ্যের আসল ছবি আপলোড করুন (Upload Product Photo) *</label>
                     <div class="file-upload-wrapper" onclick="document.getElementById('sProductImageFile').click()">
-                        <p style="font-weight:bold; color:#063729; font-size:15px;">📁 এখানে ক্লিক করে পণ্যের ছবি সিলেক্ট করুন</p>
+                        <p style="font-weight:bold; color:#063729; font-size:15px;">📁 এখানে ক্লিক করে পণ্যের ছবি
+                            সিলেক্ট করুন</p>
                         <p style="font-size:12px; color:#666;">JPG, PNG বা JPEG ফরম্যাটের ছবি আপলোড করুন</p>
-                        <input type="file" id="sProductImageFile" accept="image/*" style="display:none;" onchange="previewSellerImage(event)" required>
+                        <input type="file" id="sProductImageFile" accept="image/*" style="display:none;"
+                            onchange="previewSellerImage(event)" required>
                         <div class="preview-img-box" id="sellerPreviewBox">
                             <img id="sellerImgPreview" src="" alt="Product Preview">
-                            <p id="sellerFileName" style="font-size:12px; color:#063729; margin-top:5px; font-weight:bold;"></p>
+                            <p id="sellerFileName"
+                                style="font-size:12px; color:#063729; margin-top:5px; font-weight:bold;"></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="input-group">
                     <label>পণ্যের বিস্তারিত বিবরণ *</label>
-                    <textarea id="sDesc" rows="3" placeholder="কাপড়ের কোয়ালিটি, রঙ, ওড়না বা প্যান্টের মাপ ইত্যাদি লিখুন..." required></textarea>
+                    <textarea id="sDesc" rows="3"
+                        placeholder="কাপড়ের কোয়ালিটি, রঙ, ওড়না বা প্যান্টের মাপ ইত্যাদি লিখুন..." required></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-gold" style="width:100%; padding:14px; font-size:16px;">📩 ছবিসহ অ্যাপ্রুভালের জন্য আবেদন জমা দিন</button>
+                <button type="submit" class="btn btn-gold" style="width:100%; padding:14px; font-size:16px;">📩 ছবিসহ
+                    অ্যাপ্রুভালের জন্য আবেদন জমা দিন</button>
             </form>
         </div>
     </div>
@@ -1251,17 +1504,20 @@
             <div class="reviews-grid">
                 <div class="review-card">
                     <div style="color:#d4af37; font-size:18px;">★★★★★</div>
-                    <p style="margin:8px 0; font-style:italic;">"আনাস ফ্যাশন হাউজ থেকে জর্জেট থ্রি-পিস এবং কাস্টম টেইলরিং সেকশন থেকে নিজের মাপে একটি জামা বানিয়েছিলাম। ফিটিং একদম পারফেক্ট হয়েছে!"</p>
+                    <p style="margin:8px 0; font-style:italic;">"আনাস ফ্যাশন হাউজ থেকে জর্জেট থ্রি-পিস এবং কাস্টম
+                        টেইলরিং সেকশন থেকে নিজের মাপে একটি জামা বানিয়েছিলাম। ফিটিং একদম পারফেক্ট হয়েছে!"</p>
                     <strong>— নুসরাত জাহান, বগুড়া</strong>
                 </div>
                 <div class="review-card">
                     <div style="color:#d4af37; font-size:18px;">★★★★★</div>
-                    <p style="margin:8px 0; font-style:italic;">"Pay Order-এ বিকাশের মাধ্যমে পেমেন্ট করেছিলাম, সাথে সাথে অর্ডার কনফার্মেশন নোটিফিকেশন পেয়েছি এবং ২ দিনের মধ্যে ডেলিভারি হাতে পেয়েছি।"</p>
+                    <p style="margin:8px 0; font-style:italic;">"Pay Order-এ বিকাশের মাধ্যমে পেমেন্ট করেছিলাম, সাথে সাথে
+                        অর্ডার কনফার্মেশন নোটিফিকেশন পেয়েছি এবং ২ দিনের মধ্যে ডেলিভারি হাতে পেয়েছি।"</p>
                     <strong>— তানভীর আহমেদ, ঢাকা</strong>
                 </div>
                 <div class="review-card">
                     <div style="color:#d4af37; font-size:18px;">★★★★★</div>
-                    <p style="margin:8px 0; font-style:italic;">"দুবাই চেরি বোরকা সেট এবং বাচ্চার জন্য উইন্টার হুডি নিয়েছিলাম। কাপড়ের মান ও সেলাই অসাধারণ।"</p>
+                    <p style="margin:8px 0; font-style:italic;">"দুবাই চেরি বোরকা সেট এবং বাচ্চার জন্য উইন্টার হুডি
+                        নিয়েছিলাম। কাপড়ের মান ও সেলাই অসাধারণ।"</p>
                     <strong>— সাদিয়া ইসলাম, রাজশাহী</strong>
                 </div>
             </div>
@@ -1272,7 +1528,8 @@
     <div id="checkout-page" class="page-view">
         <div class="checkout-container">
             <h2 class="section-title">🛍️ অর্ডার কনফার্মেশন ও পেমেন্ট ফর্ম</h2>
-            <p class="section-subtitle">Hand Pay Order অথবা Pay Order (বিকাশ, নগদ, রকেট, ব্যাংক) নির্বাচন করে অর্ডার সম্পন্ন করুন</p>
+            <p class="section-subtitle">Hand Pay Order অথবা Pay Order (বিকাশ, নগদ, রকেট, ব্যাংক) নির্বাচন করে অর্ডার
+                সম্পন্ন করুন</p>
 
             <form onsubmit="processFinalOrder(event)">
                 <div class="checkout-grid">
@@ -1281,7 +1538,9 @@
                         <div class="checkout-box-title">১. নির্বাচিত পণ্য ও সাইজ</div>
                         <div class="selected-item-card">
                             <div class="selected-item-details">
-                                <img id="checkoutImg" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80" alt="Product">
+                                <img id="checkoutImg"
+                                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80"
+                                    alt="Product">
                                 <div>
                                     <h4 id="checkoutProductName" style="font-size:15px;">স্টাইলিশ উইন্টার জ্যাকেট</h4>
                                     <p id="checkoutUnitPriceText" style="color:#8b1e2b; font-weight:bold;">৳ ২,২০০</p>
@@ -1314,7 +1573,8 @@
                         </div>
                         <div class="input-group">
                             <label>সম্পূর্ণ ডেলিভারি ঠিকানা *</label>
-                            <textarea id="custAddress" rows="3" placeholder="হাউজ/গ্রাম, রোড, থানা ও জেলার নাম" required></textarea>
+                            <textarea id="custAddress" rows="3" placeholder="হাউজ/গ্রাম, রোড, থানা ও জেলার নাম"
+                                required></textarea>
                         </div>
                     </div>
 
@@ -1323,11 +1583,13 @@
                         <div class="checkout-box-title">৩. ডেলিভারি এলাকা (Shipping)</div>
                         <div class="order-type-box">
                             <label class="radio-row">
-                                <span><input type="radio" name="shippingArea" value="50" checked onchange="updateCheckoutTotal()"> বগুড়া শহরের ভেতরে</span>
+                                <span><input type="radio" name="shippingArea" value="50" checked
+                                        onchange="updateCheckoutTotal()"> বগুড়া শহরের ভেতরে</span>
                                 <span>৳ ৫০</span>
                             </label>
                             <label class="radio-row">
-                                <span><input type="radio" name="shippingArea" value="120" onchange="updateCheckoutTotal()"> বগুড়ার বাইরে (সারা বাংলাদেশ)</span>
+                                <span><input type="radio" name="shippingArea" value="120"
+                                        onchange="updateCheckoutTotal()"> বগুড়ার বাইরে (সারা বাংলাদেশ)</span>
                                 <span>৳ ১২০</span>
                             </label>
                         </div>
@@ -1335,20 +1597,28 @@
                         <div class="checkout-box-title">৪. অর্ডার ধরন ও পেমেন্ট মেথড</div>
                         <div class="payment-methods-box">
                             <label class="radio-row" style="color:#063729;">
-                                <span><input type="radio" name="orderMode" value="Hand Pay Order (ক্যাশ অন ডেলিভারি)" checked onchange="toggleOrderMode()"> 🤝 Hand Pay Order (পণ্য হাতে পেয়ে টাকা দিন)</span>
+                                <span><input type="radio" name="orderMode" value="Hand Pay Order (ক্যাশ অন ডেলিভারি)"
+                                        checked onchange="toggleOrderMode()"> 🤝 Hand Pay Order (পণ্য হাতে পেয়ে টাকা
+                                    দিন)</span>
                             </label>
                             <label class="radio-row" style="color:#8b1e2b;">
-                                <span><input type="radio" name="orderMode" value="Pay Order (অগ্রিম পেমেন্ট)" onchange="toggleOrderMode()"> 💳 Pay Order (অগ্রিম পেমেন্ট করুন)</span>
+                                <span><input type="radio" name="orderMode" value="Pay Order (অগ্রিম পেমেন্ট)"
+                                        onchange="toggleOrderMode()"> 💳 Pay Order (অগ্রিম পেমেন্ট করুন)</span>
                             </label>
 
-                            <div id="payOrderDetails" style="display:none; margin-top:12px; padding-top:10px; border-top:1px dashed #ccc;">
-                                <label style="font-size:13px; font-weight:bold; display:block; margin-bottom:6px;">পেমেন্ট মাধ্যম বেছে নিন:</label>
-                                <select id="paymentGateway" onchange="updateGatewayInfo()" style="width:100%; padding:8px; border-radius:6px; margin-bottom:8px;">
+                            <div id="payOrderDetails"
+                                style="display:none; margin-top:12px; padding-top:10px; border-top:1px dashed #ccc;">
+                                <label
+                                    style="font-size:13px; font-weight:bold; display:block; margin-bottom:6px;">পেমেন্ট
+                                    মাধ্যম বেছে নিন:</label>
+                                <select id="paymentGateway" onchange="updateGatewayInfo()"
+                                    style="width:100%; padding:8px; border-radius:6px; margin-bottom:8px;">
                                     <option value="bKash (বিকাশ)">bKash (বিকাশ পার্সোনাল)</option>
                                     <option value="Nagad (নগদ)">Nagad (নগদ পার্সোনাল)</option>
                                     <option value="Rocket (রকেট)">Rocket (রকেট পার্সোনাল)</option>
                                     <option value="Upay (উপায়)">Upay (উপায়)</option>
-                                    <option value="Bank Transfer (ব্যাংক অ্যাকাউন্ট)">Bank Transfer (ইসলামী ব্যাংক / ডাচ-বাংলা ব্যাংক)</option>
+                                    <option value="Bank Transfer (ব্যাংক অ্যাকাউন্ট)">Bank Transfer (ইসলামী ব্যাংক /
+                                        ডাচ-বাংলা ব্যাংক)</option>
                                 </select>
 
                                 <div id="gatewayAccountInfo" class="account-details-card">
@@ -1357,16 +1627,20 @@
 
                                 <div class="input-group" style="margin-top:10px;">
                                     <label>যে নম্বর থেকে টাকা পাঠিয়েছেন (১১ ডিজিট) *</label>
-                                    <input type="tel" id="senderPhoneInput" maxlength="11" placeholder="যেমন: 017XXXXXXXX">
+                                    <input type="tel" id="senderPhoneInput" maxlength="11"
+                                        placeholder="যেমন: 017XXXXXXXX">
                                 </div>
 
                                 <div class="input-group" style="margin-top:8px; margin-bottom:6px;">
                                     <label>সঠিক Transaction ID (TrxID) লিখুন *</label>
-                                    <input type="text" id="trxIdInput" maxlength="15" style="text-transform: uppercase;" placeholder="যেমন: 9H7K2L5M8P">
+                                    <input type="text" id="trxIdInput" maxlength="15" style="text-transform: uppercase;"
+                                        placeholder="যেমন: 9H7K2L5M8P">
                                 </div>
 
-                                <p style="font-size:12px; color:#d90429; background:#ffe5ec; padding:8px; border-radius:6px; font-weight:600;">
-                                    ⚠️ সতর্কবার্তা: টাকা না পাঠিয়ে ভুল বা ভুয়া TrxID দিলে অর্ডারটি স্বয়ংক্রিয়ভাবে বাতিল বলে গণ্য হবে।
+                                <p
+                                    style="font-size:12px; color:#d90429; background:#ffe5ec; padding:8px; border-radius:6px; font-weight:600;">
+                                    ⚠️ সতর্কবার্তা: টাকা না পাঠিয়ে ভুল বা ভুয়া TrxID দিলে অর্ডারটি স্বয়ংক্রিয়ভাবে
+                                    বাতিল বলে গণ্য হবে।
                                 </p>
                             </div>
                         </div>
@@ -1386,7 +1660,9 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-gold" style="width:100%; padding:15px; font-size:17px; border-radius:30px;" id="confirmBtnText">অর্ডার কনফার্ম করুন ৳ ২,২৫০</button>
+                        <button type="submit" class="btn btn-gold"
+                            style="width:100%; padding:15px; font-size:17px; border-radius:30px;"
+                            id="confirmBtnText">অর্ডার কনফার্ম করুন ৳ ২,২৫০</button>
                     </div>
                 </div>
             </form>
@@ -1396,9 +1672,11 @@
     <!-- ==================== পেজ ৭: যোগাযোগ পেজ ==================== -->
     <div id="contact-page" class="page-view">
         <div class="form-page-container" style="text-align:center;">
-            <img src="logo.png" alt="Anas Fabrics Logo" style="width:95px; height:95px; border-radius:50%; border:2px solid #d4af37; margin-bottom:10px;">
+            <img src="logo.png" alt="Anas Fabrics Logo"
+                style="width:95px; height:95px; border-radius:50%; border:2px solid #d4af37; margin-bottom:10px;">
             <h2 class="section-title">📞 আমাদের সাথে যোগাযোগ করুন</h2>
-            <p class="section-subtitle">যেকোনো অর্ডার, কাস্টম টেইলরিং বা সেলার পার্টনারশিপের জন্য সরাসরি যোগাযোগ করুন</p>
+            <p class="section-subtitle">যেকোনো অর্ডার, কাস্টম টেইলরিং বা সেলার পার্টনারশিপের জন্য সরাসরি যোগাযোগ করুন
+            </p>
             <div style="background:#f8f9fa; padding:25px; border-radius:10px; line-height:2; font-size:16px;">
                 <p>🏪 <strong>প্রতিষ্ঠান:</strong> আনাস ফ্যাশন হাউজ (Anas Fabrics and Ladies Tailors)</p>
                 <p>📍 <strong>ঠিকানা:</strong> বগুড়া, বাংলাদেশ</p>
@@ -1406,7 +1684,8 @@
                 <p>📧 <strong>ইমেইল:</strong> tahmeedjhossain744@gmail.com | itztahmeed70@gmail.com</p>
             </div>
             <br>
-            <a href="https://wa.me/8801341725738" target="_blank" class="btn" style="background:#25D366; border:none; font-size:16px;">💬 সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন</a>
+            <a href="https://wa.me/8801341725738" target="_blank" class="btn"
+                style="background:#25D366; border:none; font-size:16px;">💬 সরাসরি হোয়াটসঅ্যাপে মেসেজ দিন</a>
         </div>
     </div>
 
@@ -1415,21 +1694,107 @@
         <div class="notification-card">
             <div class="notif-icon">✅</div>
             <h3 style="color:#063729; font-size:22px;">অর্ডার সফলভাবে গৃহীত হয়েছে!</h3>
-            <p style="font-size:14px; color:#555; margin-top:5px;">ধন্যবাদ! আপনার অর্ডারের নোটিফিকেশন ও ইনভয়েস নিচে তৈরি হয়েছে:</p>
+            <p style="font-size:14px; color:#555; margin-top:5px;">ধন্যবাদ! আপনার অর্ডারের নোটিফিকেশন ও ইনভয়েস নিচে তৈরি
+                হয়েছে:</p>
 
             <div class="receipt-box" id="notifReceiptDetails"></div>
 
-            <button class="btn" style="width:100%; background:#25D366; border:none; padding:12px; font-size:15px; margin-bottom:8px;" id="sendWhatsAppFinalBtn">📲 হোয়াটসঅ্যাপে রিসিট পাঠিয়ে কনফার্ম করুন</button>
+            <button class="btn"
+                style="width:100%; background:#25D366; border:none; padding:12px; font-size:15px; margin-bottom:8px;"
+                id="sendWhatsAppFinalBtn">📲 হোয়াটসঅ্যাপে রিসিট পাঠিয়ে কনফার্ম করুন</button>
             <button class="btn btn-secondary" style="width:100%;" onclick="closeNotifModal()">বন্ধ করুন</button>
         </div>
     </div>
 
     <!-- ফ্লোটিং হোয়াটসঅ্যাপ বাটন -->
     <a href="https://wa.me/8801341725738" target="_blank" class="floating-whatsapp">💬 WhatsApp</a>
-    <a href="http://fb.me/https://www.facebook.com/profile.php?id=61595260485358" target="_blank" class="floting-facebook">💬 facebook</a>
 
-    <footer>
-        <p>&copy; ২০২৬ আনাস ফ্যাশন হাউজ (Anas Fabrics and Ladies Tailors) | সর্বস্বত্ব সংরক্ষিত</p>
+    <!-- ==================== Naturo স্টাইল নতুন ফুটার সেকশন ==================== -->
+    <footer class="naturo-footer">
+        <!-- সাপোর্ট ব্যানার -->
+        <div class="footer-support-banner">
+            <div class="support-text">
+                <h3>কিছু জানার আছে?</h3>
+                <p>অর্ডার, পণ্য বা ডেলিভারি — যেকোনো প্রশ্নে সরাসরি কথা বলুন</p>
+            </div>
+            <div class="support-actions">
+                <a href="tel:01341725738" class="footer-phone-btn">📞 01341725738</a>
+                <a href="https://wa.me/8801341725738" target="_blank" class="footer-wa-btn">💬 WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- ফুটার মেইন গ্রিড -->
+        <div class="naturo-footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand-logo">
+                    <img src="logo.png" alt="Anas Logo">
+                    <span>ANAS FASHION</span>
+                </div>
+                <p>আনাস ফ্যাশন হাউজ হলো প্রিমিয়াম লেডিস টেইলারিং ও আধুনিক পোশাকের বিশ্বস্ত প্রতিষ্ঠান। ঘরে বসেই নিজের
+                    মাপে পোশাক তৈরি ও কাঙ্ক্ষিত ফ্যাশন পণ্য সংগ্রহ করুন।</p>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <a href="https://www.facebook.com/profile.php?id=61595260485358" target="_blank" class="btn"
+                        style="padding: 6px 12px; font-size: 13px;">Facebook</a>
+                    <a href="https://wa.me/8801341725738" target="_blank" class="btn"
+                        style="padding: 6px 12px; font-size: 13px; background:#25D366; border:none;">WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#"
+                            onclick="switchPage('collection-page', document.getElementById('nav-collection'))">All
+                            Products</a></li>
+                    <li><a href="#" onclick="switchPage('tailor-page', document.getElementById('nav-tailor'))">Tailoring
+                            Guide</a></li>
+                    <li><a href="#"
+                            onclick="switchPage('reviews-page', document.getElementById('nav-reviews'))">Customer
+                            Reviews</a></li>
+                    <li><a href="#" onclick="openCartModal()">Cart Items</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="#" onclick="switchPage('home-page', document.getElementById('nav-home'))">About Us</a>
+                    </li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Return and Refund</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Help Center</h4>
+                <ul>
+                    <li><a href="#" onclick="switchPage('checkout-page', document.getElementById('nav-checkout'))">Order
+                            Tracking</a></li>
+                    <li><a href="#" onclick="switchPage('contact-page', document.getElementById('nav-contact'))">Contact
+                            Us</a></li>
+                    <li><a href="#" onclick="switchPage('tailor-page', document.getElementById('nav-tailor'))">How to
+                            Order Tailoring</a></li>
+                    <li><a href="#" onclick="switchPage('seller-page', document.getElementById('nav-seller'))">Vendor
+                            Request</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li>📞 01341725738</li>
+                    <li>📍 বগুড়া, বাংলাদেশ</li>
+                    <li>📧 tahmeedjhossain744@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ফুটার বটম বার -->
+        <div class="footer-bottom-bar">
+            <p>© 2026 Anas Fabrics & Ladies Tailors. All Rights Reserved.</p>
+            <p>💳 Accepted: Bkash, Nagad, Rocket, Upay, Bank Transfer & Hand Pay</p>
+        </div>
     </footer>
 
     <script>
@@ -1441,7 +1806,7 @@
         let pendingWhatsAppURL = "";
         let uploadedSellerFileName = "";
 
-        window.onload = function() {
+        window.onload = function () {
             const track = document.getElementById("autoSliderTrack");
             track.innerHTML += track.innerHTML;
         };
@@ -1622,16 +1987,16 @@
             `;
 
             const msg = `✅ *নতুন অর্ডার নোটিফিকেশন (#${orderId})*\n\n` +
-                        `🛍️ *পণ্য:* ${checkoutProduct} (${checkoutQuantity} পিস)\n` +
-                        `📏 *সাইজ:* ${size}\n` +
-                        `💰 *সর্বমোট বিল:* ৳ ${total}\n` +
-                        `💳 *পেমেন্ট:* ${paymentInfo}\n\n` +
-                        `👤 *নাম:* ${name}\n` +
-                        `📞 *মোবাইল:* ${phone}\n` +
-                        `📍 *ঠিকানা:* ${address}`;
+                `🛍️ *পণ্য:* ${checkoutProduct} (${checkoutQuantity} পিস)\n` +
+                `📏 *সাইজ:* ${size}\n` +
+                `💰 *সর্বমোট বিল:* ৳ ${total}\n` +
+                `💳 *পেমেন্ট:* ${paymentInfo}\n\n` +
+                `👤 *নাম:* ${name}\n` +
+                `📞 *মোবাইল:* ${phone}\n` +
+                `📍 *ঠিকানা:* ${address}`;
 
             pendingWhatsAppURL = `https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`;
-            document.getElementById("sendWhatsAppFinalBtn").onclick = function() {
+            document.getElementById("sendWhatsAppFinalBtn").onclick = function () {
                 window.open(pendingWhatsAppURL, "_blank");
             };
 
@@ -1658,12 +2023,12 @@
             const address = document.getElementById("tCustAddress").value;
 
             const msg = `✂️ *কাস্টম লেডিস টেইলরিং অর্ডার*\n\n` +
-                        `👗 *পোশাক:* ${dress}\n` +
-                        `🧵 *কাপড়:* ${fabric}\n` +
-                        `📏 *মাপ (ইঞ্চি):* লম্বা: ${len}, বডি: ${chest}, কোমর: ${waist}, হিপ: ${hip}, হাতা: ${sleeve}, গলা: ${neck}\n` +
-                        `📝 *বিশেষ ডিজাইন:* ${notes}\n\n` +
-                        `👤 *নাম:* ${name} (${phone})\n` +
-                        `📍 *ঠিকানা:* ${address}`;
+                `👗 *পোশাক:* ${dress}\n` +
+                `🧵 *কাপড়:* ${fabric}\n` +
+                `📏 *মাপ (ইঞ্চি):* লম্বা: ${len}, বডি: ${chest}, কোমর: ${waist}, হিপ: ${hip}, হাতা: ${sleeve}, গলা: ${neck}\n` +
+                `📝 *বিশেষ ডিজাইন:* ${notes}\n\n` +
+                `👤 *নাম:* ${name} (${phone})\n` +
+                `📍 *ঠিকানা:* ${address}`;
 
             window.open(`https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`, "_blank");
         }
@@ -1674,7 +2039,7 @@
             if (file) {
                 uploadedSellerFileName = file.name;
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     document.getElementById("sellerImgPreview").src = e.target.result;
                     document.getElementById("sellerFileName").innerText = "✅ নির্বাচিত ফাইল: " + file.name;
                     document.getElementById("sellerPreviewBox").style.display = "block";
@@ -1687,20 +2052,20 @@
             event.preventDefault();
             const shop = document.getElementById("sShopName").value;
             const phone = document.getElementById("sPhone").value;
-            const pName = document.getElementById("sProductName").value;
+            pName = document.getElementById("sProductName").value;
             const price = document.getElementById("sPrice").value;
             const cat = document.getElementById("sCategory").value;
             const sizes = document.getElementById("sSizes").value;
             const desc = document.getElementById("sDesc").value;
 
             const msg = `🏪 *নতুন সেলার প্রোডাক্ট অ্যাপ্রুভাল আবেদন*\n\n` +
-                        `🏬 *সেলার/দোকান:* ${shop} (${phone})\n` +
-                        `📦 *পণ্যের নাম:* ${pName}\n` +
-                        `💰 *মূল্য:* ৳ ${price}\n` +
-                        `📂 *ক্যাটাগরি:* ${cat} | *সাইজ:* ${sizes}\n` +
-                        `🖼️ *আপলোডকৃত ছবির ফাইল:* ${uploadedSellerFileName}\n` +
-                        `📝 *বিবরণ:* ${desc}\n\n` +
-                        `⚠️ অনুগ্রহ করে এই চ্যাটে আপনার পণ্যের আপলোড করা ছবিটি (Attach করে) পাঠিয়ে দিন। অ্যাডমিন অ্যাপ্রুভাল দিলে ওয়েবসাইটে লাইভ হবে।`;
+                `🏬 *সেলার/দোকান:* ${shop} (${phone})\n` +
+                `📦 *পণ্যের নাম:* ${pName}\n` +
+                `💰 *মূল্য:* ৳ ${price}\n` +
+                `📂 *ক্যাটাগরি:* ${cat} | *সাইজ:* ${sizes}\n` +
+                `🖼️ *আপলোডকৃত ছবির ফাইল:* ${uploadedSellerFileName}\n` +
+                `📝 *বিবরণ:* ${desc}\n\n` +
+                `⚠️ অনুগ্রহ করে এই চ্যাটে আপনার পণ্যের আপলোড করা ছবিটি (Attach করে) পাঠিয়ে দিন। অ্যাডমিন অ্যাপ্রুভাল দিলে ওয়েবসাইটে লাইভ হবে।`;
 
             alert("✅ আপনার আবেদন ও ছবির তথ্য প্রস্তুত হয়েছে! পরবর্তী স্ক্রিনে হোয়াটসঅ্যাপ ওপেন হলে আপনার গ্যালারি থেকে পণ্যের ছবিটি অ্যাটাচ করে পাঠিয়ে দিন।");
             window.open(`https://wa.me/8801341725738?text=${encodeURIComponent(msg)}`, "_blank");
