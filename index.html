@@ -1160,7 +1160,7 @@
 
     <!-- ==================== পেজ ১: হোম পেজ ==================== -->
     <div id="home-page" class="page-view active-page">
-       <section class="hero" id="heroBannerSection">
+        <section class="hero">
             <div class="hero-badge-top">✨ প্রিমিয়াম ফ্যাব্রিক্স • এক্সক্লুসিভ লেডিস টেইলরিং • ফ্যাশন হাউজ ✨</div>
             <img src="logo.png.webp" alt="Anas Fashion Logo" class="hero-logo-svg site-logo-img">
             <h1>ANAS FABRICS &amp; LADIES TAILORS</h1>
@@ -2030,6 +2030,7 @@
                 <h4>Contact</h4>
                 <ul>
                     <li>📞 01341725738</li>
+                    <li>📞 01728452247</li>
                     <li>📍 বগুড়া, বাংলাদেশ</li>
                     <li>📧 tahmeedjhossain744@gmail.com</li>
                 </ul>
@@ -2051,44 +2052,40 @@
             </div>
 
             <!-- চোখের সামনে থাকা Admin Login বাটন -->
-            <button type="button" id="adminLoginBtn" class="custom-btn" onclick="openSecretAuthModal()">🔐 Admin Login</button>
+            <button type="button" id="adminLoginBtn" class="custom-btn" onclick="openSecretAuthModal()">🔐 Admin
+                Login</button>
 
             <!-- লগইন করার পর এই বাটনগুলো দেখাবে -->
             <div id="adminControlsBar" style="display:none; gap:8px; flex-wrap:wrap;">
                 <button type="button" class="custom-btn" onclick="toggleVideoForm()">➕ নতুন ভিডিও যোগ করুন</button>
                 <button type="button" class="custom-btn" onclick="toggleLogoUploadBox()">🖼️ লোগো পরিবর্তন</button>
-                <button type="button" class="custom-btn" onclick="toggleBannerUploadBox()">🏞️ ব্যানার পরিবর্তন</button>
-                <button type="button" onclick="lockAdminMode()" style="background:#8b1e2b; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">🔒 লক করুন</button>
+                <button type="button" onclick="lockAdminMode()"
+                    style="background:#8b1e2b; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">🔒
+                    লক করুন</button>
             </div>
         </div>
 
         <!-- অ্যাডমিন লোগো পরিবর্তন বক্স -->
         <div id="adminLogoBox" class="admin-video-box" style="border-color:#d4af37;">
             <h3 style="color:#063729; margin-bottom:10px;">🖼️ ওয়েবসাইটের লোগো পরিবর্তন করুন</h3>
-            <p style="font-size:13px; color:#555; margin-bottom:10px;">আপনার গ্যালারি থেকে নতুন লোগোর ছবি সিলেক্ট করুন:</p>
+            <p style="font-size:13px; color:#555; margin-bottom:10px;">আপনার গ্যালারি থেকে নতুন লোগোর ছবি সিলেক্ট করুন:
+            </p>
             <input type="file" id="newLogoFileInput" class="custom-input" accept="image/*">
             <div style="display:flex; gap:8px;">
-                <button type="button" class="custom-btn" style="flex:1;" onclick="updateWebsiteLogo()">✅ নতুন লোগো সেভ করুন</button>
-                <button type="button" onclick="resetDefaultLogo()" style="background:#6c757d; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">রিসেট</button>
+                <button type="button" class="custom-btn" style="flex:1;" onclick="updateWebsiteLogo()">✅ নতুন লোগো সেভ
+                    করুন</button>
+                <button type="button" onclick="resetDefaultLogo()"
+                    style="background:#6c757d; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">রিসেট</button>
             </div>
         </div>
-        <!-- অ্যাডমিন ব্যানার পরিবর্তন বক্স -->
-<div id="adminBannerBox" class="admin-video-box" style="border-color:#d4af37;">
-    <h3 style="color:#063729; margin-bottom:10px;">🏞️ হোম পেজের ব্যানার পরিবর্তন করুন</h3>
-    <p style="font-size:13px; color:#555; margin-bottom:10px;">গ্যালারি থেকে নতুন ব্যানারের ছবি সিলেক্ট করুন:</p>
-    <input type="file" id="newBannerFileInput" class="custom-input" accept="image/*">
-    <div style="display:flex; gap:8px;">
-        <button type="button" class="custom-btn" style="flex:1;" onclick="updateWebsiteBanner()">✅ নতুন ব্যানার সেভ করুন</button>
-        <button type="button" onclick="resetDefaultBanner()" style="background:#6c757d; color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:bold;">রিসেট</button>
-    </div>
-</div>
 
         <!-- নতুন ভিডিও আপলোড বক্স -->
         <div id="adminVideoBox" class="admin-video-box">
             <h3 style="color:#063729; margin-bottom:12px;">নতুন প্রোডাক্ট ভিডিও যুক্ত করুন</h3>
             <form onsubmit="uploadProductVideo(event)">
                 <input type="text" id="vidTitle" class="custom-input" placeholder="প্রোডাক্টের নাম লিখুন *" required>
-                <input type="number" id="vidPrice" class="custom-input" placeholder="প্রোডাক্টের দাম (টাকায়) *" required>
+                <input type="number" id="vidPrice" class="custom-input" placeholder="প্রোডাক্টের দাম (টাকায়) *"
+                    required>
 
                 <select id="vidType" class="custom-input" onchange="switchVideoSource()">
                     <option value="mp4">📁 মোবাইল/ল্যাপটপ থেকে MP4 ভিডিও আপলোড</option>
@@ -2113,7 +2110,8 @@
     <!-- ২. কাস্টমার স্টার রেটিং ও রিভিউ সেকশন -->
     <section class="review-section">
         <h2 style="text-align:center; color:#063729; margin-bottom:6px;">⭐ কাস্টমার রিভিউ ও রেটিং</h2>
-        <p style="text-align:center; color:#666; margin-bottom:22px;">আমাদের পণ্য সম্পর্কে আপনার মূল্যবান মতামত ও স্টার রেটিং দিন</p>
+        <p style="text-align:center; color:#666; margin-bottom:22px;">আমাদের পণ্য সম্পর্কে আপনার মূল্যবান মতামত ও স্টার
+            রেটিং দিন</p>
 
         <div class="review-form-card">
             <h3 style="color:#063729; margin-bottom:8px;">✍️ আপনার রিভিউ লিখুন</h3>
@@ -2127,9 +2125,12 @@
                     <span class="star-item active" onclick="setRating(5)">★</span>
                 </div>
 
-                <input type="text" id="revName" class="custom-input" placeholder="আপনার নাম ও ঠিকানা (যেমন: নুসরাত, বগুড়া) *" required>
-                <input type="text" id="revProduct" class="custom-input" placeholder="কোন প্রোডাক্টটি নিয়েছেন? (যেমন: Kajkora থ্রি-পিস) *" required>
-                <textarea id="revMessage" class="custom-input" rows="3" placeholder="আপনার মতামত / কমেন্ট লিখুন *" required></textarea>
+                <input type="text" id="revName" class="custom-input"
+                    placeholder="আপনার নাম ও ঠিকানা (যেমন: নুসরাত, বগুড়া) *" required>
+                <input type="text" id="revProduct" class="custom-input"
+                    placeholder="কোন প্রোডাক্টটি নিয়েছেন? (যেমন: Kajkora থ্রি-পিস) *" required>
+                <textarea id="revMessage" class="custom-input" rows="3" placeholder="আপনার মতামত / কমেন্ট লিখুন *"
+                    required></textarea>
 
                 <button type="submit" class="custom-btn" style="width:100%;">⭐ রিভিউ সাবমিট করুন</button>
             </form>
@@ -2142,35 +2143,51 @@
     <div id="secretAuthModal" class="secret-modal-overlay">
         <div class="secret-modal-card">
             <h3 id="authModalTitle" style="color:#063729; margin-bottom:6px;">🔐 অ্যাডমিন অ্যাকাউন্ট সেটআপ</h3>
-            <p id="authModalDesc" style="font-size:13px; color:#555; margin-bottom:15px;">আপনার মোবাইল নম্বর ও গোপন পাসওয়ার্ড দিয়ে অ্যাকাউন্ট তৈরি করুন:</p>
+            <p id="authModalDesc" style="font-size:13px; color:#555; margin-bottom:15px;">আপনার মোবাইল নম্বর ও গোপন
+                পাসওয়ার্ড দিয়ে অ্যাকাউন্ট তৈরি করুন:</p>
 
             <form id="mainAuthForm" onsubmit="handleAdminAuthSubmit(event)">
-                <input type="tel" id="adminPhoneInput" class="custom-input" maxlength="11" placeholder="মোবাইল নম্বর (যেমন: 01341725738) *" required>
-                <input type="password" id="adminPassInput" class="custom-input" placeholder="পাসওয়ার্ড লিখুন *" required>
-                <input type="password" id="adminConfirmPassInput" class="custom-input" placeholder="পাসওয়ার্ডটি আবার লিখুন (Confirm) *">
+                <input type="tel" id="adminPhoneInput" class="custom-input" maxlength="11"
+                    placeholder="মোবাইল নম্বর (যেমন: 01341725738) *" required>
+                <input type="password" id="adminPassInput" class="custom-input" placeholder="পাসওয়ার্ড লিখুন *"
+                    required>
+                <input type="password" id="adminConfirmPassInput" class="custom-input"
+                    placeholder="পাসওয়ার্ডটি আবার লিখুন (Confirm) *">
 
                 <div style="display:flex; gap:8px; margin-bottom:10px;">
                     <button type="submit" class="custom-btn" style="flex:1;" id="authSubmitBtn">সেভ করুন</button>
-                    <button type="button" onclick="closeAuthModal()" style="background:#6c757d; color:#fff; border:none; padding:10px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">বাতিল</button>
+                    <button type="button" onclick="closeAuthModal()"
+                        style="background:#6c757d; color:#fff; border:none; padding:10px 15px; border-radius:6px; cursor:pointer; font-weight:bold;">বাতিল</button>
                 </div>
 
                 <div id="forgetLinkBox" style="display:none; text-align:right;">
-                    <a href="javascript:void(0)" onclick="showForgetPasswordBox()" style="color:#8b1e2b; font-size:13px; font-weight:bold; text-decoration:underline;">পাসওয়ার্ড ভুলে গেছেন? (Forget Password)</a>
+                    <a href="javascript:void(0)" onclick="showForgetPasswordBox()"
+                        style="color:#8b1e2b; font-size:13px; font-weight:bold; text-decoration:underline;">পাসওয়ার্ড
+                        ভুলে গেছেন? (Forget Password)</a>
                 </div>
             </form>
 
             <form id="forgetOtpForm" style="display:none;" onsubmit="verifyOtpAndResetPass(event)">
-                <input type="tel" id="resetPhoneInput" class="custom-input" maxlength="11" placeholder="রেজিস্টার করা মোবাইল নম্বর দিন *" required>
-                <button type="button" onclick="sendOtpToPhone()" style="width:100%; background:#25D366; color:#fff; border:none; padding:9px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:12px;">📲 এই নম্বরে OTP কোড পাঠান</button>
+                <input type="tel" id="resetPhoneInput" class="custom-input" maxlength="11"
+                    placeholder="রেজিস্টার করা মোবাইল নম্বর দিন *" required>
+                <button type="button" onclick="sendOtpToPhone()"
+                    style="width:100%; background:#25D366; color:#fff; border:none; padding:9px; border-radius:6px; font-weight:bold; cursor:pointer; margin-bottom:12px;">📲
+                    এই নম্বরে OTP কোড পাঠান</button>
 
                 <div id="otpVerifyFields" style="display:none;">
-                    <input type="text" id="enteredOtpInput" class="custom-input" maxlength="6" placeholder="৬ ডিজিটের OTP কোডটি লিখুন *" required>
-                    <input type="password" id="newResetPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ড লিখুন *" required>
-                    <input type="password" id="confirmNewResetPassInput" class="custom-input" placeholder="নতুন পাসওয়ার্ডটি আবার লিখুন *" required>
-                    <button type="submit" class="custom-btn" style="width:100%; margin-bottom:8px;">✅ নতুন পাসওয়ার্ড সেভ করুন</button>
+                    <input type="text" id="enteredOtpInput" class="custom-input" maxlength="6"
+                        placeholder="৬ ডিজিটের OTP কোডটি লিখুন *" required>
+                    <input type="password" id="newResetPassInput" class="custom-input"
+                        placeholder="নতুন পাসওয়ার্ড লিখুন *" required>
+                    <input type="password" id="confirmNewResetPassInput" class="custom-input"
+                        placeholder="নতুন পাসওয়ার্ডটি আবার লিখুন *" required>
+                    <button type="submit" class="custom-btn" style="width:100%; margin-bottom:8px;">✅ নতুন পাসওয়ার্ড সেভ
+                        করুন</button>
                 </div>
 
-                <button type="button" onclick="openSecretAuthModal()" style="background:#6c757d; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;">← লগইনে ফিরে যান</button>
+                <button type="button" onclick="openSecretAuthModal()"
+                    style="background:#6c757d; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:13px;">←
+                    লগইনে ফিরে যান</button>
             </form>
         </div>
     </div>
@@ -2657,50 +2674,6 @@
             document.getElementById("adminLogoBox").style.display = "none";
             alert("🔄 আগের ডিফল্ট লোগো ফিরিয়ে আনা হয়েছে।");
         }
-        // ব্যানার পরিবর্তন ফাংশনসমূহ
-function toggleBannerUploadBox() {
-    if (!isAdminUnlocked) return;
-    let bannerBox = document.getElementById("adminBannerBox");
-    document.getElementById("adminVideoBox").style.display = "none";
-    document.getElementById("adminLogoBox").style.display = "none";
-    bannerBox.style.display = (bannerBox.style.display === "block") ? "none" : "block";
-}
-
-function updateWebsiteBanner() {
-    if (!isAdminUnlocked) return;
-    const fileInput = document.getElementById("newBannerFileInput");
-    const file = fileInput.files[0];
-    if (!file) {
-        alert("⚠️ অনুগ্রহ করে গ্যালারি থেকে একটি ব্যানারের ছবি সিলেক্ট করুন!");
-        return;
-    }
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const bannerDataUrl = e.target.result;
-        localStorage.setItem("anasCustomSiteBanner", bannerDataUrl);
-        applyCustomBannerToSite(bannerDataUrl);
-        document.getElementById("adminBannerBox").style.display = "none";
-        fileInput.value = "";
-        alert("✅ ওয়েবসাইটের ব্যানার সফলভাবে পরিবর্তন হয়েছে!");
-    };
-    reader.readAsDataURL(file);
-}
-
-function applyCustomBannerToSite(bannerSrc) {
-    const hero = document.getElementById("heroBannerSection");
-    if (hero) {
-        hero.style.backgroundImage = `linear-gradient(135deg, rgba(6, 55, 41, 0.85) 0%, rgba(13, 40, 71, 0.82) 55%, rgba(88, 24, 31, 0.80) 100%), url('${bannerSrc}')`;
-    }
-}
-
-function resetDefaultBanner() {
-    if (!isAdminUnlocked) return;
-    localStorage.removeItem("anasCustomSiteBanner");
-    const hero = document.getElementById("heroBannerSection");
-    if (hero) hero.style.backgroundImage = "";
-    document.getElementById("adminBannerBox").style.display = "none";
-    alert("🔄 আগের ডিফল্ট ব্যানার ফিরিয়ে আনা হয়েছে।");
-}
 
         // ভিডিও কন্ট্রোল ফাংশনসমূহ
         function toggleVideoForm() {
@@ -2837,10 +2810,6 @@ function resetDefaultBanner() {
             if (savedLogo) {
                 applyCustomLogoToSite(savedLogo);
             }
-            const savedBanner = localStorage.getItem("anasCustomSiteBanner");
-if (savedBanner) {
-    applyCustomBannerToSite(savedBanner);
-}
 
             let savedReviews = JSON.parse(localStorage.getItem("anasReviews") || "[]");
             savedReviews.forEach(item => displayReviewCard(item));
